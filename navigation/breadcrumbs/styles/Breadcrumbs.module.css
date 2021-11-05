@@ -1,0 +1,21 @@
+@import "../../../misc/theme/styles.module.css";
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 5px;
+    background: var(--mfc-background-primary);
+    width: 100%;
+    padding: 8px;
+
+    overflow: hidden;
+}
+
+.crumbWrapper {
+    display: flex;
+    align-items: center;
+
+}

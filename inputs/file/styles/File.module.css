@@ -1,0 +1,116 @@
+@import "../../../misc/theme/styles.module.css";
+
+.dropArea {
+    position: relative;
+    color: var(--mfc-color-quaternary);
+    transition: 150ms linear;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background: var(--mfc-background-secondary);
+    border: var(--mfc-border-secondary) 2px dashed;
+}
+.dropAreaContent{
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: flex-start;
+
+    gap: 18.5px;
+
+    flex-flow: row wrap;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+
+.fileContainer{
+    position: relative;
+    width: 15%;
+    height: 25%;
+    background: var(--mfc-background-primary);
+    border-radius: 5px;
+    border: var(--mfc-border-primary) 1px solid;
+    display: grid;
+    align-content: space-between;
+    gap: 4px;
+    justify-content: center;
+    justify-items: center;
+    font-size: .9rem;
+    padding: 16px 8px 8px 8px;
+
+
+
+}
+
+.fileLabel{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+
+}
+
+
+.header{
+    height: 45px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--mfc-color-secondary);
+    /*border-bottom: var(--mfc-border-secondary) 1px solid;*/
+    width: 100%;
+    display: flex;
+
+    align-items: center;
+}
+.headerAccepted{
+    text-align: right;
+    border-left: var(--mfc-border-primary) 1px solid;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: .7rem;
+    color: var(--mfc-color-quaternary);
+}
+.overflow{
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+
+.modalContainer{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalContent {
+    height: 100%;
+    width: clamp(250px, 25%, 500px);
+    background: var(--mfc-background-primary);
+    margin-left: auto;
+    border-radius: 8px 0 0 8px;
+    box-shadow: var(--mfc-box-shadow-primary) 0 0 2px 1px;
+
+    display: grid;
+    gap: 16px;
+    grid-template-rows: 45px 35px calc(100% - 114px);
+
+
+    top: 0;
+    right: 0;
+
+    align-content: flex-start;
+    /*background: var(--mfc-background-secondary);*/
+    position: absolute;
+
+    border: var(--mfc-border-secondary) 1px solid;
+
+    padding: 16px;
+}

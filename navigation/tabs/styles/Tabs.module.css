@@ -1,0 +1,40 @@
+@import "../../../misc/theme/styles.module.css";
+
+
+.wrapper {
+    flex-grow: 1;
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+
+    background-color: var(--mfc-background-primary);
+}
+
+.header {
+
+    height: fit-content;
+    display: grid;
+    gap: 4px;
+
+    padding-top: 8px;
+    /*border-bottom: var(--mfc-border-primary) 1px solid;*/
+    transition: 150ms ease-in;
+}
+
+.tabs {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.content {
+    border: var(--mfc-border-primary) 1px solid;
+    background-color: var(--mfc-background-secondary);
+    border-radius:5px 5px 0 0;
+    height: 100%;
+    padding: 8px;
+}

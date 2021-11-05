@@ -1,0 +1,40 @@
+.light {
+    --mfc-background-primary: white;
+    --mfc-background-secondary: #f9fafb;
+    --mfc-background-tertiary: #f4f5fa;
+    --mfc-background-quaternary: #E8F0FE;
+
+    --mfc-border-primary: #F1F1F5;
+    --mfc-border-secondary: #e0e0e0;
+
+    --mfc-color-primary: #333333;
+    --mfc-color-secondary: #555555;
+    --mfc-color-tertiary: #666666;
+    --mfc-color-quaternary: #777777;
+    --mfc-color-quinary: #999999;
+    --mfc-color-senary: white;
+
+    --mfc-box-shadow-primary: #e0e0e0;
+}
+
+.dark {
+
+
+    --mfc-background-primary: #292c2b;
+    --mfc-background-secondary: #1e2121;
+    --mfc-background-tertiary: #191C1C;
+    --mfc-background-quaternary: #1f2123;
+
+    --mfc-border-primary: #1e2121;
+    --mfc-border-secondary: #707070;
+
+    --mfc-color-primary: white;
+    --mfc-color-secondary: #f4f5fa;
+    --mfc-color-tertiary: #f0f0f0;
+    --mfc-color-quaternary: #e0e0e0;
+    --mfc-color-quinary: #dedede;
+    --mfc-color-senary: #292c2b;
+
+    --mfc-box-shadow-primary: #1e2121;
+}
+

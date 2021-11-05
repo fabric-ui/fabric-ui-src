@@ -1,0 +1,79 @@
+@import '../../../misc/theme/styles.module.css';
+
+.modal {
+    overflow: hidden;
+    background-color: var(--mfc-background-primary);
+
+    border-radius: 5px 0 5px 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25%;
+    height: 100%;
+    padding: 16px;
+    box-shadow: var(--mfc-box-shadow-primary) -1px 0 3px 1px;
+}
+
+.content {
+    display: grid;
+    gap: 8px;
+
+    align-items: flex-start;
+    align-content: flex-start;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 2px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.fieldRow {
+
+    height: 60px;
+    position: relative;
+    z-index: 999;
+    background: var(--mfc-background-primary);
+    border-radius: 5px;
+    border: var(--mfc-border-primary) 1px solid;
+    padding: 8px;
+
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /*height: auto;*/
+
+    user-select: none;
+}
+.fieldRow:hover{
+    border-color: #0095ff;
+}
+
+.fieldLabel {
+
+
+    text-transform: capitalize;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+    color: var(--mfc-color-tertiary);
+    font-size: .9rem;
+
+}
+
+.visibilityButton {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.header {
+    font-weight: 600;
+    color: var(--mfc-color-secondary);
+}

@@ -1,0 +1,40 @@
+
+.ripple {
+    --y: 0;
+    --x: 0;
+
+    --accent-color: #0095ff;
+
+    --opacity: .15;
+    --size: 16px;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    opacity: 0;
+    background: var(--accent-color);
+    transform: translate(-50%, -50%);
+
+    left: var(--x);
+    top: var(--y);
+
+    animation: rippleAnim 1s ease-in forwards;
+}
+
+@keyframes rippleAnim {
+    0% {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    50% {
+        opacity: var(--opacity);
+        width: calc(var(--size) * 2);
+        height: calc(var(--size) * 2);
+    }
+    100% {
+        opacity: 0;
+        width: calc(var(--size) * 2);
+        height: calc(var(--size) * 2);
+    }
+}

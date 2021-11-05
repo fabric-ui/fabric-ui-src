@@ -1,0 +1,116 @@
+.bottomOptions {
+    position: absolute;
+    bottom: 4px;
+    width: calc(100% - 8px);
+    transform: translateX(4px);
+
+    display: grid;
+    align-content: flex-start;
+    gap: 8px;
+}
+
+.buttons {
+    width: 100%;
+    padding: 4px;
+    position: relative;
+    height: 100%;
+    display: grid;
+    align-content: flex-start;
+
+    gap: 8px;
+}
+
+.button {
+    width: 50px;
+    height: 100%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    overflow: hidden;
+    /*width: 60px;*/
+    transition: 250ms ease-in-out;
+    background: var(--mfc-background-primary);
+    position: sticky;
+    left: 0;
+    height: 100%;
+
+}
+
+.buttonIcon {
+    transition: 250ms ease-in-out;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 42px;
+
+}
+
+.buttonContainer {
+    align-items: center;
+
+    cursor: pointer;
+    max-width: 215px;
+    height: 50px;
+    overflow: hidden;
+
+    transition: 250ms ease-in-out;
+    border-radius: 5px;
+    padding: 8px 4px;
+
+    position: relative;
+}
+
+
+.buttonLabel {
+
+    outline: none;
+    background: none;
+    border: none;
+    padding: 0;
+
+    font-size: .7rem;
+    overflow: hidden;
+    color: var(--mfc-color-quaternary);
+
+    font-family: "Roboto";
+    /*font-weight: 575;*/
+}
+
+.activeButton {
+    animation: slideDown 150ms linear forwards;
+
+    position: absolute;
+    left: 4px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes slideDown {
+    0% {
+        top: 0;
+        /*transform: translateY(-50%);*/
+    }
+    100% {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.buttonLabel:disabled {
+    color: var(--mfc-color-quinary);
+}
+
+.overflowEllipsis {
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

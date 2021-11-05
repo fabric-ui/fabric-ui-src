@@ -1,0 +1,28 @@
+
+.button {
+    font-family: "Roboto";
+
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+
+
+    justify-content: space-between;
+    align-items: center;
+    border: var(--mfc-border-primary) 1px solid;
+
+    box-shadow: unset;
+    transition: 250ms linear;
+    background: var(--mfc-background-primary);
+    width: 100%;
+    outline: none;
+    padding: 5px;
+    font-size: 1rem;
+    color: var(--mfc-color-secondary);
+    cursor: pointer;
+    border-radius: 5px;
+
+    max-width: 100%;
+    overflow: hidden;
+}

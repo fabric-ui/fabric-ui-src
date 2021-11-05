@@ -1,0 +1,200 @@
+@import "../../../misc/theme/styles.module.css";
+
+.fieldsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    height: 56px;
+    border-radius: 5px;
+    border: var(--mfc-border-primary) 1px solid;
+    color: var(--mfc-color-tertiary);
+    background: var(--mfc-background-primary);
+    position: relative;
+    overflow: hidden;
+
+    --delay: 0;
+}
+
+.fieldsContainer:hover {
+    --delay: 500ms;
+}
+
+.fieldsContainer::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--color);
+    opacity: 0;
+    transition: 150ms linear var(--delay);
+}
+
+.fieldsContainer:disabled::after {
+    content: none;
+}
+
+.fieldsContainer:focus-within::after, .fieldsContainer:focus-within::after {
+    opacity: .15;
+}
+
+
+.inputContainer {
+    text-align: center;
+    border: none;
+    box-shadow: unset;
+
+    background: var(--mfc-background-primary);
+    font-family: "Roboto";
+    height: 100%;
+    width: 30px;
+    outline: none;
+    font-size: 1rem;
+
+    color: var(--mfc-color-secondary);
+}
+
+.inputContainer::-webkit-outer-spin-button,
+.inputContainer::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.inputContainer[type=number] {
+    -moz-appearance: textfield;
+}
+
+.buttonContainer {
+    outline: none;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--mfc-color-secondary);
+    cursor: pointer;
+    transition: 150ms linear;
+    border-radius: 5px;
+
+    height: 35px;
+    width: 35px;
+    margin-right: 8px;
+}
+
+.buttonContainer:hover {
+    background: var(--mfc-background-tertiary);
+    color: var(--mfc-color-primary);
+}
+
+.buttonContainer:active {
+    background: var(--mfc-background-quaternary);
+    color: #0095ff;
+}
+
+
+.container {
+    height: 100px;
+    display: grid;
+    gap: 4px;
+
+}
+
+.divider {
+    width: 1px;
+    height: 20px;
+    background: var(--mfc-border-secondary);
+}
+
+.calendar {
+    width: 350px;
+
+    background: var(--mfc-background-primary);
+    border-radius: 8px;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    height: 223px;
+    overflow-y: auto;
+
+}
+
+.monthContainer {
+    position: sticky;
+    top: 0;
+    background: var(--mfc-background-primary);
+    z-index: 999;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: .9rem;
+    height: 45px;
+    user-select: none;
+
+    transition: 150ms linear;
+
+    padding: 8px 4px;
+    color: var(--mfc-color-secondary);
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.activeContainer {
+    background: var(--mfc-background-quaternary);
+    color: #0095ff;
+}
+
+.daysContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7.45px;
+    width: 100%;
+    padding: 8px;
+    overflow: auto;
+}
+
+.dayContainer {
+    height: 35px;
+    width: 35px;
+    background: var(--mfc-background-primary);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    font-size: .85rem;
+    font-weight: bold;
+    font-family: "Roboto";
+    color: var(--mfc-color-tertiary);
+    border-radius: 8px;
+    border: transparent 2px solid;
+
+    cursor: pointer;
+    transition: 150ms linear;
+}
+
+.dayContainer:hover {
+    color: #0095ff;
+    border: rgba(0, 149, 255, .5) 2px solid;
+}
+
+.dayContainer:active {
+    background: var(--mfc-background-quaternary);
+
+    color: #0095ff;
+    border: rgba(0, 149, 255, .5) 2px solid;
+}
+
+.currentDate {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .8rem;
+    font-weight: normal;
+    color: var(--mfc-color-tertiary);
+}

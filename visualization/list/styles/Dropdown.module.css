@@ -1,0 +1,54 @@
+@import '../../../misc/theme/styles.module.css';
+
+.wrapper {
+    position: relative;
+
+}
+
+.buttons {
+    width: 200px;
+    border-radius: 5px;
+    background: var(--mfc-background-primary);
+
+
+    height: auto;
+    box-shadow: var(--mfc-box-shadow-primary) 0 0 2px 1px;
+    z-index: 100;
+    position: absolute;
+    top: 100%;
+    right: 0;
+
+    overflow-y: auto;
+    max-height: clamp(250px, 10vh, 300px);
+
+    display: grid;
+    gap: 0;
+
+    transition: 150ms ease;
+}
+
+
+.button {
+
+
+    overflow: hidden;
+    outline: none;
+    border: none;
+    padding: 12px 0 12px 8px;
+    text-align: left;
+    background: transparent;
+
+    transition: 150ms linear;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.buttonLabel {
+    display: flex;
+    padding: 0 10px;
+    justify-content: flex-end;
+    width: 100%;
+}

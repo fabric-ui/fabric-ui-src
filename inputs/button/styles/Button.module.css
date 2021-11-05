@@ -1,0 +1,193 @@
+.button {
+    border-radius: 5px;
+    outline: none;
+    background: unset;
+    border: none;
+    font-size: .8rem;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    cursor: pointer;
+    --color: #0095ff;
+    --darker-color: #0080DB;
+    padding: 8px 16px;
+    text-align: center;
+    color: var(--mfc-color-secondary);
+
+    overflow: hidden;
+    position: relative;
+
+    --delay: 0ms;
+}
+
+.button:disabled {
+    cursor: unset;
+}
+
+.button:hover {
+    --delay: 500ms;
+}
+
+.button::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--color);
+    opacity: 0;
+    transition: 150ms linear var(--delay);
+}
+
+.button:disabled::after {
+    content: none;
+}
+
+.button:not(:active) {
+    --delay: 0ms;
+}
+
+.button:active::after {
+    opacity: .15;
+}
+
+.secondaryVariant {
+    --darker-color: #FF2626;
+    --color: #ff5555
+}
+
+.baseHighlight::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--color);
+    opacity: 0;
+    animation: fadeIn 150ms linear forwards 400ms;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: .15;
+    }
+}
+
+/*MINIMAL*/
+.minimal {
+
+    position: relative;
+    background: transparent;
+
+    transition: 150ms ease-in;
+}
+
+.minimal::before {
+    content: '';
+    position: absolute;
+
+    transition: 150ms ease-in;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-radius: 16px;
+    background: var(--color);
+    height: 3px;
+    width: 50%;
+    opacity: 0;
+}
+
+.minimalHorizontal::before {
+    content: '';
+    position: absolute;
+
+    transition: 150ms ease-in;
+    bottom: 0;
+    border-radius: 16px;
+    background: var(--color);
+
+    opacity: 0;
+
+    height: 50%;
+    width: 3px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.minimal:hover::before, .minimalHighlight.minimal::before, .minimalHorizontal:hover::before {
+    opacity: 1;
+}
+
+
+.minimal:hover, .minimalHighlight {
+    color: var(--color);
+}
+
+.minimal:disabled::before, .minimalHorizontal:disabled::before {
+    content: none;
+}
+
+.minimal:disabled {
+    color: var(--mfc-color-quaternary);
+}
+
+/*MINIMAL*/
+
+
+/*FILLED*/
+.filled {
+    position: relative;
+    transition: 150ms ease-in;
+    color: white;
+    background: var(--color) !important;
+    box-shadow: var(--mfc-box-shadow-primary) 1px 1px 2px 1px;
+}
+
+.filled:active, .filledHighlight {
+    box-shadow: none;
+}
+
+.filled:disabled {
+    border-color: transparent;
+    color: var(--mfc-color-quaternary);
+    background: transparent !important;
+    box-shadow: none;
+}
+
+/*FILLED*/
+
+
+/*OUTLINED*/
+.outlined {
+
+    position: relative;
+    background: transparent;
+    border: var(--mfc-border-primary) 1px solid;
+    transition: 150ms ease-in;
+}
+
+.default {
+    border: none;
+}
+
+.outlined:hover {
+    color: var(--color);
+}
+
+.outlined:active, .outlinedHighlight {
+    color: var(--color);
+    border-color: var(--color);
+}
+
+.outlined:disabled {
+    border-color: transparent;
+    color: var(--mfc-color-quaternary);
+    background: transparent;
+}
+
+/*OUTLINED*/

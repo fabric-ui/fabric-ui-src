@@ -1,0 +1,86 @@
+@import '../../../misc/theme/styles.module.css';
+
+
+.activeFiltersContainer {
+    height: auto;
+    max-height: 100px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+    padding: 8px 0;
+    width: 100%;
+
+}
+
+.overflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.filter {
+    background-color: var(--mfc-background-primary);
+    border: var(--mfc-border-primary) 1px solid;
+    color: var(--mfc-color-secondary);
+    font-size: .85rem;
+
+    user-select: none;
+
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
+    border-radius: 5px;
+
+    height: 30px;
+    width: fit-content;
+    cursor: pointer;
+
+    transition: 150ms linear;
+}
+
+.container {
+
+    position: absolute;
+    /*height: clamp(200px, 50%, 1000px);*/
+    width: clamp(200px, 25%, 750px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background: var(--mfc-background-primary);
+    padding: 16px;
+    border-radius: 8px;
+    border: var(--mfc-border-secondary) 1px solid;
+    color: var(--mfc-color-tertiary);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    color: var(--mfc-color-secondary);
+    height: 32px;
+    font-weight: bold;
+    font-family: "Roboto";
+}
+
+.fields {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 4px;
+}
+
+
+.button{
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

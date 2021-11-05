@@ -1,0 +1,12 @@
+@import "../../../misc/theme/styles.module.css";
+
+.selectBox {
+    transition: 150ms ease-in-out;
+    position: absolute;
+    /*transform: translateY(-50%);*/
+    top: calc(100% - 16px);
+    left: 0;
+    z-index: 999;
+
+
+}
