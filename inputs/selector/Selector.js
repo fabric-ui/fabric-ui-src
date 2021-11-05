@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react'
+import React, {useMemo, useState} from 'react'
 import styles from './styles/Selector.module.css'
 import SelectorsPT from './locales/SelectorsPT'
 import SelectorModal from "./modules/SelectorModal";
