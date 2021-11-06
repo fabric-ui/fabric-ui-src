@@ -61,6 +61,7 @@ export default function Button(props) {
             className={[styles.button, variant.normal, props.highlight ? variant.highlight : undefined, color, props.className].join(' ')}
             onClick={props.onClick} ref={props.reference}
             style={props.styles}
+            data-highlight={JSON.stringify(props.highlight)}
             disabled={props.disabled}
         >
             <Ripple

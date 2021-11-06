@@ -13,8 +13,6 @@ import useMaxHeight from "../../misc/useMaxHeight";
 export default function List(props) {
     const {keys, keysDispatcher, actions, setOpenSettings, openSettings} = useList(props.keys)
     const lastElementRef = useInfiniteScroll(props.hook.setCurrentPage, props.hook.currentPage, props.hook.loading, props.hook.hasMore)
-
-    const {ref, maxHeight} = useMaxHeight()
     const [scrolled, setScrolled] = useState(false)
 
     return (
@@ -26,8 +24,6 @@ export default function List(props) {
                     setScrolled(false)
             }}
             className={styles.container}
-            style={{height: '100%', maxHeight: maxHeight}}
-            ref={ref}
 
         >
             <Settings

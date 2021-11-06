@@ -9,21 +9,13 @@
     width: 200px;
     border-radius: 5px;
     background: var(--mfc-background-primary);
-
-
     height: auto;
     box-shadow: var(--mfc-box-shadow-primary) 0 0 2px 1px;
-    z-index: 100;
-    position: absolute;
-    top: 100%;
-    right: 0;
 
     overflow-y: auto;
     max-height: clamp(250px, 10vh, 300px);
 
     display: grid;
-    gap: 0;
-
     transition: 150ms ease;
 }
 

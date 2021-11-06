@@ -35,7 +35,7 @@ export default async function Requester(props) {
             document.body.appendChild(newElement)
             ReactDOM.render(
                 <RequestAlert
-                    data={{
+                    {...{
                         message: response.statusText,
                         details: JSON.stringify(response.request),
                         httpStatusCode: response.status,
@@ -43,7 +43,6 @@ export default async function Requester(props) {
                         method: props.method,
                         url: props.url
                     }}
-                    type='success'
                 />,
                 newElement
             )
@@ -60,15 +59,14 @@ export default async function Requester(props) {
         }
         ReactDOM.render(
             <RequestAlert
-                data={{
+                {...{
                     message: error.statusText,
                     details: error.response !== undefined ? error.request.responseText : 'server error',
-                    httpStatusCode: error.response !== undefined ? error.response.status : '500',
+                    httpStatusCode: error.response !== undefined ? error.response.status : 500,
                     package: props.package,
                     method: props.method,
                     url: props.url
                 }}
-                type='error'
             />,
             newElement
         )

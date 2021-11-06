@@ -2,20 +2,11 @@ import React, {useEffect, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import styles from '../styles/Dropdown.module.css'
 import Button from "../../../inputs/button/Button";
+import Modal from "../../../navigation/modal/Modal";
 
 export default function Dropdown(props) {
     const [open, setOpen] = useState(false)
-    const ref = useRef()
-    const handleMouseDown = (e) => {
-        if (!document.elementsFromPoint(e.clientX, e.clientY).includes(ref.current))
-            setOpen(false)
-    }
-    useEffect(() => {
-        document.addEventListener('mousedown', handleMouseDown)
-        return () => {
-            document.removeEventListener('mousedown', handleMouseDown)
-        }
-    }, [])
+
     return (
         <div className={styles.wrapper}>
             <Button
@@ -25,12 +16,13 @@ export default function Dropdown(props) {
                 className={props.className}>
                 {props.label}
             </Button>
-            <div style={{
-                visibility: open ? 'visible' : 'hidden',
-                opacity: open ? '1' : '0',
-                top: props.align === 'top' ? '0px' : undefined,
-                transform: props.align === 'top' ? 'translateY(-100%)' : undefined
-            }} className={styles.buttons} ref={ref}>
+            <Modal
+                variant={"fit"}
+                styles={{transform: props.align === 'top' ? 'translateY(-100%)' : 'translateY(100%)'}}
+                blurIntensity={0} className={styles.buttons}
+                animationStyle={'fade'}
+                open={open}
+                handleClose={() => setOpen(false)}>
                 {props.buttons?.map((b, i) => (
                     <React.Fragment key={'dropdown-' + i}>
 
@@ -49,7 +41,7 @@ export default function Dropdown(props) {
                         </Button>
                     </React.Fragment>
                 ))}
-            </div>
+            </Modal>
         </div>
     )
 }

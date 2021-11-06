@@ -12,7 +12,7 @@ export default function useMaxHeight() {
         const parentBottom = doc.height - (parent.offsetHeight + bBox.top)
 
         setMaxHeight((doc.height - bBox.top - (parentBottom > 0 ? Math.ceil(parentBottom) : 0)) + 'px')
-    })
+    }, [])
 
     return {ref, maxHeight}
 }

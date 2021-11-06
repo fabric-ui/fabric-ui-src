@@ -3,63 +3,47 @@ import React, {useState} from "react";
 import styles from './styles/Tabs.module.css'
 import Switcher from "../switcher/Switcher";
 import Button from "../../inputs/button/Button";
+import Tab from "./Tab";
 
 export default function Tabs(props) {
     const [open, setOpen] = useState(0)
-
+    const children = React.Children.toArray(props.children).filter(e => e.type === Tab)
     return (
-        <div
-            className={styles.wrapper}
-            style={{background: props.noChildHighlight ? 'unset' : undefined}}>
+        <div className={props.className} style={props.styles} data-open-tab={open}>
             <div className={styles.header}>
-                {props.children}
                 <div className={styles.tabs}>
-                    {props.buttons.map((e, i) => (
+                    {children.map((e, i) => (
                         <React.Fragment key={i + '-button-header-tab'}>
                             <Button
                                 variant={'minimal'}
                                 highlight={open === i}
+
+                                className={styles.button}
                                 onClick={() => {
-                                    if (e.onClick !== undefined)
-                                        e.onClick()
                                     setOpen(i)
                                 }}>
-                                {e.label}
+                                {e.props.label}
                             </Button>
                         </React.Fragment>
                     ))}
                 </div>
             </div>
-            <div className={styles.content}>
-                <Switcher
-                    animationType={'sideways'}
-                    className={props.className}
-                    openChild={open}
-                    styles={{
-                        background: props.noChildHighlight ? 'unset' : undefined,
-                        height: '100%'
-                    }}
-                >
-                    {props.buttons.map((e, i) => (
-                        <React.Fragment key={'horizontal-tabs-child-' + i}>
-                            {e.children}
-                        </React.Fragment>
-                    ))}
-                </Switcher>
-            </div>
+
+            <Switcher className={children[open].props.className} styles={children[open].styles} openChild={open}>
+                {children.map((el, index) => (
+                    <React.Fragment key={index + '-tab'}>
+                        {el}
+                    </React.Fragment>
+                ))}
+            </Switcher>
         </div>
     )
 }
 
 Tabs.proptypes = {
+
     className: PropTypes.string,
-    buttons: PropTypes.arrayOf(
-        PropTypes.shape({
-            label: PropTypes.string,
-            children: PropTypes.node,
-            onClick: PropTypes.func
-        })
-    ),
-    children: PropTypes.node,
-    noChildHighlight: PropTypes.bool
+    styles: PropTypes.object,
+    children: PropTypes.node.isRequired,
+
 }

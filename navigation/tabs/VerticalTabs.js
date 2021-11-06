@@ -6,52 +6,47 @@ import Row from "./components/Row";
 import useMaxHeight from "../../misc/useMaxHeight";
 
 export default function VerticalTabs(props) {
-    const [open, setOpen] = useState({classSelected: 0, rowSelected: 0})
+    const [open, setOpen] = useState(0)
+    const children = React.Children.toArray(props.children)
+    const groups = [...new Set(children.map(item => item.props.group))]
 
-    const openTab = useMemo(() => {
-        let indexClass = 0
-        props.classes.forEach((e, i) => {
-            if (open.classSelected > i)
-                indexClass = indexClass + e.buttons.length
-        })
-        return indexClass + open.rowSelected
-    }, [open, props.classes])
-    const {ref, maxHeight} = useMaxHeight()
     return (
-        <div className={styles.wrapper} ref={ref} style={{maxHeight: maxHeight}}>
+        <div className={props.className} style={props.styles}>
             <div className={styles.header}>
-                {props.children}
                 <div className={styles.tabs}>
-                    {props.classes.map((e, i) => (
+                    {groups.map((e, i) => (
                         <React.Fragment key={i + '-class'}>
-                            <Row setOpen={setOpen} open={open} data={e} index={i}/>
+                            <Row
+                                setOpen={setOpen}
+                                open={open}
+                                data={e}
+                                index={i}
+                                buttons={children.map(item => {
+                                    return {
+                                        label: item.props.label,
+                                        group: item.props.group
+                                    }
+                                })}
+                                groupName={e}/>
                         </React.Fragment>
                     ))}
                 </div>
             </div>
 
-            <Switcher openChild={openTab} className={[styles.content, props.className].join(' ')}>
-                {props.classes.map((e, i) => e.buttons.map((b, bI) => (
-                    <React.Fragment key={i + '-vertical-tabs-child-' + bI}>
-                        {b.children}
+            <Switcher className={children[open].props.className} styles={children[open].styles} openChild={open}>
+                {children.map((el, index) => (
+                    <React.Fragment key={index + '-tab-vertical'}>
+                        {el}
                     </React.Fragment>
-                )))}
+                ))}
             </Switcher>
         </div>
     )
 }
 
 VerticalTabs.proptypes = {
+
     className: PropTypes.string,
-    classes: PropTypes.arrayOf(PropTypes.shape({
-        label: PropTypes.string,
-        buttons: PropTypes.arrayOf(
-            PropTypes.shape({
-                label: PropTypes.string,
-                children: PropTypes.node,
-                onClick: PropTypes.func
-            })
-        ),
-    })),
-    children: PropTypes.node
+    styles: PropTypes.object,
+    children: PropTypes.node.isRequired,
 }

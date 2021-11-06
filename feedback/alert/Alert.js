@@ -20,14 +20,15 @@ export default function Alert(props) {
     }, [props.variant])
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            if (!props.open)
-                try {
-                    props.handleClose()
-                } catch (e) {
-            }
-        }, 5000)
-
+        let timeout
+        if (props.delay)
+            timeout = setTimeout(() => {
+                if (!props.open)
+                    try {
+                        props.handleClose()
+                    } catch (e) {
+                    }
+            }, 5000)
         return () => {
             if (timeout)
                 clearTimeout(timeout)
@@ -37,7 +38,7 @@ export default function Alert(props) {
     return (
         <Modal
             open={props.open} wrapperClassName={styles.wrapper}
-            handleClose={props.handleClose}
+            handleClose={() => props.handleClose(false)}
             animationStyle={'fade'}
             variant={'fit'}
             blurIntensity={0}
@@ -53,7 +54,7 @@ export default function Alert(props) {
             <Button
                 color={'secondary'}
                 className={styles.button}
-                onClick={() => props.handleClose()}
+                onClick={() => props.handleClose(true)}
             >
                 <CloseRounded style={{fontSize: '1.1rem'}}/>
             </Button>
@@ -66,6 +67,6 @@ Alert.propTypes = {
     onClick: PropTypes.func,
     open: PropTypes.bool.isRequired,
     handleClose: PropTypes.func.isRequired,
-    delay: PropTypes.number.isRequired,
+    delay: PropTypes.number,
     children: PropTypes.node
 }

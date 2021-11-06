@@ -19,7 +19,7 @@ export default function Form(props) {
 
         setDisabled(!completed || !props.hook.changed)
     })
-    const {ref, maxHeight} = useMaxHeight()
+    // const {ref, maxHeight} = useMaxHeight()
     const [scrolled, setScrolled] = useState(false)
 
     return (
@@ -31,8 +31,8 @@ export default function Form(props) {
                     setScrolled(false)
             }}
             className={styles.wrapper}
-            style={{maxHeight: maxHeight}}
-            ref={ref}
+            // style={{maxHeight: maxHeight}}
+            // ref={ref}
         >
             <Header {...props} disabled={disabled} scrolled={scrolled}/>
             <div className={styles.content} ref={contentRef}>
