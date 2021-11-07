@@ -1,58 +1,65 @@
 import PropTypes from 'prop-types'
 import {useContext, useEffect, useMemo, useRef, useState} from "react";
 import useChart from "../shared/useChart";
+import Bar from "../shared/Bar";
 import shared from "../shared/Charts.module.css";
 import ThemeContext from "../../../misc/theme/ThemeContext";
 
-export default function PieChart(props) {
+export default function VerticalChart(props) {
+
+    const drawBar = ({axis, value, position, context}) => {
+        const length = props.data.length - 1
+        const width = ref.current.width / length
+        const x = position * width
+        const y = ref.current.height - 20
+        const height = (((value * 100) / biggest) * (ref.current.height - ref.current.height * 0.1)) / 100
+
+        const bar = new Bar({
+            x: x,
+            y: y,
+            value: value,
+            label: axis,
+            color: randomColor(),
+            width: width,
+            height: -height
+        })
+
+        bar.draw(context)
+
+        setPoints(prevState => {
+            return [...prevState, {x: x, y: y, value: value}]
+        })
+
+        context.fillStyle = theme.themes.mfc_color_primary
+        context.fillText(axis, x, ref.current.height);
+    }
 
     const render = (context) => {
         if (context) {
             context.clearRect(0, 0, ref.current.width, ref.current.height);
 
-            let startAngle = 0
-
-            let cx = ref.current.width / 2
-            let cy = ref.current.height / 2
-            let radius = (cx > cy ? cx : cy) - 20
-
-            let newPoints = []
             props.data.forEach((el, index) => {
-                const color = randomColor()
-                context.fillStyle = color
-                context.lineWidth = 1
-                context.strokeStyle = color
-                context.beginPath()
-
-                let endAngle = (el[props.value.field] / total) * (Math.PI * 2) + startAngle
-                newPoints.push({x: endAngle, y: startAngle, value: el[props.value.field]})
-
-                context.moveTo(cx, cy)
-                context.arc(cx, cy, radius, startAngle, endAngle, false)
-                context.lineTo(cx, cy)
-                context.fill()
-                context.stroke()
-                context.closePath()
-
-                startAngle = endAngle
+                drawBar({
+                    axis: el[props.axis.field],
+                    value: el[props.value.field],
+                    context: context,
+                    position: index
+                })
             })
-            setPoints(newPoints)
         }
     }
 
     const {
-        total,
+        biggest,
         randomColor,
         ref,
         setPoints,
         theme
     } = useChart({
+        render: render,
         data: props.data,
-        valueKey: props.value.field,
-        render: render
+        valueKey: props.value.field
     })
-
-
 
     return (
         <div className={shared.wrapper}>
@@ -63,7 +70,7 @@ export default function PieChart(props) {
         </div>
     )
 }
-PieChart.propTypes = {
+VerticalChart.propTypes = {
     value: PropTypes.shape({
         label: PropTypes.string,
         field: PropTypes.string

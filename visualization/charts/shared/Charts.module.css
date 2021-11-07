@@ -1,0 +1,23 @@
+@import '../../../misc/theme/styles.module.css';
+@import url('http://fonts.cdnfonts.com/css/roboto');
+
+.wrapper {
+    background: var(--mfc-background-primary);
+    border: var(--mfc-border-primary) 1px solid;
+    border-radius: 5px;
+    padding: 4px;
+    width: fit-content;
+    height: fit-content;
+    display: grid;
+    gap: 8px;
+}
+
+.title {
+    font-size: 1.1rem;
+    color: var(--mfc-color-primary);
+    text-align: left;
+    font-weight: 600;
+    margin: unset;
+    padding: 0;
+}
+

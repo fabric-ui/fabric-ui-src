@@ -9,21 +9,22 @@ export default function ThemeProvider(props) {
             dark: props.onDark,
             styles: styles,
             themes: {
-                backgroundBase: !props.onDark ? '#f9fafb' : '#1e2121',
-                background1:!props.onDark ?  'white' : '#292c2b',
-                background2:!props.onDark ?  ' #f4f5fa' : '#191C1C',
-                background3: !props.onDark ? '#E8F0FE' : '#1f2123',
+                mfc_background_primary: !props.onDark ? 'white' : '#292c2b',
+                mfc_background_secondary: !props.onDark ? '#f3f6f9' : '#1e2121',
+                mfc_background_tertiary: !props.onDark ? '#f4f5fa' : '#191C1C',
+                mfc_background_quaternary: !props.onDark ? '#E8F0FE' : '#1f2123',
 
-                border0: !props.onDark ? '#ecedf2' : '#1e2121',
-                border1:!props.onDark ?  '#e0e0e0' : '#707070',
+                mfc_border_primary: !props.onDark ? '#F1F1F5' : '#1e2121',
+                mfc_border_secondary: !props.onDark ? '#e0e0e0' : '#707070',
 
-                color0:!props.onDark ?  '#333333' : 'white',
-                color1:!props.onDark ?  '#555555' : '#f4f5fa',
-                color2:!props.onDark ?  '#666666' : '#f0f0f0',
-                color3: !props.onDark ? '#777777' : '#e0e0e0',
-                color4:!props.onDark ?  '#999999' : '#dedede',
+                mfc_color_primary: !props.onDark ? '#333333' : 'white',
+                mfc_color_secondary: !props.onDark ? '#555555' : '#f4f5fa',
+                mfc_color_tertiary: !props.onDark ? '#666666' : '#f0f0f0',
+                mfc_color_quaternary: !props.onDark ? '#777777' : '#e0e0e0',
+                mfc_color_quinary: !props.onDark ? '#999999' : '#dedede',
+                mfc_color_senary: !props.onDark ? 'white' : '#292c2b',
 
-                boxShadow1: !props.onDark ? '#e0e0e0' : '#111111'
+                mfc_box_shadow_primary: !props.onDark ? '#e0e0e0' : '#1e2121'
             }
         }}>
             <div className={props.onDark ? styles.dark : styles.light}>
@@ -32,7 +33,7 @@ export default function ThemeProvider(props) {
         </ThemeContext.Provider>
     )
 }
-ThemeProvider.propTypes={
+ThemeProvider.propTypes = {
     onDark: PropTypes.bool,
     children: PropTypes.node
 }

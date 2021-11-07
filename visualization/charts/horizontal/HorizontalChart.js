@@ -1,90 +1,77 @@
 import PropTypes from 'prop-types'
-import {useRef} from "react";
-import Content from "./templates/Content";
-import {BarChartRounded} from "@material-ui/icons";
-import Wrapper from "../shared/Wrapper";
-
+import {useContext, useEffect, useMemo, useRef, useState} from "react";
+import useChart from "../shared/useChart";
+import Bar from "../shared/Bar";
+import shared from '../shared/Charts.module.css'
+import ThemeContext from "../../../misc/theme/ThemeContext";
 
 export default function HorizontalChart(props) {
-    const scrollableRef = useRef()
-    const graphRef = useRef()
+
+    const drawBar = ({axis, value, position, context}) => {
+        const length = props.data.length
+
+
+        const width = (((value * 100) / biggest) * (ref.current.width - ref.current.width * 0.1)) / 100
+        const height = (ref.current.height / length)
+
+        const x = ref.current.width * 0.1
+        const y = position * height
+
+        const bar = new Bar({
+            x: x,
+            y: y,
+            value: value,
+            label: axis,
+            color: randomColor(),
+            width: width,
+            height: height
+        })
+
+        bar.draw(context)
+
+        setPoints(prevState => {
+            return [...prevState, {x: x, y: y, value: value}]
+        })
+
+        context.fillStyle = theme.themes.mfc_color_primary
+        context.fillText(axis, 0, y + 7 + height / 2);
+    }
+
+    const render = (context) => {
+        if (context) {
+            context.clearRect(0, 0, ref.current.width, ref.current.height);
+
+
+            props.data.forEach((el, index) => {
+                drawBar({
+                    axis: el[props.axis.field],
+                    value: el[props.value.field],
+                    context: context,
+                    position: index
+                })
+            })
+        }
+    }
+
+    const {
+        biggest,
+        randomColor,
+        setPoints,
+        ref,
+        theme
+    } = useChart({
+        data: props.data,
+        valueKey: props.value.field,
+        render: render
+    })
+
 
     return (
-        <div>
-            {props.value === undefined || props.axis === undefined || !props.value.field || !props.axis.field ?
-                <BarChartRounded
-                    style={{
-                        transform: 'translate(-50%, -50%) rotate(90deg)',
-                        top: '50%',
-                        left: '50%',
-                        fontSize: (props.height > props.width ? (props.height) / 2 : props.width / 2) + 'px',
-                        color: props.color ? props.color : '#0095ff',
-                        position: "absolute"
-                    }}
-                />
-                :
-                <Wrapper title={props.title} setTitle={props.setTitle} value={props.value?.field} data={props.data}>
-                    {(offset, iterations, biggest) => (
-                        <>
-                            <svg
-                                width={'100%'}
-                                overflow={'visible'}
-                                // height={0}
-                                style={{position: 'absolute', zIndex: 0, left: (props.width * .07 + 2) + 'px'}}
-                            >
-                                {iterations.map((i, index) => (
-                                    <g style={{stroke: '#999999', strokeWidth: '.5'}}
-                                       key={index + '-line-iterations-' + i.value}>
-                                        <line x1={i.x + '%'} x2={i.x + '%'} y1={0} y2={props.height - offset * 2}
-                                        />
-                                    </g>
-                                ))}
-                            </svg>
-                            <div style={{overflowY: 'auto', height: (props.height - offset * 2) + 'px', width: '100%'}}
-                                 >
-                                <svg
-                                    ref={scrollableRef}
-                                    width={props.width - props.width * 0.7 - 20}
-                                    overflow={'visible'}
-                                    style={{position: 'relative', zIndex: 10}}
-                                    // height={(props.data.length - 1) * 30}
-                                >
-                                    <Content
-                                        {...props}
-                                        scrollableRef={scrollableRef.current}
-                                        data={props.data}
-                                        biggest={biggest}
-                                    />
-                                </svg>
-                            </div>
-                            <div
-                                ref={graphRef}
-                                style={{
-                                    width: '100%',
-                                    paddingLeft: (props.width * .07 + 1) + 'px',
-                                    marginLeft: 'auto',
-                                    borderTop: '#e0e0e0 1px solid',
-                                    height: offset + 'px'
-                                }}>
-                                <svg
-                                    width={props.width}
-                                    height={'100%'}
-                                    overflow={'visible'}
-                                >
-                                    {iterations.map((i, index) => (
-                                        <g style={{fill: '#555555', strokeWidth: '1', fontSize: '10px'}}>
-                                            <text x={i.x + '%'} y={offset - 10}
-                                                  textAnchor={'middle'}>
-                                                {i.value}
-                                            </text>
-                                        </g>
-                                    ))}
-                                </svg>
-                            </div>
-                        </>
-                    )}
-                </Wrapper>
-            }
+        <div className={shared.wrapper}>
+            <h1 className={shared.title}>
+                {props.title}
+            </h1>
+            <canvas ref={ref} width={props.width} height={props.height}/>
         </div>
     )
 }
