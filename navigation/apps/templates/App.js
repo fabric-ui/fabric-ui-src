@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import styles from '../styles/Apps.module.css'
-import ToolTip from "../../../../../feedback/tooltip/ToolTip";
+import ToolTip from "../../../feedback/tooltip/ToolTip";
 import React from "react";
-import Button from "../../../../../inputs/button/Button";
+import Button from "../../../inputs/button/Button";
 
 export default function App(props) {
     return (

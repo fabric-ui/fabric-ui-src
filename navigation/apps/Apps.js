@@ -3,8 +3,8 @@ import styles from "./styles/Apps.module.css";
 import {AppsRounded} from "@material-ui/icons";
 import PropTypes from 'prop-types'
 import App from "./templates/App";
-import Button from "../../../../inputs/button/Button";
-import Modal from "../../../modal/Modal";
+import Button from "../../inputs/button/Button";
+import Modal from "../modal/Modal";
 
 export default function Apps(props) {
     const [open, setOpen] = useState(false)

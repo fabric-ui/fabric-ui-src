@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, {useMemo, useState} from "react";
 import styles from "./styles/SideBar.module.css";
-import ToolTip from "../../../../feedback/tooltip/ToolTip";
-import Button from "../../../../inputs/button/Button";
+import ToolTip from "../../feedback/tooltip/ToolTip";
+import Button from "../../inputs/button/Button";
 import {MenuOpenRounded} from "@material-ui/icons";
 
 export default function SideBar(props) {

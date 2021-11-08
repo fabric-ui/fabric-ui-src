@@ -8,7 +8,6 @@ import useList from "./hook/useList";
 import Settings from "./components/Settings";
 import useInfiniteScroll from "../hooks/useInfiniteScroll";
 import Row from "./components/Row";
-import useMaxHeight from "../../misc/useMaxHeight";
 
 export default function List(props) {
     const {keys, keysDispatcher, actions, setOpenSettings, openSettings} = useList(props.keys)

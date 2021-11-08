@@ -2,7 +2,6 @@ import styles from './styles/Form.module.css'
 import React, {useEffect, useRef, useState} from "react";
 import Header from "./templates/Header";
 import PropTypes from "prop-types";
-import useMaxHeight from "../../misc/useMaxHeight";
 
 
 export default function Form(props) {

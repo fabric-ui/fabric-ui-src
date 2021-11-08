@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types'
-import {useContext, useEffect, useMemo, useRef, useState} from "react";
 import useChart from "../shared/useChart";
 import Bar from "../shared/Bar";
 import shared from '../shared/Charts.module.css'
-import ThemeContext from "../../../misc/theme/ThemeContext";
 
 export default function HorizontalChart(props) {
 

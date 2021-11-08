@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import React, {useEffect, useState} from 'react'
 import styles from './styles/Profile.module.css'
-import Button from "../../../../inputs/button/Button";
-import ToolTip from "../../../../feedback/tooltip/ToolTip";
-import Modal from "../../../modal/Modal";
+import Button from "../../inputs/button/Button";
+import ToolTip from "../../feedback/tooltip/ToolTip";
+import Modal from "../modal/Modal";
 import {PersonRounded} from "@material-ui/icons";
 
 const profileTemplate = {

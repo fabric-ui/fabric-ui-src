@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types'
-import React, {useMemo, useState} from "react";
+import React, {useState} from "react";
 import styles from './styles/Vertical.module.css'
 import Switcher from "../switcher/Switcher";
 import Row from "./components/Row";
-import useMaxHeight from "../../misc/useMaxHeight";
 
 export default function VerticalTabs(props) {
     const [open, setOpen] = useState(0)

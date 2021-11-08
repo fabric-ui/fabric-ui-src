@@ -1,3 +1,5 @@
+
+import React from "react";
 export default class Bar {
     constructor({x, y, value, label, color, width, height}) {
         self.width = width

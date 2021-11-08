@@ -1,11 +1,10 @@
 import React, {useMemo} from 'react';
 import styles from './styles/Navigation.module.css'
 import PropTypes from 'prop-types'
-import Profile from './components/profile/Profile'
-import Apps from './components/apps/Apps'
-import SideBar from "./components/sidebar/SideBar";
+import Profile from '../profile/Profile'
+import Apps from '../apps/Apps'
+import SideBar from "../sidebar/SideBar";
 import Loading from "./templates/Loading";
-import useMaxHeight from "../../misc/useMaxHeight";
 
 
 export default function Layout(props) {
@@ -20,10 +19,10 @@ export default function Layout(props) {
             child: nodes.find(e => e.type !== SideBar && e.type !== Apps && e.type !== Profile)
         }
     }, [props])
-    const {ref, maxHeight} = useMaxHeight()
+
     return (
         <div className={styles.wrapper}>
-            {/*<div className={styles.contentWrapper}>*/}
+
             {components.sideBar}
             <div className={styles.contentWrapper}>
                 <div className={styles.header}>
@@ -42,12 +41,11 @@ export default function Layout(props) {
                     </div>
 
                 </div>
-                <div className={styles.children} ref={ref} style={{maxHeight: maxHeight}}>
+                <div className={styles.children}>
                     {components.child}
                 </div>
 
             </div>
-            {/*</div>*/}
         </div>
     )
 

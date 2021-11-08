@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
-import {useEffect, useRef, useState} from "react";
-import styles from './styles/Tabs.module.css'
+import React from "react";
 
 export default function Tab(props) {
     return (

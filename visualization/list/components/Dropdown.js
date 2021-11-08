@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import styles from '../styles/Dropdown.module.css'
 import Button from "../../../inputs/button/Button";

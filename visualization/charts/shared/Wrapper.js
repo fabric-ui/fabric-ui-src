@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from 'prop-types'
 import styles from "../horizontal/styles/Horizontal.module.css";
 import {useMemo} from "react";

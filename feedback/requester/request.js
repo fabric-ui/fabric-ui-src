@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import ReactDOM, {unmountComponentAtNode} from 'react-dom'
+import ReactDOM from 'react-dom'
 import Loader from "./modules/loader/Loader";
 import React from 'react'
 import RequestAlert from "./modules/RequestAlert";
