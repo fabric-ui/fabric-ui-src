@@ -1,43 +1,25 @@
 
 .wrapper {
     --accent_color: #0095ff;
-    position: relative;
+
     transition: 150ms linear;
     height: fit-content;
-    z-index: 0;
+
+    outline: transparent 1px solid;
+    border-radius: 5px;
 }
 
 .secondaryVariant {
     --accent_color: #ff5555;
 }
 
-.wrapper input {
-    position: relative;
-    z-index: 1;
+
+.wrapper:hover, .wrapper:focus-within, .wrapper[data-highlight], .wrapper:active {
+    outline: var(--accent_color) 1px solid;
 }
 
-.wrapper::after {
-    content: '';
-    transition: 150ms linear;
-    position: absolute;
-
-    z-index: 0;
-
-    top: -1px;
-    left: -1px;
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
-
-    border: transparent 2px solid;
-    border-radius: 5px;
-}
-
-.wrapper:hover::after, .wrapper:focus-within::after, .wrapper[highlight]::after {
-    border-color: var(--accent_color);
-}
-
-.wrapper[disabled]::after, .wrapper:disabled::after {
-    border-color: transparent;
+.wrapper[data-disabled], .wrapper:disabled {
+    outline: transparent 1px solid;
 }
 
 

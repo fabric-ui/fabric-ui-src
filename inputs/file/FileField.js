@@ -47,9 +47,14 @@ export default function FileField(props) {
                      opacity: files.length > 0 ? 1 : 0,
                      transition: 'visibility 0.2s ease,opacity 0.2s ease'
                  }}>{props.label}</div>
-            <div className={[shared.wrapper, color.className].join(' ')} >
+            <div
+                className={[shared.wrapper, color.className].join(' ')}
+                data-highlight={openModal ? openModal : undefined}
+                data-disabled={props.disabled ? props.disabled : undefined}
+            >
                 <Button
                     disabled={props.disabled}
+                    variant={'outlined'}
                     highlight={openModal}
                     styles={{
                         height: props.size === 'small' ? '36px' : '56px',

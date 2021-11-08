@@ -10,6 +10,7 @@ import Button from "../../../inputs/button/Button";
 import Tabs from "../../../navigation/tabs/Tabs";
 import Empty from "../../../feedback/empty/Empty";
 import shared from '../../../misc/theme/Shared.module.css'
+import Tab from "../../../navigation/tabs/Tab";
 
 export default function Settings(props) {
 
@@ -72,48 +73,41 @@ export default function Settings(props) {
             animationStyle={"slide-right"} blurIntensity={0}
             className={styles.modal}
         >
-
+            <div className={styles.header}>
+                Configurações
+            </div>
             <Tabs
-                className={styles.content}
-                buttons={[
-                    {
-                        label: 'Todos',
-                        children: (props.keys.map((e, i) => (
+                className={styles.contentWrapper}
+            >
+                <Tab label={'Todos'} className={styles.content}>
+                    {props.keys.map((e, i) => (
+                        <React.Fragment key={i + '-row-' + JSON.stringify(e.label)}>
+                            {getField(e, i)}
+                        </React.Fragment>
+                    ))}
+                </Tab>
+                <Tab label={'Visíveis'} className={styles.content}>
+                    {fields.visible.length > 0 ?
+                        fields.visible.map((e, i) => (
                             <React.Fragment key={i + '-row-' + JSON.stringify(e.label)}>
                                 {getField(e, i)}
                             </React.Fragment>
-                        )))
-                    },
-                    {
-                        label: 'Visíveis',
-                        children: (
-                            fields.visible.length > 0 ?
-                                fields.visible.map((e, i) => (
-                                    <React.Fragment key={i + '-row-' + JSON.stringify(e.label)}>
-                                        {getField(e, i)}
-                                    </React.Fragment>
-                                ))
-                                :
-                                <Empty customLabel={'Todos os campos estão escondidos'}/>
-                        )
-                    },
-                    {
-                        label: 'Escondidos',
-                        children: (
-                            fields.hidden.length > 0 ?
-                                fields.hidden.map((e, i) => (
-                                    <React.Fragment key={i + '-row-' + JSON.stringify(e.label)}>
-                                        {getField(e, i)}
-                                    </React.Fragment>
-                                ))
-                                :
-                                <Empty customLabel={'Todos os campos estão visíveis'}/>
-                        )
+                        ))
+                        :
+                        <Empty customLabel={'Todos os campos estão escondidos'}/>
                     }
-                ]}>
-                <div className={styles.header}>
-                    Configurações
-                </div>
+                </Tab>
+                <Tab label={'Escondidos'} className={styles.content}>
+                    {
+                        fields.hidden.length > 0 ?
+                            fields.hidden.map((e, i) => (
+                                <React.Fragment key={i + '-row-' + JSON.stringify(e.label)}>
+                                    {getField(e, i)}
+                                </React.Fragment>
+                            ))
+                            :
+                            <Empty customLabel={'Todos os campos estão visíveis'}/>}
+                </Tab>
             </Tabs>
         </Modal>
     )

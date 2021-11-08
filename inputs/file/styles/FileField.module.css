@@ -1,28 +1,26 @@
-
 .button {
-    font-family: "Roboto";
-
+    user-select: none;
     position: relative;
-    z-index: 10;
 
     display: flex;
-
-
     justify-content: space-between;
     align-items: center;
-    border: var(--mfc-border-primary) 1px solid;
 
-    box-shadow: unset;
-    transition: 250ms linear;
+
+    transition: inherit;
     background: var(--mfc-background-primary);
     width: 100%;
-    outline: none;
+
     padding: 5px;
-    font-size: 1rem;
-    color: var(--mfc-color-secondary);
-    cursor: pointer;
-    border-radius: 5px;
 
     max-width: 100%;
     overflow: hidden;
+}
+
+.button:hover {
+    border-color: var(--accent-color);
+}
+
+.button:disabled {
+    border-color: var(--mfc-border-primary);
 }

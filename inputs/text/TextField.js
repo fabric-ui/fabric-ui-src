@@ -35,6 +35,8 @@ export default function TextField(props) {
                 className={styles.inputContainer}
                 style={{
                     height: props.size === 'small' ? '36px' : '56px',
+                    position: 'relative',
+                    zIndex: 5
                 }}
                 onChange={e => {
 
@@ -133,20 +135,16 @@ export default function TextField(props) {
                 {props.label}
             </div>
             <div
-                className={[color.className, shared.wrapper].join(' ')}
-                highlight={props.highlight}
-                disabled={props.disabled}>
-                <div className={styles.focus}>
-
-                    {getField()}
-
-                    <Ripple opacity={.15} accentColor={color.color} disabled={props.disabled}/>
-                </div>
+                className={[color.className, shared.wrapper, styles.focus].join(' ')}
+                data-disabled={props.disabled ? props.disabled : undefined}
+            >
+                {getField()}
+                <Ripple opacity={.15} accentColor={color.color} disabled={props.disabled}/>
             </div>
 
             <div className={shared.alertLabel}
                  style={{
-                     color: !valid? '#ff5555' : undefined,
+                     color: !valid ? '#ff5555' : undefined,
                      visibility: props.required ? 'visible' : 'hidden',
                      display: props.noMargin && !props.required ? 'none' : undefined
                  }}>{lang.required}
@@ -157,7 +155,6 @@ export default function TextField(props) {
 }
 
 TextField.propTypes = {
-    highlight: PropTypes.bool,
     width: PropTypes.string,
     placeholder: PropTypes.string,
     label: PropTypes.string,

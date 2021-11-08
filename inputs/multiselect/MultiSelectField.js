@@ -52,7 +52,11 @@ export default function MultiSelectField(props) {
                      opacity: (props.value !== undefined && props.value !== null) ? '1' : '0',
                  }}>{props.label}
             </div>
-            <div className={shared.wrapper} highlight={open}>
+            <div
+                className={[shared.wrapper, color.className].join(' ')}
+                data-highlight={open ? open : undefined}
+                data-disabled={props.disabled ? props.disabled : undefined}
+            >
                 <Button
                     disabled={props.disabled} variant={"outlined"}
                     highlight={open}
