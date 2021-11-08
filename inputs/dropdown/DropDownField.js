@@ -133,5 +133,5 @@ DropDownField.propTypes = {
     required: PropTypes.bool,
     disabled: PropTypes.bool,
     size: PropTypes.oneOf(['small', 'default']),
-    colorVariant: PropTypes.oneOf(['default', 'secondary'])
+    colorVariant: PropTypes.oneOf(['default', 'secondary', 'primary'])
 }

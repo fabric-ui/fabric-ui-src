@@ -61,7 +61,7 @@ export default function SelectorModal(props) {
                     </Button>
 
                     <Dropdown
-                        align={'end'}
+                        align={'bottom'}
                         className={styles.headerButton}
                         label={(
                             <>

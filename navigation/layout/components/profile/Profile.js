@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import React, {useEffect, useState} from 'react'
 import styles from './styles/Profile.module.css'
-import {Avatar} from "@material-ui/core";
 import Button from "../../../../inputs/button/Button";
 import ToolTip from "../../../../feedback/tooltip/ToolTip";
 import Modal from "../../../modal/Modal";
+import {PersonRounded} from "@material-ui/icons";
 
 const profileTemplate = {
     name: PropTypes.string,
@@ -28,18 +28,26 @@ export default function Profile(props) {
                     highlight={open}
                     styles={{
                         paddingLeft: '2px',
-                        paddingRight: '2px',
-                        whiteSpace: 'nowrap'
+                        paddingRight: '2px'
                     }}
                 >
-                    <div style={{fontWeight: 'bold'}}>
+                    <div style={{
+                        fontWeight: 'bold',
+                        whiteSpace: 'nowrap'
+                    }}>
                         Bem vindo
                     </div>
 
                     <div className={styles.overflowEllipsis} style={{maxWidth: '100%'}}>
                         {props.profile.name}
                     </div>
-                    <Avatar style={{width: '30px', height: '30px'}} src={props.profile.image}/>
+                    <div className={styles.avatar}>
+                        {props.profile.image ? <img src={props.profile.image} alt={props.profile.name}
+                                                    style={{width: '30px ', height: '30px'}}/>
+                            :
+                            <PersonRounded style={{color: 'white', width: '60%', height: '60%'}}/>
+                        }
+                    </div>
                     <ToolTip content={props.profile.name}/>
                 </Button>
                 :
@@ -73,7 +81,13 @@ export default function Profile(props) {
                     onClick={() => props.onProfileClick()}
                 >
 
-                    <Avatar style={{width: '50px', height: '50px'}} src={props.profile.image}/>
+                    <div className={styles.avatar} style={{width: '50px', height: '50px', borderRadius: '50%'}}>
+                        {props.profile.image ? <img src={props.profile.image} alt={props.profile.name}
+                                                    style={{width: '30px', height: '30px'}}/>
+                            :
+                            <PersonRounded style={{color: 'white', width: '60%', height: '60%'}}/>
+                        }
+                    </div>
                     <ToolTip content={props.profile.name}/>
                     <div className={styles.overflowEllipsis} style={{maxWidth: '100%'}}>
                         {props.profile.name}
@@ -95,7 +109,14 @@ export default function Profile(props) {
                                 justifyContent: 'space-between',
                                 height: '44px'
                             }}>
-                            <Avatar style={{width: '30px', height: '30px'}} src={props.profile.image}/>
+                            <div className={styles.avatar}>
+                                {b.image ? <img src={b.image} alt={b.name}
+                                                style={{width: '30px ', height: '30px'}}/>
+                                    :
+                                    <PersonRounded style={{color: 'white', width: '60%', height: '60%'}}/>
+                                }
+                            </div>
+
                             {b.name}
                         </Button>
                     </React.Fragment>

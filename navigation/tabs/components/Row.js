@@ -31,7 +31,7 @@ export default function Row(props) {
                         <React.Fragment key={props.index + '-button-header-tab-' + bI}>
                             <Button
                                 variant={'minimal-horizontal'}
-                                className={[styles.button, styles.color, props.open.classSelected === props.index && props.open.rowSelected === bI ? styles.highlight : undefined].join(' ')}
+                                className={[styles.button, styles.color].join(' ')}
                                 styles={{fontWeight: 'normal', width: '100%'}}
                                 highlight={props.open === bI}
                                 onClick={() => {
@@ -51,8 +51,8 @@ export default function Row(props) {
 
 Row.propTypes = {
     groupName: PropTypes.string,
-    buttons: PropTypes.arrayOf(PropTypes.string),
+    buttons: PropTypes.arrayOf(PropTypes.object),
     index: PropTypes.number,
     setOpen: PropTypes.func,
-    open: PropTypes.object
+    open: PropTypes.number
 }

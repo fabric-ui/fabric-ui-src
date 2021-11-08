@@ -16,6 +16,10 @@
 }
 
 .tabs {
+    max-width: 100%;
+    width: 100%;
+
+    overflow: hidden;
     margin: auto;
     display: flex;
     align-items: center;
@@ -29,10 +33,14 @@
     color: var(--mfc-color-tertiary);
     font-weight: bold;
     font-size: .73rem;
-    padding: 8px 32px;
+    padding: 8px 24px;
     height: 35px;
     transition: 150ms ease;
 
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
 }
 
 .button:hover, .button:active, .button[data-highlight="true"] {

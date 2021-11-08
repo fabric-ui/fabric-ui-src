@@ -4,6 +4,7 @@ import styles from './styles/Tabs.module.css'
 import Switcher from "../switcher/Switcher";
 import Button from "../../inputs/button/Button";
 import Tab from "./Tab";
+import ToolTip from "../../feedback/tooltip/ToolTip";
 
 export default function Tabs(props) {
     const [open, setOpen] = useState(0)
@@ -23,6 +24,7 @@ export default function Tabs(props) {
                                     setOpen(i)
                                 }}>
                                 {e.props.label}
+                                <ToolTip content={e.props.label}/>
                             </Button>
                         </React.Fragment>
                     ))}

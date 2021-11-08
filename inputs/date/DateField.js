@@ -35,20 +35,22 @@ export default function DateField(props) {
             let days = Dates[month - 1].days;
             for (let i = 0; i < days; i++) {
                 res.push(
-                    <Button
-                        styles={{padding: '8px', width: '35px', height: '35px'}}
-                        highlight={date.day === (i + 1)}
-                        variant={'minimal'}
-                        onClick={() => {
-                            const currentDate = new Date()
-                            const newDay = i + 1
+                    <React.Fragment key={month + '-month-'+(i+1) + '-day'}>
+                        <Button
+                            styles={{padding: '8px', width: '35px', height: '35px'}}
+                            highlight={date.day === (i + 1)}
+                            variant={'minimal'}
+                            onClick={() => {
+                                const currentDate = new Date()
+                                const newDay = i + 1
 
-                            setOpen(false)
-                            props.handleChange(`${newDay < 10 ? ('0' + newDay) : newDay}/${month < 10 ? ('0' + month) : month}/${!date.year ? currentDate.getFullYear() : date.year}`)
-                        }}
-                    >
-                        {i + 1}
-                    </Button>
+                                setOpen(false)
+                                props.handleChange(`${newDay < 10 ? ('0' + newDay) : newDay}/${month < 10 ? ('0' + month) : month}/${!date.year ? currentDate.getFullYear() : date.year}`)
+                            }}
+                        >
+                            {i + 1}
+                        </Button>
+                    </React.Fragment>
                 )
             }
         }
@@ -56,7 +58,7 @@ export default function DateField(props) {
     }
 
     return (
-        <div  ref={ref} style={{position: 'relative', width: props.width, height: 'fit-content'}}>
+        <div ref={ref} style={{position: 'relative', width: props.width, height: 'fit-content'}}>
             <TextField
                 handleChange={e => props.handleChange(e.target.value)}
                 disabled={props.disabled}
@@ -124,5 +126,5 @@ DateField.propTypes = {
     value: PropTypes.string,
     required: PropTypes.bool,
     disabled: PropTypes.bool,
-    size: PropTypes.oneOf(['small', 'default'])
+    size: PropTypes.oneOf(['small', 'default']),
 }

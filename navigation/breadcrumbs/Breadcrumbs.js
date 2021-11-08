@@ -9,7 +9,7 @@ export default function Breadcrumbs(props) {
         <div className={styles.wrapper}
              style={{justifyContent: props.justify === 'start' ? 'flex-start' : (props.justify === 'end' ? 'flex-end' : undefined)}}>
             {React.Children.toArray(props.children).map((crumb, i) => (
-                <div className={styles.crumbWrapper}>
+                <div className={styles.crumbWrapper} key={'breadcrumb-' + i}>
                     {crumb}
 
                     <ArrowForwardIosRounded style={{

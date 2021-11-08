@@ -177,5 +177,5 @@ TextField.propTypes = {
     floatFilter: PropTypes.bool,
     size: PropTypes.oneOf(['small', 'default']),
     noMargin: PropTypes.bool,
-    colorVariant: PropTypes.oneOf(['default', 'secondary'])
+    colorVariant: PropTypes.oneOf(['default', 'secondary', 'primary'])
 }

@@ -151,5 +151,5 @@ MultiSelectField.propTypes = {
     disabled: PropTypes.bool,
     asArray: PropTypes.bool,
     size: PropTypes.oneOf(['small', 'default']),
-    colorVariant: PropTypes.oneOf(['default', 'secondary'])
+    colorVariant: PropTypes.oneOf(['default', 'secondary', 'primary'])
 }

@@ -140,6 +140,6 @@ Selector.propTypes = {
     handleClose: PropTypes.func,
 
     size: PropTypes.oneOf(['small', 'default']),
-    colorVariant: PropTypes.oneOf(['default', 'secondary'])
+    colorVariant: PropTypes.oneOf(['default', 'secondary', 'primary'])
 }
 

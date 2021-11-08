@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, {useCallback, useEffect, useState} from "react";
-import Requester from "../../feedback/requester/Requester";
+import Request from "../../feedback/requester/request";
 
 
 export default function useDataWithDraft(props) {
@@ -17,7 +17,7 @@ export default function useDataWithDraft(props) {
     }
     const saveDraft = useCallback(async () => {
 
-        await Requester({
+        await Request({
             headers: props.draftHeaders,
             package: props.parsePackage(data),
             url: props.draftUrl,

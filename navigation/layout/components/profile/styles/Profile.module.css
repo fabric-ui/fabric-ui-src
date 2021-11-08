@@ -25,7 +25,8 @@
     max-width: 250px;
 
     width: auto;
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
     align-items: center;
     align-content: center;
 
@@ -69,4 +70,19 @@
     width: 100%;
     background: var(--mfc-border-primary);
 
+}
+
+.avatar {
+
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #bdbdbd;
+    color: white;
+    overflow: hidden;
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
