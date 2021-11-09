@@ -14,7 +14,7 @@ export default function Modal(props) {
 
     const handleMouseDown = (event) => {
         if (!document.elementsFromPoint(event.clientX, event.clientY).includes(target.current) && alreadyRendered)
-            animate(false)
+            props.handleClose()
     }
 
     const [alreadyRendered, setAlreadyRendered] = useState(false)
@@ -23,7 +23,6 @@ export default function Modal(props) {
         if (props.open) {
             const position = getParentPosition()
 
-            console.log(alreadyRendered, animations.enter)
             renderContent((
                 <div
                     style={{
@@ -38,7 +37,7 @@ export default function Modal(props) {
                         style={props.styles}
                         ref={target}
                         onAnimationEnd={e => {
-                            if(!alreadyRendered)
+                            if (!alreadyRendered)
                                 setAlreadyRendered(true)
                             if (e.target.classList.contains(animations.exit)) {
                                 setAlreadyRendered(false)

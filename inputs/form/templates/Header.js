@@ -29,7 +29,8 @@ export default function Header(props) {
                     </Button>
                 </div>
             </div>
-            <div className={styles.buttons}>
+            <div className={styles.buttons}
+                 style={{display: !props.options || props.options.length === 0 ? 'none' : undefined}}>
                 {props.options?.map((b, index) => (
                     <React.Fragment key={index + '-option-button'}>
                         <div className={styles.divider} style={{display: index === 0 ? 'none' : undefined}}/>

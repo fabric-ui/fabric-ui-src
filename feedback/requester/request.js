@@ -19,13 +19,14 @@ export default async function Request(props) {
     const params = {
         method: method,
         headers: props.headers,
-        data: method === 'get' ? undefined : packageSent ,
+        data: method === 'get' ? undefined : packageSent,
         params: method !== 'get' ? undefined : packageSent,
         url: props.url
     }
 
     return axios(params)
         .then((r) => {
+            console.log(r)
             ReactDOM.unmountComponentAtNode(loader)
             if (props.showSuccessAlert) {
                 const newElement = document.createElement('div')
@@ -33,9 +34,9 @@ export default async function Request(props) {
                 ReactDOM.render(
                     <RequestAlert
                         {...{
-                            message: r.response.statusText,
+                            message: r.statusText,
                             details: r.data,
-                            httpStatusCode: r.response.status,
+                            httpStatusCode: r.status,
                             package: packageSent,
                             method: method,
                             url: props.url
@@ -45,7 +46,7 @@ export default async function Request(props) {
                 )
             }
             return {
-                data: r.data, text: r.text, status: r?.status, message: r?.statusText, ok: true
+                data: r.data, status: r?.status, message: r?.statusText, ok: true
             }
         })
         .catch(r => {
@@ -55,9 +56,9 @@ export default async function Request(props) {
             ReactDOM.render(
                 <RequestAlert
                     {...{
-                        message: r.response.statusText,
+                        message: r.message,
                         details: r.data,
-                        httpStatusCode: r.response.status,
+                        httpStatusCode: r.response?.status,
                         package: packageSent,
                         method: method,
                         url: props.url
