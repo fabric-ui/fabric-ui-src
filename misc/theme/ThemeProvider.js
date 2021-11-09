@@ -27,13 +27,21 @@ export default function ThemeProvider(props) {
                 mfc_box_shadow_primary: !props.onDark ? '#e0e0e0' : '#1e2121'
             }
         }}>
-            <div className={props.onDark ? styles.dark : styles.light}>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+            />
+            <div
+                className={[props.onDark ? styles.dark : styles.light, props.className].join(' ')}
+                 style={props.styles}>
                 {props.children}
             </div>
         </ThemeContext.Provider>
     )
 }
 ThemeProvider.propTypes = {
+    className: PropTypes.string,
+    styles: PropTypes.object,
     onDark: PropTypes.bool,
     children: PropTypes.node
 }
