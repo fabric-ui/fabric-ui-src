@@ -29,6 +29,14 @@ export default function useModal({animationStyle, variant}) {
                 }
                 break
             }
+            case 'slide-bottom': {
+                anim = {
+                    enter: styles.slideBottomEnter,
+                    exit: styles.slideBottomExit,
+                }
+                break
+            }
+
             default:
                 break
 

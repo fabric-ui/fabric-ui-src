@@ -7,7 +7,6 @@ import Row from "./Row";
 import useInfiniteScroll from "../../../visualization/hooks/useInfiniteScroll";
 import Empty from "../../../feedback/empty/Empty";
 import ToolTip from "../../../feedback/tooltip/ToolTip";
-import Dropdown from "../../../visualization/list/components/Dropdown";
 import useHeader from "../../../visualization/list/hook/useHeader";
 import Filter from "../../../visualization/filter/Filter";
 import Button from "../../button/Button";
@@ -18,10 +17,7 @@ export default function SelectorModal(props) {
         getType,
         parseDate,
         open,
-        setOpen,
-        selectedField,
-        setSelectedField,
-        getField
+        setOpen
     } = useHeader(props.dispatch, props.actions)
 
     useEffect(() => {
@@ -31,7 +27,11 @@ export default function SelectorModal(props) {
     return (
         <Modal
             open={props.open}
-            handleClose={() => props.setOpen(false)}
+            handleClose={() => {
+                console.log(open)
+                if (!open)
+                    props.setOpen(false)
+            }}
             animationStyle={'slide-right'}
             blurIntensity={0}
             className={styles.wrapper}
@@ -59,18 +59,14 @@ export default function SelectorModal(props) {
                         <RefreshRounded/>
                         <ToolTip content={'Recarregar dados'}/>
                     </Button>
-
-                    <Dropdown
-                        align={'bottom'}
+                    <Button
+                        variant={'outlined'}
+                        onClick={() => setOpen(true)}
                         className={styles.headerButton}
-                        label={(
-                            <>
-                                <FilterListRounded/>
-                                Filtros
-                                <ToolTip content={'Filtros'}/>
-                            </>
-                        )}
-                        buttons={props.keys.map(e => getField(e))}/>
+                    >
+                        <FilterListRounded/>
+                        <ToolTip content={'Filtros'}/>
+                    </Button>
 
                 </div>
                 <Button
@@ -89,9 +85,11 @@ export default function SelectorModal(props) {
             </div>
 
             <Filter
-                keys={props.keys} filters={props.hook.filters} setFilters={props.hook.setFilters}
-                cleanState={props.hook.clean} getType={getType} open={open} setOpen={setOpen}
-                parseDate={parseDate} selectedField={selectedField} setSelectedField={setSelectedField}
+                keys={props.keys} filters={props.hook.filters}
+                setFilters={props.hook.setFilters}
+                cleanState={props.hook.clean} getType={getType}
+                open={open} setOpen={setOpen}
+                parseDate={parseDate}
             />
 
             <Row

@@ -54,7 +54,7 @@ export default function Selector(props) {
                     {props.title}
                 </div>
                 <div
-                    className={[shared.wrapper, color.className].join(' ')}
+                    className={[shared.wrapper, color.className, styles.buttonWrapper].join(' ')}
                     data-highlight={open ? open : undefined}
                     data-disabled={props.disabled ? props.disabled : undefined}
                 >
@@ -62,7 +62,10 @@ export default function Selector(props) {
                     {props.value !== null && props.value !== undefined ?
                         <Row
                             onClick={() => {
-                                setOpen(true)
+                                if(props.onClick)
+                                    props.onClick()
+                                else
+                                    setOpen(true)
                             }}
                             disabled={props.disabled}
                             data={props.value} highlight={open}
@@ -83,7 +86,10 @@ export default function Selector(props) {
                             }} color={props.colorVariant === 'secondary' ? 'secondary' : 'primary'}
                             className={[styles.button, shared.labelContainer].join(' ')}
                             onClick={() => {
-                                setOpen(true)
+                                if(props.onClick)
+                                    props.onClick()
+                                else
+                                    setOpen(true)
                             }}
                         >
                             {props.placeholder}
@@ -115,7 +121,7 @@ export default function Selector(props) {
 
 Selector.propTypes = {
     children: PropTypes.func,
-
+    onClick: PropTypes.func,
     hook: PropTypes.object.isRequired,
 
     title: PropTypes.string,

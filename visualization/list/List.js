@@ -23,7 +23,6 @@ export default function List(props) {
                     setScrolled(false)
             }}
             className={styles.container}
-
         >
             <Settings
                 open={openSettings}

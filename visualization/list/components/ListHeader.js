@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import styles from '../styles/Header.module.css'
 import React from "react";
 import {AddRounded, FilterListRounded, RefreshRounded, SettingsRounded} from "@material-ui/icons";
-import Dropdown from "./Dropdown";
 import useHeader from "../hook/useHeader";
 import keyTemplate from "../templates/keyTemplate";
 import Filter from "../../filter/Filter";
@@ -15,10 +14,9 @@ export default function ListHeader(props) {
         parseDate,
         open,
         setOpen,
-        selectedField,
-        setSelectedField,
-        getField
+
     } = useHeader(props.dispatch, props.actions)
+
 
     return (
         <div className={styles.wrapper} style={{boxShadow: props.scrolled ? undefined : 'none'}}>
@@ -28,6 +26,7 @@ export default function ListHeader(props) {
                     <Button
                         variant={'outlined'}
                         className={styles.button}
+                        styles={{gap: '16px'}}
                         onClick={() => props.hook.clean()}
                     >
                         Recarregar
@@ -35,24 +34,21 @@ export default function ListHeader(props) {
                     </Button>
                     <Button
                         variant={'outlined'}
+                        styles={{gap: '16px'}}
                         className={styles.button}
                         onClick={() => props.setOpenSettings(true)}
                     >
                         Configurações
                         <SettingsRounded style={{fontSize: '1.3rem'}}/>
                     </Button>
-                    {props.noFilters ? null :
-                        <Dropdown
-                            className={styles.button}
-                            disabled={false} variant={'outlined'}
-                            label={(
-                                <div className={styles.dropdownLabel}>
-                                    Filtros
-                                    <FilterListRounded style={{fontSize: '1.3rem'}}/>
-                                </div>
-                            )}
-                            buttons={props.keys.map(e => getField(e))}
-                        />}
+
+                    <Button
+                        styles={{display: !props.noFilters ? undefined : 'none', gap: '16px'}}
+                        onClick={() => setOpen(true)} variant={"outlined"}
+                        className={styles.button}>
+                        Filtros
+                        <FilterListRounded style={{fontSize: '1.3rem'}}/>
+                    </Button>
                     <Button
                         styles={{display: props.createOption ? undefined : 'none', color: 'white'}}
                         onClick={() => props.onCreate()} variant={"filled"}
@@ -66,9 +62,10 @@ export default function ListHeader(props) {
                 :
                 <div style={{padding: '8px'}}>
                     <Filter
-                        keys={props.keys} filters={props.hook.filters} setFilters={props.hook.setFilters}
+                        keys={props.keys} filters={props.hook.filters}
+                        setFilters={props.hook.setFilters}
                         getType={getType} open={open} setOpen={setOpen}
-                        parseDate={parseDate} selectedField={selectedField} setSelectedField={setSelectedField}
+                        parseDate={parseDate}
                     />
                 </div>
             }

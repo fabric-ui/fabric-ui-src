@@ -189,3 +189,9 @@
         opacity: 0;
     }
 }
+
+.buttonWrapper{
+    max-width: 100%;
+    overflow: hidden;
+
+}

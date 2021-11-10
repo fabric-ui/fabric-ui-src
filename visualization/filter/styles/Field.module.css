@@ -1,7 +1,7 @@
 @import '../../../misc/theme/styles.module.css';
 
 
-.activeFiltersContainer {
+.activeFiltersContainer{
     height: auto;
     max-height: 100px;
     display: flex;
@@ -12,6 +12,21 @@
     max-width: 100%;
     padding: 8px 0;
     width: 100%;
+}
+
+.modalWrapper {
+    height: 50vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    padding: 16px;
+    width: 100%;
+    background: var(--mfc-background-primary);
+    border-radius: 8px 8px 0 0;
+
+    display: flex;
+    gap: 16px;
 
 }
 
@@ -23,14 +38,16 @@
 
 
 .filter {
+
+
     background-color: var(--mfc-background-primary);
     border: var(--mfc-border-primary) 1px solid;
     color: var(--mfc-color-secondary);
     font-size: .85rem;
 
     user-select: none;
-
     padding: 4px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -45,19 +62,14 @@
 }
 
 .container {
+    position: relative;
+    width: 40%;
+    border-radius: 5px;
+    border: var(--mfc-border-primary) 1px solid;
+    padding: 8px;
+    display: grid;
 
-    position: absolute;
-    /*height: clamp(200px, 50%, 1000px);*/
-    width: clamp(200px, 25%, 750px);
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
-    background: var(--mfc-background-primary);
-    padding: 16px;
-    border-radius: 8px;
-    border: var(--mfc-border-secondary) 1px solid;
-    color: var(--mfc-color-tertiary);
+    align-content: space-between;
 }
 
 .header {
@@ -78,9 +90,39 @@
 }
 
 
-.button{
+.button {
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.filters {
+
+
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    background: var(--mfc-background-secondary);
+    border: var(--mfc-border-primary) 1px solid;
+    padding: 8px;
+
+    overflow-y: auto;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 8px;
+    border-radius: 5px;
+}
+
+.filterButton {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px 16px;
+    gap: 16px;
+    background: var(--mfc-background-primary);
+    width: calc(33.333% - 6px);
+}
+/*.filterButton[data-highlight]:active {*/
+/*    opacity: .7;*/
+/*}*/

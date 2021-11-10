@@ -60,7 +60,7 @@ export default function Modal(props) {
         return () => {
             document.removeEventListener('mousedown', handleMouseDown)
         }
-    }, [alreadyRendered, props.open])
+    }, [alreadyRendered, props.open, props.children])
 
     return <div ref={source} style={{display: 'none'}}/>
 }
@@ -68,7 +68,7 @@ export default function Modal(props) {
 Modal.propTypes = {
     wrapperClassName: PropTypes.string,
     variant: PropTypes.oneOf(['fill', 'fit']),
-    animationStyle: PropTypes.oneOf(['slide-left', 'slide-right', 'fade']),
+    animationStyle: PropTypes.oneOf(['slide-left', 'slide-right', 'fade', 'slide-bottom']),
     className: PropTypes.string,
     blurIntensity: PropTypes.number,
     styles: PropTypes.object,

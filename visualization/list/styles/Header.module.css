@@ -86,6 +86,7 @@
 .fieldWrapper {
     display: grid;
     gap: 16px;
+    height: fit-content;
 
 }
 

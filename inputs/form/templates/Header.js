@@ -24,7 +24,11 @@ export default function Header(props) {
                     <Button
                         className={styles.submitButton} disabled={props.disabled}
                         variant={'filled'}
-                        onClick={() => props.handleSubmit(props.hook.data, props.hook.clearState)}>
+
+                        onClick={() => {
+                            props.hook.setChanged(false)
+                            props.handleSubmit(props.hook.data, props.hook.clearState)
+                        }}>
                         {props.submitLabel ? props.submitLabel : (props.create ? lang.create : lang.save)}
                     </Button>
                 </div>

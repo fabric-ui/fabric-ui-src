@@ -110,3 +110,29 @@
 .background {
     background-color: var(--mfc-background-primary);
 }
+
+.slideBottomEnter{
+    animation: slideBottomEnterAnim ease-in-out 250ms;
+}
+.slideBottomExit{
+    animation: slideBottomExitAnim ease-in-out 250ms;
+}
+
+@keyframes slideBottomEnterAnim {
+    0% {
+        transform: translateY(100%);
+
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideBottomExitAnim {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}

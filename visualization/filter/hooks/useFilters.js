@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import TextField from "../../../inputs/text/TextField";
 import DateField from "../../../inputs/date/DateField";
 import styles from '../../list/styles/Header.module.css'
@@ -6,17 +6,28 @@ import Checkbox from "../../../inputs/checkbox/Checkbox";
 import Selector from "../../../inputs/selector/Selector";
 import useQuery from "../../hooks/useQuery";
 
-export default function useFilter(filter, setFilter) {
+export default function useFilter(filter, setFilter, setSelectorOpen, selectorOpen) {
     const [onInput, setOnInput] = useState(undefined)
     const [changed, setChanged] = useState(false)
-    let hook =  useQuery(filter?.query ? filter.query : {})
+    const query = useMemo(() => {
+        console.log(filter, 'here on memo')
+        return filter?.query ? filter.query : {}
+    }, [filter])
+    let hook = useQuery(query)
 
     const handleChange = (value) => {
         setFilter(prevState => {
-            return {
-                ...prevState,
-                value: value
-            }
+            if (filter.type === 'object')
+                return {
+                    ...prevState,
+                    value: value,
+                    objectLabel: value[query?.keys[0]?.key]
+                }
+            else
+                return {
+                    ...prevState,
+                    value: value
+                }
         })
         setChanged(true)
     }
@@ -97,7 +108,7 @@ export default function useFilter(filter, setFilter) {
                                     })
                                 }}
                             />
-                            Não é.
+                            Não é (case sensitive).
                         </div>
                         <div className={styles.selectWrapper}>
                             <Checkbox
@@ -129,8 +140,9 @@ export default function useFilter(filter, setFilter) {
             case 'object': {
                 field = (
                     <Selector
-                        keys={[{key: filter.key, label: filter.label, type: filter.subType}]}
-                        hook={hook}
+                        keys={query && query.keys ? query.keys : []}
+                        hook={hook} open={selectorOpen} onClick={() => setSelectorOpen(true)}
+                        handleClose={() => setSelectorOpen(false)}
                         handleChange={entity => handleChange(entity)}
                         value={filter.value}
                         title={filter.label}
