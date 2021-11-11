@@ -65,7 +65,7 @@ export default function DateField(props) {
                 label={props.label}
                 mask={pattern.replaceAll('y', '9').replaceAll('d', '9').replaceAll('m', '9')}
                 maskEnd={(
-                    <Button onClick={() => setOpen(true)}>
+                    <Button onClick={() => setOpen(true)} disabled={props.disabled}>
                         <CalendarTodayRounded style={{fontSize: '1.2rem'}}/>
                     </Button>
                 )} noMargin={true}
@@ -74,7 +74,7 @@ export default function DateField(props) {
             <FloatingBox parentNode={ref.current?.parentNode} open={open} setOpen={setOpen} reference={ref.current}>
                 <div className={styles.calendar}>
                     <div className={styles.monthContainer}>
-                        <button className={styles.buttonContainer} style={{width: 'fit-content', margin: 'unset'}}
+                        <Button className={styles.buttonContainer} styles={{width: 'fit-content', margin: 'unset'}}
                                 onClick={() => {
                                     const d = new Date()
                                     const newDay = date.day ? date.day : d.getDate()
@@ -83,7 +83,7 @@ export default function DateField(props) {
                                     props.handleChange(parseDate(newDay, newMonth, newYear))
                                 }}>
                             <ArrowBackIosRounded style={{fontSize: '1.2rem'}}/>
-                        </button>
+                        </Button>
                         <div className={styles.currentDate}>
                             <div>
                                 {!date.month || date.month > 12 || date.month < 1 ? calendar[(new Date()).getMonth()].month : calendar[date.month - 1].month}
@@ -93,7 +93,7 @@ export default function DateField(props) {
                                 {!date.year ? new Date().getFullYear() : date.year}
                             </div>
                         </div>
-                        <button className={styles.buttonContainer} style={{width: 'fit-content', margin: 'unset'}}
+                        <Button className={styles.buttonContainer} styles={{width: 'fit-content', margin: 'unset'}}
                                 onClick={() => {
                                     const d = new Date()
                                     const newDay = date.day ? date.day : d.getDate()
@@ -102,7 +102,7 @@ export default function DateField(props) {
                                     props.handleChange(parseDate(newDay, newMonth, newYear))
                                 }}>
                             <ArrowBackIosRounded style={{fontSize: '1.2rem', transform: 'rotate(180deg'}}/>
-                        </button>
+                        </Button>
                     </div>
 
                     <div className={styles.daysContainer}>

@@ -10,7 +10,7 @@ export default function VerticalTabs(props) {
     const groups = [...new Set(children.map(item => item.props.group))]
 
     return (
-        <div className={props.className} style={props.styles}>
+        <div className={props.className} style={{...props.styles, ...{position: 'relative'}}}>
             <div className={styles.header}>
                 <div className={styles.tabs}>
                     {groups.map((e, i) => (

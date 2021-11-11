@@ -68,32 +68,16 @@
 }
 
 .buttonContainer {
-    outline: none;
-    background: transparent;
-    border: none;
+
     display: flex;
     align-items: center;
     justify-content: center;
-
-    color: var(--mfc-color-secondary);
-    cursor: pointer;
-    transition: 150ms linear;
-    border-radius: 5px;
 
     height: 35px;
     width: 35px;
     margin-right: 8px;
 }
 
-.buttonContainer:hover {
-    background: var(--mfc-background-tertiary);
-    color: var(--mfc-color-primary);
-}
-
-.buttonContainer:active {
-    background: var(--mfc-background-quaternary);
-    color: #0095ff;
-}
 
 
 .container {

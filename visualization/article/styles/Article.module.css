@@ -40,11 +40,13 @@
 
 /*BODY*/
 .body {
+
     border: var(--mfc-border-primary) 1px solid;
     border-radius: 5px;
     padding: 8px;
     display: grid;
     align-items: flex-start;
+    gap: 12px;
     background: var(--mfc-background-primary);
     text-align: left;
     font-size: .9rem;
@@ -53,7 +55,8 @@
 
 
 .preFormattedText {
-    margin: 0;
+
+    margin: 16px 0 0;
     justify-self: stretch;
 
     background: var(--mfc-background-secondary);

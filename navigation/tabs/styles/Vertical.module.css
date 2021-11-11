@@ -18,6 +18,9 @@
 
 
 .header {
+    position: sticky;
+    top: 0;
+
     border: var(--mfc-border-primary) 1px solid;
 
     background-color: var(--mfc-background-primary);
