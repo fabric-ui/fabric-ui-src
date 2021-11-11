@@ -2,40 +2,31 @@ import PropTypes from 'prop-types'
 import React, {useMemo, useRef, useState} from 'react'
 import styles from './styles/DateField.module.css'
 import {ArrowBackIosRounded, CalendarTodayRounded} from "@material-ui/icons";
-import Dates from "./misc/Dates";
 import FloatingBox from "../floating_box/FloatingBox";
 import Button from "../button/Button";
 import TextField from "../text/TextField";
+import useDate from "./misc/useDate";
 
 export default function DateField(props) {
+
     const [open, setOpen] = useState()
-    const date = useMemo(() => {
-        let day, month, year
 
-        if (props.value) {
-            const d = props.value.split('/')
-            day = d.length >= 1 ? parseInt(d[0]) : undefined
-            month = d.length >= 2 ? parseInt(d[1]) : undefined
-            year = d.length === 3 ? parseInt(d[2]) : undefined
-        }
-
-        return {
-            day: day,
-            month: month,
-            year: year,
-            valid: (!day || (day > 0 && day <= 31)) && (!month || (month > 0 && month <= 12))
-        }
-    }, [props.value])
+    const pattern = useMemo(() => {
+        if (props.pattern)
+            return props.pattern
+        else return 'dd/mm/yyyy'
+    }, [props.pattern])
+    const {date, calendar, initialized, setChanged, changed, parseDate} = useDate(props.value, pattern)
 
     const ref = useRef()
 
     const getDays = (month) => {
         let res = []
-        if ((month - 1) < Dates.length) {
-            let days = Dates[month - 1].days;
+        if ((month - 1) < calendar.length) {
+            let days = calendar[month - 1].days;
             for (let i = 0; i < days; i++) {
                 res.push(
-                    <React.Fragment key={month + '-month-'+(i+1) + '-day'}>
+                    <React.Fragment key={month + '-month-' + (i + 1) + '-day'}>
                         <Button
                             styles={{padding: '8px', width: '35px', height: '35px'}}
                             highlight={date.day === (i + 1)}
@@ -45,7 +36,8 @@ export default function DateField(props) {
                                 const newDay = i + 1
 
                                 setOpen(false)
-                                props.handleChange(`${newDay < 10 ? ('0' + newDay) : newDay}/${month < 10 ? ('0' + month) : month}/${!date.year ? currentDate.getFullYear() : date.year}`)
+                                props.handleChange(parseDate(newDay, month, !date.year ? currentDate.getFullYear() : date.year))
+                                setChanged(true)
                             }}
                         >
                             {i + 1}
@@ -57,16 +49,21 @@ export default function DateField(props) {
         return res
     }
 
+
     return (
         <div ref={ref} style={{position: 'relative', width: props.width, height: 'fit-content'}}>
             <TextField
-                handleChange={e => props.handleChange(e.target.value)}
+                handleChange={e => {
+                    setChanged(true)
+                    props.handleChange(e.target.value)
+                }}
                 disabled={props.disabled}
                 width={'100%'} highlight={open}
-                value={props.value}
+                value={initialized && !changed ? parseDate(date.day, date.month, date.year) : props.value}
                 size={props.size} colorVariant={date.valid ? 'primary' : 'secondary'}
-                placeholder={props.label} label={props.label}
-                mask={'99/99/9999'}
+                placeholder={props.label}
+                label={props.label}
+                mask={pattern.replaceAll('y', '9').replaceAll('d', '9').replaceAll('m', '9')}
                 maskEnd={(
                     <Button onClick={() => setOpen(true)}>
                         <CalendarTodayRounded style={{fontSize: '1.2rem'}}/>
@@ -83,13 +80,13 @@ export default function DateField(props) {
                                     const newDay = date.day ? date.day : d.getDate()
                                     const newMonth = (date.month && date.month === 1) || (!date.month && d.getMonth() === 1) ? 12 : (date.month ? date.month : d.getMonth()) - 1
                                     const newYear = newMonth === 12 ? (date.year ? date.year - 1 : d.getFullYear() - 1) : (date.year ? date.year : d.getFullYear())
-                                    props.handleChange(`${newDay < 10 ? ('0' + newDay) : newDay}/${newMonth < 10 ? ('0' + newMonth) : newMonth}/${newYear}`)
+                                    props.handleChange(parseDate(newDay, newMonth, newYear))
                                 }}>
                             <ArrowBackIosRounded style={{fontSize: '1.2rem'}}/>
                         </button>
                         <div className={styles.currentDate}>
                             <div>
-                                {!date.month || date.month > 12 || date.month < 1 ? Dates[(new Date()).getMonth()].month : Dates[date.month - 1].month}
+                                {!date.month || date.month > 12 || date.month < 1 ? calendar[(new Date()).getMonth()].month : calendar[date.month - 1].month}
                             </div>
                             -
                             <div>
@@ -102,8 +99,7 @@ export default function DateField(props) {
                                     const newDay = date.day ? date.day : d.getDate()
                                     const newMonth = (date.month && date.month === 12) || (!date.month && d.getMonth() === 12) ? 1 : (date.month ? date.month : d.getMonth()) + 1
                                     const newYear = newMonth === 1 ? (date.year ? date.year + 1 : d.getFullYear() + 1) : (date.year ? date.year : d.getFullYear())
-                                    props.handleChange(`${newDay < 10 ? ('0' + newDay) : newDay}/${newMonth < 10 ? ('0' + newMonth) : newMonth}/${newYear}`)
-
+                                    props.handleChange(parseDate(newDay, newMonth, newYear))
                                 }}>
                             <ArrowBackIosRounded style={{fontSize: '1.2rem', transform: 'rotate(180deg'}}/>
                         </button>
@@ -127,4 +123,5 @@ DateField.propTypes = {
     required: PropTypes.bool,
     disabled: PropTypes.bool,
     size: PropTypes.oneOf(['small', 'default']),
+    pattern: PropTypes.oneOf(['yyyy-mm-dd', 'yyyy/mm/dd', 'yyyy-dd-mm', 'yyyy/dd/mm', 'mm/dd/yyyy', 'mm-dd-yyyy', 'dd/mm/yyyy', 'dd-mm-yyyy'])
 }

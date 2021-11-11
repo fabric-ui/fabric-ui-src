@@ -41,8 +41,9 @@ export default function TextField(props) {
                 onChange={e => {
 
                     let data = e.target.value
-                    if (props.type === 'number' && props.floatFilter)
+                    if (props.type === 'number' && props.floatFilter) {
                         data = ParseCurrency(e.target.value)
+                    }
 
                     props.handleChange({target: {value: data}})
                 }}
