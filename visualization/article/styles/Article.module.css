@@ -109,12 +109,17 @@
 }
 
 .wrapper {
+    width: 100%;
     display: grid;
     gap: 32px;
+
+}
+.container{
+    display: flex;
+    scroll-behavior: smooth;
     max-height: 100%;
     overflow-y: auto;
 }
-
 .button {
     position: absolute !important;
     top: 0;

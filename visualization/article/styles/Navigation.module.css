@@ -1,0 +1,15 @@
+.wrapper{
+    width: 10vw;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+
+    position: sticky;
+    top: 0;
+}
+
+.button{
+    font-weight: 600;
+    text-align: left;
+}

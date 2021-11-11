@@ -39,7 +39,7 @@ export default function useDate(value, pattern, handleChange) {
                 indexes.sort(function(a, b) {
                     return a - b;
                 })
-console.log(indexes)
+
                 day = d.length >= 1 ? parseInt(d[indexes.indexOf(pattern.indexOf('dd'))]) : undefined
                 month = d.length >= 2 ? parseInt(d[indexes.indexOf(pattern.indexOf('mm')) ]) : undefined
                 year = d.length === 3 ? parseInt(d[indexes.indexOf(pattern.indexOf('yyyy'))]) : (new Date()).getFullYear()
@@ -52,7 +52,6 @@ console.log(indexes)
                 valid: (day === undefined || (day > 0 && day <= 31)) && (month === undefined || (month > 0 && month <= 12))
             }
         }
-        console.log(response)
         return response
     }
 
