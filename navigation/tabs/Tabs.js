@@ -11,7 +11,7 @@ export default function Tabs(props) {
     const children = React.Children.toArray(props.children).filter(e => e.type === Tab)
     return (
         <div className={props.className} style={props.styles} data-open-tab={open}>
-            <div className={styles.header}>
+            <div className={styles.header} style={{marginLeft: props.align === 'end' ? 'auto' : 'unset', marginRight: props.align === 'start' ? 'auto' : 'unset'}}>
                 <div className={styles.tabs}>
                     {children.map((e, i) => (
                         <React.Fragment key={i + '-button-header-tab'}>
@@ -43,7 +43,7 @@ export default function Tabs(props) {
 }
 
 Tabs.proptypes = {
-
+    align: PropTypes.oneOf(['start', 'end', 'center']),
     className: PropTypes.string,
     styles: PropTypes.object,
     children: PropTypes.node.isRequired,
