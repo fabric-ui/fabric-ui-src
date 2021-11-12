@@ -29,9 +29,36 @@
     justify-content: center;
 }
 
-.wrapper {
+.wrapperVertical[data-extended = 'true'] {
+    --width: 225px;
+}
+
+.wrapperVertical[data-extended = 'false'] {
+    --width: 60px;
+}
+
+.wrapperHorizontal {
+    padding: 4px;
     overflow: hidden;
     /*width: 60px;*/
+    transition: 250ms ease-in-out;
+    background: var(--mfc-background-primary);
+    position: sticky;
+    left: 0;
+    top: 0;
+    height: 40px;
+    width: 100%;
+    display: flex;
+
+}
+
+.wrapperVertical {
+    padding: 4px;
+    display: grid;
+    --width: 60px;
+
+    overflow: hidden;
+    width: var(--width);
     transition: 250ms ease-in-out;
     background: var(--mfc-background-primary);
     position: sticky;
@@ -113,4 +140,38 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+
+.alignEnd[data-variant = 'vertical']{
+    --display: grid;
+    align-content: flex-end;
+    justify-items: center;
+
+}
+.alignStart[data-variant = 'vertical']{
+    --display: grid;
+    align-content: flex-start;
+    justify-items: center;
+}
+
+.alignEnd[data-variant = 'horizontal']{
+    --display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.alignStart[data-variant = 'horizontal']{
+    --display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.alignEnd{
+    width: 100%;
+    height: 100%;
+    display: var(--display);
+}
+.alignStart{
+    width: 100%;
+    height: 100%;
+    display: var(--display);
 }

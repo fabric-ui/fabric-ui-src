@@ -10,13 +10,15 @@ function copyToClipboard(element) {
 }
 
 
-export default function Wrapper (props) {
+export default function Wrapper(props) {
     if ((props.type === 'code' || props.type === 'pre-formatted') && !props.noCopy)
         return (
             <div className={styles.clipboardWrapper} data-float={props.float ? props.float : 'none'}>
-                <Button variant={"filled"} onClick={() => {
-                    copyToClipboard(props.contentRef)
-                }} className={styles.button}>
+                <Button
+                    variant={"filled"}
+                    onClick={() => {
+                        copyToClipboard(props.contentRef)
+                    }} className={styles.button}>
                         <span className="material-icons-round" style={{fontSize: '1.2rem'}}>
                             content_copy
                         </span>

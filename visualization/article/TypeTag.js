@@ -53,7 +53,7 @@ export default function TypeTag(props) {
                            data-float={props.float}/>
                     )
         }
-    }, [props])
+    }, [props.content])
 
     return (
         <Wrapper type={props.type} contentRef={ref.current} float={props.float} noCopy={props.noCopy}>

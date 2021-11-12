@@ -6,7 +6,7 @@
 
 }
 
-.header[data-type = 'primary'] {
+.header[ data-variant = 'primary'] {
     font-size: 1.3rem;
     color: var(--mfc-color-secondary);
     font-weight: 600;
@@ -17,7 +17,7 @@
     padding: 0;
 }
 
-.header[data-type = 'secondary'] {
+.header[ data-variant = 'secondary'] {
     font-size: .95rem;
     color: var(--mfc-color-tertiary);
     font-weight: 600;
@@ -27,7 +27,7 @@
     margin: 0;
 }
 
-.header[data-type = 'tertiary'] {
+.header[ data-variant = 'tertiary'] {
     font-size: .75rem;
     color: var(--mfc-color-quaternary);
     font-weight: 600;
@@ -114,12 +114,16 @@
     gap: 32px;
 
 }
-.container{
+
+.container {
+    padding: 0 32px;
     display: flex;
     scroll-behavior: smooth;
     max-height: 100%;
     overflow-y: auto;
+    gap: 32px;
 }
+
 .button {
     position: absolute !important;
     top: 0;

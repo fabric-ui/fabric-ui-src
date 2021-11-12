@@ -5,7 +5,7 @@ import ToolTip from "../../feedback/tooltip/ToolTip";
 import Button from "../../inputs/button/Button";
 import {MenuOpenRounded} from "@material-ui/icons";
 
-export default function SideBar(props) {
+export default function Bar(props) {
     const [open, setOpen] = useState(false)
     const buttonStyle = useMemo(() => {
         return {
@@ -42,11 +42,10 @@ export default function SideBar(props) {
     }
     return (
         <div
-            className={styles.wrapper}
-            style={{width: !open ? '60px' : '225px'}}
+            className={props.orientation === 'horizontal' ? styles.wrapperHorizontal : styles.wrapperVertical}
+            data-extended={JSON.stringify(open)}
         >
-
-            <div className={styles.buttons}>
+            {props.orientation === 'horizontal' ? null :
                 <Button
                     highlight={open}
                     className={styles.button}
@@ -57,32 +56,30 @@ export default function SideBar(props) {
                         transition: '150ms linear'
                     }}/>
                 </Button>
-                {props.buttons?.filter(e => e && e.position !== 'bottom').map((button, index) => !button ? null : (
-                    <div key={'side-bar-button-' + index}>
-                        {getContent(button)}
+            }
+            <div className={styles.alignStart} data-variant={props.orientation ? props.orientation : 'vertical'}>
+                {React.Children.toArray(props.children).filter(e => e.props.place !== 'end').map((e, i) => (
+                    <div key={i + '-bar-node-start'} className={e.props.className} style={e.props.styles}>
 
-                        <ToolTip align={'middle'} justify={'end'} content={button.label}/>
+                        {e}
                     </div>
                 ))}
-
-                <div className={styles.bottomOptions}>
-                    {props.buttons?.filter(e => e && e.position === 'bottom').map((button, index) => !button ? null : (
-                        <div key={'side-bar-bottom-button-' + index}>
-                            {getContent(button)}
-
-                            <ToolTip align={'middle'} justify={'end'} content={button.label}/>
-                        </div>
-                    ))}
-
-                </div>
             </div>
-
+            <div className={styles.alignEnd} data-variant={props.orientation ? props.orientation : 'vertical'}>
+                {React.Children.toArray(props.children).filter(e => e.props.place === 'end').map((e, i) => (
+                    <div key={i + '-bar-node-end'} className={e.props.className} style={e.props.styles}>
+                        {e}
+                    </div>
+                ))}
+            </div>
         </div>
     )
 
 }
 
-SideBar.propTypes = {
+Bar.propTypes = {
+    orientation: PropTypes.oneOf(['vertical', 'horizontal']),
+    children: PropTypes.node,
     buttons: PropTypes.arrayOf(
         PropTypes.shape({
             label: PropTypes.string,
