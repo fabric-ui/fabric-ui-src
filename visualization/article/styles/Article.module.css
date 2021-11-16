@@ -54,18 +54,6 @@
 }
 
 
-.preFormattedText {
-
-    margin: 16px 0 0;
-    justify-self: stretch;
-
-    background: var(--mfc-background-secondary);
-    border: var(--mfc-border-primary) 1px solid;
-    color: var(--mfc-color-primary);
-    border-radius: 5px;
-    padding: 16px 24px;
-    text-align: left;
-}
 
 .baseText {
     margin: 0;
@@ -112,7 +100,9 @@
     width: 100%;
     display: grid;
     gap: 32px;
+height: fit-content;
 
+    padding-bottom: 25%;
 }
 
 .container {
@@ -122,48 +112,29 @@
     max-height: 100%;
     overflow-y: auto;
     gap: 32px;
+
+
 }
-
-.button {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    --transform: translate(-50%, -50%);
-
+.nativeCode{
+    gap: 8px;
+    width: 100%;
     padding: 8px;
-    width: 30px;
-    height: 30px;
+    border-radius: 5px;
+    border: var(--mfc-border-primary) 1px solid;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    /*background: var(--mfc-background-primary) !important;*/
+    flex-flow: row wrap;
 }
 
 
-.clipboardWrapper {
-    --max-width: 75%;
-    --width: fit-content;
-    margin: 16px auto;
-    position: relative;
+.preFormattedText {
 
-    display: grid;
-    gap: 0;
-}
+    margin: 16px 0 0;
+    justify-self: stretch;
 
-.clipboardWrapper[data-float = 'none'] .button {
-    transform: var(--transform);
-}
-
-.clipboardWrapper[data-float = 'stretch'] .button {
-    transform: translate(-25%, -25%);
-}
-
-.clipboardWrapper[data-float = 'none'] {
-    width: var(--max-width);
-    max-width: var(--width);
-}
-
-.clipboardWrapper[data-float = 'stretch'] {
-    width: 100% !important;
-    max-width: 100% !important;
+    background: var(--mfc-background-secondary);
+    border: var(--mfc-border-primary) 1px solid;
+    color: var(--mfc-color-primary);
+    border-radius: 5px;
+    padding: 16px 24px;
+    text-align: left;
 }

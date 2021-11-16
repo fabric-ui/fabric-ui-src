@@ -1,0 +1,94 @@
+
+.buttonWrapper {
+    width: clamp(57px, calc(3vw - 8px), 92px);
+    /*max-width: clamp(49px, calc(3vw - 16px), 84px);*/
+    height: clamp(57px, calc(3vw - 8px), 92px);
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+
+
+    padding:2px;
+    background: transparent;
+    outline: none;
+    border: none;
+
+    color: var(--mfc-color-tertiary);
+
+    cursor: pointer;
+    position: relative;
+
+    border-radius: 5px;
+
+}
+
+.buttonWrapper[data-highlight = 'true'] {
+    color: var(--mfc-color-primary);
+}
+
+.buttonWrapper:active{
+    color: #0095ff;
+}
+
+.iconWrapper {
+    overflow: hidden;
+    margin: auto;
+    width: 16px;
+    height: 55%;
+    border-radius: 25%/50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px 16px;
+
+    position: relative;
+
+    transition: 150ms linear;
+}
+
+
+.icon {
+    transition: 150ms linear;
+
+
+    position: relative;
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+
+}
+
+.icon > * {
+
+    font-size: 1.3rem !important;
+}
+
+.buttonWrapper[data-highlight = 'true'] .iconWrapper {
+    background: #49B3FF;
+    color: white;
+    width: 100%;
+}
+
+.label {
+    padding: 0 1px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 550;
+    font-family: 'Roboto';
+    text-align: center;
+    font-size: .7rem;
+}

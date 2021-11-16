@@ -118,7 +118,7 @@ Article.propTypes = {
         })),
         body: PropTypes.arrayOf(PropTypes.shape({
             content: PropTypes.any,
-            type: PropTypes.oneOf(['text', 'code', 'pre-formatted', 'image']),
+            type: PropTypes.oneOf(['text', 'native-code', 'pre-formatted', 'image']),
             float: PropTypes.oneOf(['right', 'left', 'stretch']),
             linkTo: PropTypes.string
         })),

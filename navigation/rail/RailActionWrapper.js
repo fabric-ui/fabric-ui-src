@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 
-export default function BarAction(props){
-    return props.children
+export default function RailActionWrapper(props){
+    return props.children ? props.children : <></>
 }
 
-BarAction.propTypes={
+RailActionWrapper.propTypes={
     children: PropTypes.node,
     className: PropTypes.string,
     styles: PropTypes.string,

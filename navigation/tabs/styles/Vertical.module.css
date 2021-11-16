@@ -18,6 +18,8 @@
 
 
 .header {
+    overflow-y: auto;
+    overflow-x: hidden;
     position: sticky;
     top: 0;
 
@@ -31,20 +33,18 @@
     max-width: 250px;
 
     display: grid;
-    gap: 24px;
+    align-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
 
 
     transition: 150ms linear;
     height: 100%;
-}
 
-.tabs {
 
-    overflow: hidden;
-
-    width: 100%;
     padding: 4px;
 }
+
 
 .button {
 

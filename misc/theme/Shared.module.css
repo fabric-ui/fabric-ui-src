@@ -32,15 +32,21 @@
     margin-top: auto;
     user-select: none;
     font-family: "Roboto";
-    text-transform: uppercase;
+    text-transform: capitalize;
 
+    display: flex;
+    width: 100%;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.overflow{
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 75%;
     overflow: hidden;
-
 }
-
 .alertLabel {
     color: var(--mfc-color-quaternary);
     font-family: "Roboto";
@@ -48,4 +54,12 @@
     font-size: .75rem;
     user-select: none;
 
+}
+.helperText{
+    transition: 150ms linear;
+    color: #FFAC3E;
+    cursor: help;
+}
+.helperText:hover{
+    color: #0095ff;
 }

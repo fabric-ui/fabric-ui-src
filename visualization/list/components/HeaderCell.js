@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React, {useRef, useState} from "react";
 import ToolTip from "../../../feedback/tooltip/ToolTip";
-import {ArrowDownwardRounded, LinkRounded} from "@material-ui/icons";
 import Button from "../../../inputs/button/Button";
 import styles from '../styles/Row.module.css'
 import keyTemplate from "../templates/keyTemplate";
@@ -17,7 +16,7 @@ export default function HeaderCell(props) {
             styles={{
                 width: `calc(${(1 / props.length) * 100}% + ${props.additionalWidth})`,
 
-                color: props.value.type === 'object' ? 'var(--mfc-color-quinary)' : 'inherit',
+                color: props.value.type === 'object' ? 'var(--mfc-color-quinary)' : 'var(--mfc-color-secondary)',
                 justifyContent: props.value.type !== 'object' ? 'space-between' : 'flex-start'
             }}
             disabled={props.value.type === 'object'}
@@ -50,23 +49,28 @@ export default function HeaderCell(props) {
             }}
             reference={ref}
         >
-            <LinkRounded style={{
-                display: props.value.type !== 'object' ? 'none' : undefined,
-                fontSize: '1.1rem',
-            }}/>
+                <span className="material-icons-round"
+                      style={{
+                          display: props.value.type !== 'object' ? 'none' : undefined,
+                          fontSize: '1.1rem',
+                      }}>
+                    link
+                </span>
             <div className={styles.overflow}>
                 {props.value.label}
                 <ToolTip content={props.value.label.toUpperCase()}/>
             </div>
-            <ArrowDownwardRounded
-                style={{
-                    display: props.value.type === 'object' ? 'none' : undefined,
-                    transform: currentSort === 'desc' ? 'rotate(180deg)' : undefined,
-                    fontSize: '1.1rem',
-                    transition: '150ms linear',
-                    color: currentSort === undefined ? 'var(--mfc-color-quinary)' : 'inherit'
-                }}
-            />
+            <span className="material-icons-round"
+                  style={{
+                      display: props.value.type === 'object' ? 'none' : undefined,
+                      transform: currentSort === 'desc' ? 'rotate(180deg)' : undefined,
+                      fontSize: '1.1rem',
+                      transition: '150ms linear',
+                      color: currentSort === undefined ? 'var(--mfc-color-quinary)' : 'inherit'
+                  }}
+            >
+              arrow_downward
+            </span>
         </Button>
 
     )

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import styles from './styles/Alert.module.css'
-import {CheckRounded, CloseRounded, ErrorRounded, InfoRounded, WarningRounded} from '@material-ui/icons'
 import React, {useEffect, useMemo} from 'react'
 import Button from "../../inputs/button/Button";
 import Modal from "../../navigation/modal/Modal";
@@ -9,31 +8,28 @@ export default function Alert(props) {
     const variant = useMemo(() => {
         switch (props.variant) {
             case 'success':
-                return {className: styles.success, icon: <CheckRounded/>}
+                return {className: styles.success, icon: <span className="material-icons-round">done</span>}
             case 'alert':
-                return {className: styles.alert, icon: <WarningRounded/>}
+                return {className: styles.alert, icon: <span className="material-icons-round">warning</span>}
             case 'info':
-                return {className: styles.info, icon: <InfoRounded/>}
+                return {className: styles.info, icon: <span className="material-icons-round">info</span>}
             default:
-                return {icon: <ErrorRounded/>}
+                return {icon: <span className="material-icons-round">error</span>}
         }
     }, [props.variant])
 
     useEffect(() => {
-        let timeout
-        if (props.delay)
-            timeout = setTimeout(() => {
-                if (!props.open)
-                    try {
-                        props.handleClose()
-                    } catch (e) {
-                    }
-            }, 5000)
+        let timeout = setTimeout(() => {
+            try {
+                props.handleClose()
+            } catch (e) {
+            }
+        }, props.delay ? props.delay : 5000)
         return () => {
             if (timeout)
                 clearTimeout(timeout)
         }
-    }, [props.open, props.delay])
+    }, [props.open])
 
     return (
         <Modal
@@ -43,7 +39,10 @@ export default function Alert(props) {
             variant={'fit'}
             blurIntensity={0}
             className={[styles.alertContainer, variant.className].join(' ')}>
-            <div className={styles.content} onClick={() => props.onClick()}>
+            <div className={styles.content} onClick={() => {
+                if (props.onClick)
+                    props.onClick()
+            }}>
                 <div
                     className={[styles.icon, styles.button].join(' ')}
                 >
@@ -56,7 +55,7 @@ export default function Alert(props) {
                 className={styles.button}
                 onClick={() => props.handleClose(true)}
             >
-                <CloseRounded style={{fontSize: '1.1rem'}}/>
+                <span style={{fontSize: '1.1rem'}} className="material-icons-round">close</span>
             </Button>
         </Modal>
     )

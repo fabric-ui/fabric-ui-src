@@ -2,8 +2,6 @@ import Modal from "../../../navigation/modal/Modal";
 import PropTypes from 'prop-types'
 import keyTemplate from "../templates/keyTemplate";
 import styles from '../styles/Settings.module.css'
-import TextField from "../../../inputs/text/TextField";
-import {VisibilityOffRounded, VisibilityRounded} from "@material-ui/icons";
 import ToolTip from "../../../feedback/tooltip/ToolTip";
 import React, {useMemo} from 'react'
 import Button from "../../../inputs/button/Button";
@@ -21,21 +19,20 @@ export default function Settings(props) {
                     <div className={styles.fieldLabel}>
                         {field.label}
                     </div>
-                    <TextField
-                        width={'100%'} size={'small'}
-
-                        value={field.additionalWidth ? parseInt(field.additionalWidth.replace('%', '')) : ''}
-                        maskEnd={'%'} label={'Largura adicional'}
-                        placeholder={'Largura adicional'}
-                        type={"number"} disabled={!field.visible}
-                        handleChange={(event) => {
-
+                    <input
+                        disabled={!field.visible}
+                        type={'range'}
+                        max={100}
+                        min={0}
+                        onChange={(event) => {
+                            console.log( {key: field.key, size: event.target.value + '%'})
                             props.dispatchKeys({
                                 type: props.actions.UPDATE_SIZE,
-                                payload: {key: field.key, size: event.target.value + '%'}
+                                payload: {key: field.key, size: event.target.value + '%', subfieldKey: field.subfieldKey}
                             })
                         }}
-                    />
+                        className={styles.range}
+                        value={field.additionalWidth ? parseInt(field.additionalWidth.replace('%', '')) : '0'}/>
 
                     <Button
                         className={styles.visibilityButton}
@@ -50,7 +47,11 @@ export default function Settings(props) {
                                 payload: field
                             })
                         }}>
-                        {field.visible ? <VisibilityRounded/> : <VisibilityOffRounded/>}
+                        {field.visible ?
+                            <span className="material-icons-round">visibility</span>
+                            :
+                            <span className="material-icons-round">visibility_off</span>
+                        }
                         <ToolTip>
                             {field.visible ? 'Esconder' : 'Mostrar'}
                         </ToolTip>

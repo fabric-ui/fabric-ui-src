@@ -1,5 +1,4 @@
-import React from "react";
-import {useContext, useEffect, useMemo, useRef, useState} from "react";
+import React, {useContext, useEffect, useMemo, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import ThemeContext from "../../../misc/theme/ThemeContext";
 

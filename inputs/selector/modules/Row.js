@@ -16,7 +16,6 @@ export default function Row(props) {
             disabled={props.disabled}
             styles={props.main ? {
                 background: 'var(--mfc-background-tertiary)',
-
             } : {
                 height: props.height,
                 position: 'relative',

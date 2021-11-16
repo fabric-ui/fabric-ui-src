@@ -1,5 +1,4 @@
 import styles from '../styles/SelectorModal.module.css'
-import {AddRounded, ClearAllRounded, FilterListRounded, RefreshRounded} from "@material-ui/icons";
 import React, {useEffect} from "react";
 import Modal from "../../../navigation/modal/Modal";
 import PropTypes from "prop-types";
@@ -37,7 +36,7 @@ export default function SelectorModal(props) {
             className={styles.wrapper}
         >
             <div className={styles.header}>
-                {props.title}
+                {props.label}
             </div>
             <div className={styles.headerButtons}>
 
@@ -48,7 +47,7 @@ export default function SelectorModal(props) {
                         styles={{display: props.createOption === true ? undefined : 'none'}}
                         className={styles.headerButton}
                     >
-                        <AddRounded/>
+                        <span className="material-icons-outlined">add</span>
                         <ToolTip content={'Criar novo'}/>
                     </Button>
                     <Button
@@ -56,7 +55,8 @@ export default function SelectorModal(props) {
                         onClick={() => props.hook.clean()}
                         className={styles.headerButton}
                     >
-                        <RefreshRounded/>
+                        <span className="material-icons-outlined">refresh</span>
+
                         <ToolTip content={'Recarregar dados'}/>
                     </Button>
                     <Button
@@ -64,7 +64,7 @@ export default function SelectorModal(props) {
                         onClick={() => setOpen(true)}
                         className={styles.headerButton}
                     >
-                        <FilterListRounded/>
+                        <span className="material-icons-outlined">filter_list</span>
                         <ToolTip content={'Filtros'}/>
                     </Button>
 
@@ -77,7 +77,8 @@ export default function SelectorModal(props) {
                     }} color={"secondary"}
                     className={styles.headerButton}
                     disabled={!props.value}>
-                    <ClearAllRounded/>
+
+                    <span className="material-icons-outlined">clear_all</span>
                     Limpar selecionado
                     <ToolTip content={'Limpar'}/>
                 </Button>
@@ -142,7 +143,7 @@ SelectorModal.propTypes = {
     value: PropTypes.object,
     handleChange: PropTypes.func,
 
-    title: PropTypes.string,
+    label: PropTypes.string,
     hook: PropTypes.object,
     identificationKey: PropTypes.string,
     onCreate: PropTypes.func

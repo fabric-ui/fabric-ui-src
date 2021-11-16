@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import ParseCurrency from "./methods/ParseCurrency";
 import shared from '../../misc/theme/Shared.module.css'
 import Ripple from "../../misc/ripple/Ripple";
+import ToolTip from "../../feedback/tooltip/ToolTip";
 
 
 export default function TextField(props) {
@@ -133,7 +134,19 @@ export default function TextField(props) {
                     opacity: valid ? '1' : '0',
                 }}
             >
-                {props.label}
+                <div className={shared.overflow}>
+                    {props.label}
+                </div>
+                {props.helperText ?
+                    <div className={shared.helperText}>
+                         <span
+                             style={{fontSize: '1rem'}}
+                             className="material-icons-round">info</span>
+                        <ToolTip content={props.helperText} align={'start'}/>
+                    </div>
+                    :
+                    null
+                }
             </div>
             <div
                 className={[color.className, shared.wrapper, styles.focus].join(' ')}
@@ -156,6 +169,8 @@ export default function TextField(props) {
 }
 
 TextField.propTypes = {
+    helperText: PropTypes.string,
+
     width: PropTypes.string,
     placeholder: PropTypes.string,
     label: PropTypes.string,

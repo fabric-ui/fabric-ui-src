@@ -2,7 +2,6 @@ import styles from '../shared/Dropdown.module.css'
 
 import PropTypes from 'prop-types'
 import React, {useEffect, useMemo, useRef, useState} from 'react'
-import {ArrowDropDownRounded} from '@material-ui/icons'
 import LocalePT from '../shared/LocalePT'
 import FloatingBox from "../floating_box/FloatingBox";
 import ToolTip from "../../feedback/tooltip/ToolTip";
@@ -50,7 +49,21 @@ export default function MultiSelectField(props) {
                  style={{
                      visibility: (props.value !== undefined && props.value !== null) ? 'visible' : 'hidden',
                      opacity: (props.value !== undefined && props.value !== null) ? '1' : '0',
-                 }}>{props.label}
+                 }}>
+                <div className={shared.overflow}>
+                    {props.label}
+                </div>
+                {props.helperText ?
+                    <div className={shared.helperText}>
+                      <span
+                          style={{fontSize: '1rem'}}
+                          className="material-icons-round">info</span>
+
+                        <ToolTip content={props.helperText} align={'start'}/>
+                    </div>
+                    :
+                    null
+                }
             </div>
             <div
                 className={[shared.wrapper, color.className].join(' ')}
@@ -68,8 +81,10 @@ export default function MultiSelectField(props) {
                     className={[color.className, styles.selectContainer, shared.labelContainer].join(' ')}
                     onClick={() => setOpen(!open)}
                 >
-                    <ArrowDropDownRounded
-                        style={{transform: !open ? 'unset' : 'rotate(180deg)', transition: '150ms linear'}}/>
+                        <span
+                            style={{transform: !open ? 'unset' : 'rotate(180deg)', transition: '150ms linear'}}
+                            className="material-icons-round">arrow_drop_down</span>
+
                     {props.value ?
                         <div className={styles.valueContainer}>
                             {props.asArray ? props.value.length : (props.value.split('-*/').length - 1)} - {lang.values}
@@ -138,6 +153,8 @@ export default function MultiSelectField(props) {
 }
 
 MultiSelectField.propTypes = {
+    helperText: PropTypes.string,
+
     width: PropTypes.string,
     label: PropTypes.string,
     choices: PropTypes.arrayOf(PropTypes.shape({

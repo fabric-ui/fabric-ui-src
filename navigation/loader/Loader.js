@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
-import Modal from "../modal/Modal";
 import styles from './styles/Loading.module.css'
 
 export default function Loader(props) {
     return (
-        <Modal open={props.loading} handleClose={() => null} blurIntensity={0}>
+        <div style={{display: props.loading ? undefined : 'none'}} className={styles.wrapper}>
             <div className={styles.loading}/>
-        </Modal>
+        </div>
     )
 }
 Loader.propTypes = {

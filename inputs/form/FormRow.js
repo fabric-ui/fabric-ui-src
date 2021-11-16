@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import styles from "./styles/FormRow.module.css";
 import React, {useEffect, useMemo, useRef, useState} from "react";
-import {ArrowDropDownRounded} from "@material-ui/icons";
 import Button from "../button/Button";
 import shared from './styles/Form.module.css'
 import ToolTip from "../../feedback/tooltip/ToolTip";
@@ -36,8 +35,10 @@ export default function FormRow(props) {
                     highlight={!open}
                     color={'secondary'}
                     className={shared.buttonContainer}>
-                    <ArrowDropDownRounded
-                        style={{transform: open ? undefined : 'rotate(180deg)', transition: 'inherit'}}/>
+                    <span
+                        style={{transform: open ? undefined : 'rotate(180deg)', transition: 'inherit'}}
+                        className="material-icons-round">arrow_drop_down</span>
+
                 </Button>
                 <h1 className={styles.legend}>{props.title ? props.title : ('Procedimento ' + index)}</h1>
             </div>

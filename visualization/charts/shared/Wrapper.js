@@ -1,7 +1,6 @@
-import React from "react";
+import React, {useMemo} from "react";
 import PropTypes from 'prop-types'
 import styles from "../horizontal/styles/Horizontal.module.css";
-import {useMemo} from "react";
 
 export default function Wrapper(props) {
     const {biggest, iterations} = useMemo(() => {

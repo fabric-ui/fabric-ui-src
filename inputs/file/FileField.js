@@ -2,11 +2,11 @@ import React, {useContext, useMemo, useState} from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles/FileField.module.css'
 import shared from '../../misc/theme/Shared.module.css'
-import {AttachFileRounded} from '@material-ui/icons'
 import LocalePT from '../shared/LocalePT'
 import FileModal from "./templates/FileModal";
 import ThemeContext from "../../misc/theme/ThemeContext";
 import Button from "../button/Button";
+import ToolTip from "../../feedback/tooltip/ToolTip";
 
 export default function FileField(props) {
     const lang = LocalePT
@@ -46,7 +46,22 @@ export default function FileField(props) {
                  style={{
                      opacity: files.length > 0 ? 1 : 0,
                      transition: 'visibility 0.2s ease,opacity 0.2s ease'
-                 }}>{props.label}</div>
+                 }}>
+                <div className={shared.overflow}>
+                    {props.label}
+                </div>
+                {props.helperText ?
+                    <div className={shared.helperText}>
+                       <span
+                           style={{fontSize: '1rem'}}
+                           className="material-icons-round">info</span>
+
+                        <ToolTip content={props.helperText} align={'start'}/>
+                    </div>
+                    :
+                    null
+                }
+            </div>
             <div
                 className={[shared.wrapper, color.className].join(' ')}
                 data-highlight={openModal ? openModal : undefined}
@@ -84,7 +99,10 @@ export default function FileField(props) {
                             :
                             null}
                     </div>
-                    <AttachFileRounded style={{fontSize: '1.2rem'}}/>
+                    <span
+                        style={{fontSize: '1.2rem'}}
+                        className="material-icons-round">attach_file</span>
+
                 </Button>
             </div>
             <div className={shared.alertLabel}
@@ -102,6 +120,8 @@ export default function FileField(props) {
 }
 
 FileField.propTypes = {
+    helperText: PropTypes.string,
+
     handleFileRemoval: PropTypes.func,
     value: PropTypes.array,
     multiple: PropTypes.bool,

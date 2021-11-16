@@ -1,7 +1,6 @@
 import styles from '../shared/Dropdown.module.css'
 import PropTypes from 'prop-types'
 import React, {useContext, useMemo, useRef, useState} from 'react'
-import {ArrowDropDownRounded} from '@material-ui/icons'
 import LocalePT from '../shared/LocalePT'
 import FloatingBox from "../floating_box/FloatingBox";
 import ToolTip from "../../feedback/tooltip/ToolTip";
@@ -10,7 +9,7 @@ import shared from '../../misc/theme/Shared.module.css'
 import Button from "../button/Button";
 import ThemeContext from "../../misc/theme/ThemeContext";
 
-export default function DropDownField(props) {
+export default function SelectField(props) {
     const [open, setOpen] = useState(false)
     const themes = useContext(ThemeContext)
     const lang = LocalePT
@@ -45,7 +44,20 @@ export default function DropDownField(props) {
                  style={{
                      visibility: (props.value !== undefined && props.value !== null) ? 'visible' : 'hidden',
                      opacity: (props.value !== undefined && props.value !== null) ? '1' : '0',
-                 }}>{props.label}
+                 }}>
+                <div className={shared.overflow}>
+                    {props.label}
+                </div>
+                {props.helperText ?
+                    <div className={shared.helperText}>
+                        <span style={{
+                            fontSize: '1rem'
+                        }} className="material-icons-round">info</span>
+                        <ToolTip content={props.helperText} align={'start'}/>
+                    </div>
+                    :
+                    null
+                }
             </div>
             <div
                 className={[shared.wrapper, color.className].join(' ')}
@@ -64,8 +76,10 @@ export default function DropDownField(props) {
                     className={[color.className, styles.selectContainer, shared.labelContainer].join(' ')}
                     onClick={() => setOpen(!open)}
                 >
-                    <ArrowDropDownRounded
-                        style={{transform: !open ? 'unset' : 'rotate(180deg)', transition: '150ms linear'}}/>
+                    <span
+                        style={{transform: !open ? 'unset' : 'rotate(180deg)', transition: '150ms linear'}}
+                        className="material-icons-round">arrow_drop_down</span>
+
                     {selected ?
                         <div className={styles.overflow} style={{color: selected.color}}>
                             {selected.value}
@@ -120,7 +134,9 @@ export default function DropDownField(props) {
     )
 }
 
-DropDownField.propTypes = {
+SelectField.propTypes = {
+    helperText: PropTypes.string,
+
     width: PropTypes.string,
     label: PropTypes.string,
     choices: PropTypes.arrayOf(PropTypes.shape({

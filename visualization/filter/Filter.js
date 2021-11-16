@@ -1,6 +1,5 @@
 import styles from "./styles/Field.module.css";
 import ToolTip from "../../feedback/tooltip/ToolTip";
-import {CalendarTodayRounded, CategoryRounded, CloseRounded, LinkRounded, TextFieldsRounded} from "@material-ui/icons";
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import keyTemplate from "../list/templates/keyTemplate";
@@ -34,20 +33,20 @@ export default function Filter(props) {
         let icon
         switch (type) {
             case 'date': {
-                icon = <CalendarTodayRounded style={{fontSize: '1.2rem'}}/>
+                icon = <span className="material-icons-round" style={{fontSize: '1.2rem'}}>calendar_today</span>
                 break
             }
 
             case 'string': {
-                icon = <TextFieldsRounded style={{fontSize: '1.2rem'}}/>
+                icon = <span className="material-icons-round" style={{fontSize: '1.2rem'}}>text_fields</span>
                 break
             }
             case 'object': {
-                icon = <LinkRounded style={{fontSize: '1.2rem'}}/>
+                icon =  <span className="material-icons-round" style={{fontSize: '1.2rem'}}>link</span>
                 break
             }
             default: {
-                icon = <CategoryRounded style={{fontSize: '1.2rem'}}/>
+                icon = <span className="material-icons-round" style={{fontSize: '1.2rem'}}>category</span>
                 break
             }
         }
@@ -138,7 +137,7 @@ export default function Filter(props) {
                                 newFilters.splice(i, 1)
                                 props.setFilters(newFilters)
                             }} className={styles.button}>
-                            <CloseRounded style={{fontSize: '1.1rem'}}/>
+                            <span className="material-icons-round" style={{fontSize: '1.1rem'}}>close</span>
                         </Button>
                     </div>
                 ))

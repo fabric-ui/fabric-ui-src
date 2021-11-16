@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import styles from '../styles/Field.module.css'
-import {CheckRounded} from "@material-ui/icons";
 import useFilter from "../hooks/useFilters";
 import React from 'react'
 import keyTemplate from "../../list/templates/keyTemplate";
@@ -44,7 +43,7 @@ export default function Field(props) {
                                 variant={'filled'}
                                 disabled={!changed}
                                 onClick={() => props.applyFilter()}>
-                                <CheckRounded/>
+                                <span className="material-icons-round">done</span>
                                 Aplicar
                             </Button>
                         </div>

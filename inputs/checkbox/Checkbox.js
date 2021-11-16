@@ -1,6 +1,5 @@
 import styles from './styles/Checkbox.module.css'
 import PropTypes from 'prop-types'
-import {CheckRounded} from "@material-ui/icons";
 import React from 'react'
 
 export default function Checkbox(props) {
@@ -14,12 +13,13 @@ export default function Checkbox(props) {
                     border: props.checked ? '#0095ff 1px solid' : undefined
                 }}
                 onClick={() => props.handleCheck(props.checked)}>
-                <CheckRounded style={{
+                <span style={{
                     color: 'white',
                     visibility: props.checked ? 'visible' : 'hidden',
                     fontSize: '15px',
                     fontWeight: "bold"
-                }}/>
+                }} className="material-icons-round">done</span>
+
             </button>
             {props.label ?
                 <div style={{fontSize: '.9rem'}}>

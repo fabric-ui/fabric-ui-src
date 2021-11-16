@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import styles from '../styles/Row.module.css'
 import React, {useRef} from 'react'
 import keyTemplate from "../templates/keyTemplate";
-import {SettingsRounded} from "@material-ui/icons";
 import HeaderCell from "./HeaderCell";
 
 export default function Header(props) {
@@ -28,7 +27,10 @@ export default function Header(props) {
                 className={styles.cell}
                 disabled={true}
                 style={{display: props.hasOptions ? 'flex' : 'none', justifyContent: 'center', width: '30px'}}>
-                <SettingsRounded style={{fontSize: '1.1rem', color: 'var(--mfc-color-quinary)'}}/>
+
+                <span className="material-icons-round" style={{fontSize: '1.1rem', color: 'var(--mfc-color-quinary)'}}>
+                    settings
+                </span>
             </div>
         </div>
     )

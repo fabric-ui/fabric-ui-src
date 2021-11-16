@@ -4,8 +4,7 @@ import React from 'react'
 import RowCell from "../../shared/RowCell";
 import keyTemplate from "../templates/keyTemplate";
 import Button from "../../../inputs/button/Button";
-import {ArrowDropDownRounded} from "@material-ui/icons";
-import Dropdown from "./Dropdown";
+import Dropdown from "../../../navigation/dropdown/Dropdown";
 
 export default function Row(props) {
     return (
@@ -45,9 +44,13 @@ export default function Row(props) {
                     <Dropdown
                         className={styles.mainButton}
                         variant={'minimal-horizontal'}
-                        label={<ArrowDropDownRounded/>}
-                        buttons={props.controlButtons}
-                        onClickProps={props.entry}/>
+                        options={props.controlButtons.map(e => {
+                            return {...e, onClickEvent: props.entry}
+                        })}>
+                          <span className="material-icons-round">
+                            arrow_drop_down
+                            </span>
+                    </Dropdown>
                 </div>
                 :
                 null}

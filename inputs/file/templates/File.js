@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, {useMemo} from "react";
-import {CloseRounded, DescriptionRounded, ImageRounded, LanguageRounded, PictureAsPdfRounded} from "@material-ui/icons";
 import styles from "../styles/File.module.css";
+import Button from "../../button/Button";
 
 export default function File(props) {
     // const [hover, setHover] = useState(false)
@@ -9,28 +9,46 @@ export default function File(props) {
         let icon
         switch (props.type) {
             case 'pdf': {
-                icon = <PictureAsPdfRounded style={{fontSize: '65px'}}/>
+
+                icon = <span
+                    style={{fontSize: '65px'}}
+                    className="material-icons-round">picture_as_pdf</span>
                 break
             }
             case 'png': {
-                icon = <ImageRounded style={{fontSize: '65px'}}/>
+
+                icon = <span
+                    style={{fontSize: '65px'}}
+                    className="material-icons-round">image</span>
                 break
             }
             case 'jpeg': {
-                icon = <ImageRounded style={{fontSize: '65px'}}/>
+
+                icon = <span
+                    style={{fontSize: '65px'}}
+                    className="material-icons-round">image</span>
                 break
             }
             case 'jpg': {
-                icon = <ImageRounded style={{fontSize: '65px'}}/>
+
+                icon = <span
+                    style={{fontSize: '65px'}}
+                    className="material-icons-round">image</span>
                 break
             }
             case 'html': {
-                icon = <LanguageRounded style={{fontSize: '65px'}}/>
+
+                icon = <span
+                    style={{fontSize: '65px'}}
+                    className="material-icons-round">web</span>
                 break
             }
 
             default : {
-                icon = <DescriptionRounded style={{fontSize: '65px'}}/>
+
+                icon = <span
+                    style={{fontSize: '65px'}}
+                    className="material-icons-round">description</span>
                 break
             }
 
@@ -40,9 +58,12 @@ export default function File(props) {
     return (
         <div className={styles.fileContainer}>
 
-            <div onClick={() => props.handleDelete(props.index)} className={styles.removeButton}>
-                <CloseRounded style={{fontSize: '1rem'}}/>
-            </div>
+            <Button onClick={() => props.handleDelete(props.index)} styles={{padding: '4px'}}>
+                <span
+                    style={{fontSize: '1rem'}}
+                    className="material-icons-round">close</span>
+
+            </Button>
             {icon}
             <div className={styles.fileLabel}>
                 {props.name.split('.')[0]}

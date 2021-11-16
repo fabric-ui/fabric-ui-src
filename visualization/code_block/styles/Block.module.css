@@ -1,0 +1,76 @@
+.code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    tab-size: 16;
+    /*padding-bottom: 16px;*/
+
+    max-width: 100%;
+    padding: 8px;
+    background: var(--mfc-background-secondary);
+}
+.buttons{
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    padding: 8px;
+}
+.button {
+    padding: 8px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*background: var(--mfc-background-primary) !important;*/
+}
+
+
+.wrapper {
+
+    border: var(--mfc-border-primary) 1px solid;
+
+    max-height: 100%;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    border-radius: 5px;
+    width: 100%;
+    max-width: 100%;
+    margin: 16px auto;
+    position: relative;
+
+    display: grid;
+    gap: 0;
+}
+
+.enumeration{
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+
+    text-align: left;
+    user-select: none;
+    color: var(--mfc-color-quinary);
+    position: absolute;
+
+    transition: 150ms linear;
+
+    width: 100%;
+}
+.enumeration:hover{
+    background: var(--mfc-background-quaternary);
+}
+.enumContent{
+    width: fit-content;
+    height: 1rem;
+    line-break: strict;
+    position: relative;
+    white-space: nowrap;
+    /*line-break: strict;*/
+    z-index: 1;
+
+    padding-left: 16px;
+}

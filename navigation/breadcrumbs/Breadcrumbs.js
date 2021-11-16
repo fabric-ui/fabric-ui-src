@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import styles from './styles/Breadcrumbs.module.css'
 import React from "react";
-import {ArrowForwardIosRounded} from "@material-ui/icons";
 
 export default function Breadcrumbs(props) {
 
@@ -11,11 +10,12 @@ export default function Breadcrumbs(props) {
             {React.Children.toArray(props.children).map((crumb, i) => (
                 <div className={styles.crumbWrapper} key={'breadcrumb-' + i}>
                     {crumb}
-
-                    <ArrowForwardIosRounded style={{
-                        fontSize: '1rem',
-                        display: i === (React.Children.toArray(props.children).length - 1) ? 'none' : undefined
-                    }}/>
+                    <span
+                        style={{
+                            fontSize: '1rem',
+                            display: i === (React.Children.toArray(props.children).length - 1) ? 'none' : undefined
+                        }}
+                        className="material-icons-round">arrow_forward_ios</span>
                 </div>
             ))}
         </div>

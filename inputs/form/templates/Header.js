@@ -1,5 +1,4 @@
 import styles from "../styles/Form.module.css";
-import {ArrowBackRounded} from "@material-ui/icons";
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "../../button/Button";
@@ -15,7 +14,9 @@ export default function Header(props) {
                     <Button className={styles.buttonContainer} color={'secondary'}
                             styles={{display: props.returnButton ? undefined : 'none'}}
                             onClick={() => props.handleClose()}>
-                        <ArrowBackRounded/>
+                        <span
+                            className="material-icons-round">arrow_back</span>
+
                     </Button>
                     {props.title}
                 </div>

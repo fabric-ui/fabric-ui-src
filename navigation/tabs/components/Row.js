@@ -1,15 +1,15 @@
 import styles from "../styles/Vertical.module.css";
-import {ArrowDropDownRounded} from "@material-ui/icons";
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import Switcher from "../../switcher/Switcher";
 import Button from "../../../inputs/button/Button";
+import ToolTip from "../../../feedback/tooltip/ToolTip";
 
 export default function Row(props) {
     const [hidden, setHidden] = useState(false)
 
     return (
-        <div style={{width: '100%', overflow: 'hidden'}}>
+        <div style={{width: '100%'}}>
             <Button
                 className={styles.button} variant={'minimal-horizontal'}
                 color={hidden ? 'primary' : "secondary"}
@@ -20,31 +20,35 @@ export default function Row(props) {
                 }}
                 onClick={() => setHidden(!hidden)}
             >
-                {props.groupName}
-                <ArrowDropDownRounded
-                    style={{transform: hidden ? 'rotate(180deg)' : "unset", transition: '150ms linear'}}/>
-            </Button>
-            <Switcher openChild={hidden ? 0 : 1}>
-                <div/>
-                <div>
-                    {props.buttons.map((b, bI) => b.group === props.groupName ? (
-                        <React.Fragment key={props.index + '-button-header-tab-' + bI}>
-                            <Button
-                                variant={'minimal-horizontal'}
-                                className={[styles.button, styles.color].join(' ')}
-                                styles={{fontWeight: 'normal', width: '100%'}}
-                                highlight={props.open === bI}
-                                onClick={() => {
-                                    props.setOpen(bI)
-                                }}>
-                                <div className={styles.overflow}>
-                                    {b.label}
-                                </div>
-                            </Button>
-                        </React.Fragment>
-                    ) : null)}
+                <div className={styles.overflow}>
+                    {props.groupName}
                 </div>
-            </Switcher>
+                <ToolTip content={props.groupName} align={'middle'} justify={"end"}/>
+                <span className="material-icons-round" style={{
+                    transform: hidden ? 'rotate(180deg)' : "unset",
+                    transition: '150ms linear'
+                }}>arrow_drop_down</span>
+            </Button>
+            {/*<Switcher openChild={hidden ? 0 : 1}>*/}
+            {/*    <div/>*/}
+
+            {hidden ? null : props.buttons.map((b, bI) => b.group === props.groupName ? (
+                <React.Fragment key={props.index + '-button-header-tab-' + bI}>
+                    <Button
+                        variant={'minimal-horizontal'}
+                        className={[styles.button, styles.color].join(' ')}
+                        styles={{fontWeight: 'normal', width: '100%'}}
+                        highlight={props.open === bI}
+                        onClick={() => {
+                            props.setOpen(bI)
+                        }}>
+                        <div className={styles.overflow}>
+                            {b.label}
+                        </div>
+                    </Button>
+                </React.Fragment>
+            ) : null)}
+
         </div>
     )
 }

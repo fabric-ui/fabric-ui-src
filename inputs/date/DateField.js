@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
-import React, {useMemo, useRef, useState} from 'react'
+import React, {useEffect, useMemo, useRef, useState} from 'react'
 import styles from './styles/DateField.module.css'
-import {ArrowBackIosRounded, CalendarTodayRounded} from "@material-ui/icons";
 import FloatingBox from "../floating_box/FloatingBox";
 import Button from "../button/Button";
 import TextField from "../text/TextField";
@@ -49,7 +48,10 @@ export default function DateField(props) {
         return res
     }
 
-
+    const [mask, setMask] = useState()
+    useEffect(() => {
+        setMask(pattern.replaceAll('y', '9').replaceAll('d', '9').replaceAll('m', '9'))
+    }, [pattern])
     return (
         <div ref={ref} style={{position: 'relative', width: props.width, height: 'fit-content'}}>
             <TextField
@@ -57,16 +59,18 @@ export default function DateField(props) {
                     setChanged(true)
                     props.handleChange(e.target.value)
                 }}
-                disabled={props.disabled}
+                disabled={props.disabled} helperText={props.helperText}
                 width={'100%'} highlight={open}
                 value={initialized && !changed ? parseDate(date.day, date.month, date.year) : props.value}
                 size={props.size} colorVariant={date.valid ? 'primary' : 'secondary'}
                 placeholder={props.label}
                 label={props.label}
-                mask={pattern.replaceAll('y', '9').replaceAll('d', '9').replaceAll('m', '9')}
+                mask={mask}
                 maskEnd={(
                     <Button onClick={() => setOpen(true)} disabled={props.disabled}>
-                        <CalendarTodayRounded style={{fontSize: '1.2rem'}}/>
+                        <span style={{
+                            fontSize: '1.2rem'
+                        }} className="material-icons-round">calendar_today</span>
                     </Button>
                 )} noMargin={true}
                 required={props.required}
@@ -82,7 +86,10 @@ export default function DateField(props) {
                                     const newYear = newMonth === 12 ? (date.year ? date.year - 1 : d.getFullYear() - 1) : (date.year ? date.year : d.getFullYear())
                                     props.handleChange(parseDate(newDay, newMonth, newYear))
                                 }}>
-                            <ArrowBackIosRounded style={{fontSize: '1.2rem'}}/>
+                            <span style={{
+                                fontSize: '1.2rem'
+                            }} className="material-icons-round">arrow_back_ios</span>
+
                         </Button>
                         <div className={styles.currentDate}>
                             <div>
@@ -101,7 +108,10 @@ export default function DateField(props) {
                                     const newYear = newMonth === 1 ? (date.year ? date.year + 1 : d.getFullYear() + 1) : (date.year ? date.year : d.getFullYear())
                                     props.handleChange(parseDate(newDay, newMonth, newYear))
                                 }}>
-                            <ArrowBackIosRounded style={{fontSize: '1.2rem', transform: 'rotate(180deg'}}/>
+                            <span
+                                style={{fontSize: '1.2rem', transform: 'rotate(180deg'}}
+                                className="material-icons-round">arrow_back_ios</span>
+
                         </Button>
                     </div>
 
@@ -116,6 +126,8 @@ export default function DateField(props) {
 }
 
 DateField.propTypes = {
+    helperText: PropTypes.string,
+
     width: PropTypes.string,
     label: PropTypes.string,
     handleChange: PropTypes.func.isRequired,

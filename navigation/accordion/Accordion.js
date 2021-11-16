@@ -1,6 +1,5 @@
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styles from "./styles/Accordion.module.css";
-import {ArrowDropDownRounded} from "@material-ui/icons";
 import PropTypes from "prop-types";
 
 export default function Accordion(props) {
@@ -19,12 +18,15 @@ export default function Accordion(props) {
         <div className={styles.elementsContainer} ref={ref}
              style={{background: open ? 'white' : undefined}}>
             <div className={styles.optionsDivider} onClick={() => setOpen(!open)}>
-                <ArrowDropDownRounded style={{
-                    transform: open ? `rotate(180deg)` : undefined,
-                    fontSize: '1.3rem',
-                    color: '#777777',
-                    transition: '150ms linear'
-                }}/>
+                <span
+                    style={{
+                        transform: open ? `rotate(180deg)` : undefined,
+                        fontSize: '1.3rem',
+                        color: '#777777',
+                        transition: '150ms linear'
+                    }}
+                    className="material-icons-round">arrow_drop_down</span>
+
                 {props.label}
             </div>
             <div style={{

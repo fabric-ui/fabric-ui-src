@@ -2,12 +2,12 @@ import React, {useMemo, useState} from 'react'
 import styles from './styles/Selector.module.css'
 import SelectorsPT from './locales/SelectorsPT'
 import SelectorModal from "./modules/SelectorModal";
-import {LaunchRounded} from "@material-ui/icons";
 import PropTypes from "prop-types";
 import shared from '../../misc/theme/Shared.module.css'
 import Row from "./modules/Row";
 import Modal from "../../navigation/modal/Modal";
 import Button from "../button/Button";
+import ToolTip from "../../feedback/tooltip/ToolTip";
 
 export default function Selector(props) {
     const [open, setOpen] = useState(false)
@@ -51,7 +51,17 @@ export default function Selector(props) {
                         textTransform: 'capitalize',
                     }}
                 >
-                    {props.title}
+                    <div className={shared.overflow}>
+                        {props.label}
+                    </div>
+                    {props.helperText ?
+                        <div className={shared.helperText}>
+                            <span className="material-icons-outlined" style={{fontSize: '1rem'}}>info</span>
+                            <ToolTip content={props.helperText} align={'start'}/>
+                        </div>
+                        :
+                        null
+                    }
                 </div>
                 <div
                     className={[shared.wrapper, color.className, styles.buttonWrapper].join(' ')}
@@ -62,7 +72,7 @@ export default function Selector(props) {
                     {props.value !== null && props.value !== undefined ?
                         <Row
                             onClick={() => {
-                                if(props.onClick)
+                                if (props.onClick)
                                     props.onClick()
                                 else
                                     setOpen(true)
@@ -86,14 +96,17 @@ export default function Selector(props) {
                             }} color={props.colorVariant === 'secondary' ? 'secondary' : 'primary'}
                             className={[styles.button, shared.labelContainer].join(' ')}
                             onClick={() => {
-                                if(props.onClick)
+                                if (props.onClick)
                                     props.onClick()
                                 else
                                     setOpen(true)
                             }}
                         >
                             {props.placeholder}
-                            <LaunchRounded style={{fontSize: '1.2rem'}}/>
+                            <span
+                                style={{fontSize: '1.2rem'}}
+                                className="material-icons-round">launch</span>
+
                         </Button>
                     }
                 </div>
@@ -120,12 +133,14 @@ export default function Selector(props) {
 }
 
 Selector.propTypes = {
+    helperText: PropTypes.string,
+
     children: PropTypes.func,
     onClick: PropTypes.func,
     hook: PropTypes.object.isRequired,
 
-    title: PropTypes.string,
-    placeholder: PropTypes.string,
+    label: PropTypes.any,
+    placeholder: PropTypes.any,
     required: PropTypes.bool,
     value: PropTypes.object,
     handleChange: PropTypes.func,

@@ -187,7 +187,7 @@
 }
 
 .outlined:disabled {
-    border-color: transparent;
+    border-color: var(--mfc-border-primary);
     color: var(--mfc-color-quaternary);
     background: transparent;
 }

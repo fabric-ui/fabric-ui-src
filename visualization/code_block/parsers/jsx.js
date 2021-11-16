@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function jsxToString(component) {
+export default function jsxParser(component){
     if (component.type === React.Fragment && component.props.children && component.props.children.length > 0) {
         let data = ''
         component.props.children.forEach(child => {
-            data = data + '\n' + jsxToString(child)
+            data = data + '<br>' + jsxParser(child)
         })
 
         return data
@@ -38,7 +38,7 @@ export default function jsxToString(component) {
                         break
                     }
                     case React.isValidElement(props.children): {
-                        childrenNode = jsxToString(props.children)
+                        childrenNode = jsxParser(props.children)
                         break
                     }
                     default: {
@@ -52,7 +52,7 @@ export default function jsxToString(component) {
             console.log(childrenNode)
             if (type)
                 return props.children ?
-                    `&lt;<b style="color:#86128f;">${type}</b>${propsString}&gt;` + '\n   ' + childrenNode + '\n' + `&lt;/<b style="color:#86128f;">${type}</b>&gt;`
+                    `&lt;<b style="color:#86128f;">${type}</b>${propsString}&gt;` + '<br>   ' + childrenNode + '<br>' + `&lt;/<b style="color:#86128f;">${type}</b>&gt;`
                     :
                     `&lt;<b style="color:#86128f;">${type}</b>${propsString}/&gt;`;
             else

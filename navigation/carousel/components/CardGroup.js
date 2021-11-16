@@ -1,7 +1,6 @@
 import styles from '../styles/CardGroup.module.css'
 import PropTypes from "prop-types";
 import React, {useRef, useState} from "react";
-import {ArrowDropDownRounded} from "@material-ui/icons";
 
 export default function CardGroup(props) {
     const [buttonEnd, setButtonEnd] = useState(false)
@@ -18,7 +17,9 @@ export default function CardGroup(props) {
                         else
                             setButtonEnd(false)
                     }}>
-                <ArrowDropDownRounded style={{transform: 'rotate(-90deg)'}}/>
+                <span
+                    style={{transform: 'rotate(-90deg)'}}
+                    className="material-icons-round">arrow_drop_down</span>
             </button>
             <button className={styles.button} style={{left: '20px', visibility: buttonStart ? 'visible' : 'hidden', opacity: buttonStart ? '1' : '0'}}
                     onClick={() => {
@@ -29,7 +30,10 @@ export default function CardGroup(props) {
                         else
                             setButtonStart(false)
                     }}>
-                <ArrowDropDownRounded style={{transform: 'rotate(90deg)'}}/>
+                            <span
+                                style={{transform: 'rotate(90deg)'}}
+                                className="material-icons-round">arrow_drop_down</span>
+
             </button>
             <div className={styles.groupWrapper} ref={ref} onMouseEnter={() => {
                 if ((ref.current.scrollWidth - ref.current.offsetWidth) > ref.current.scrollLeft)

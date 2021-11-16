@@ -12,7 +12,7 @@ export default function VerticalTabs(props) {
     return (
         <div className={props.className} style={{...props.styles, ...{position: 'relative'}}}>
             <div className={styles.header}>
-                <div className={styles.tabs}>
+
                     {groups.map((e, i) => (
                         <React.Fragment key={i + '-class'}>
                             <Row
@@ -29,7 +29,7 @@ export default function VerticalTabs(props) {
                                 groupName={e}/>
                         </React.Fragment>
                     ))}
-                </div>
+
             </div>
 
             <Switcher className={children[open].props.className} styles={children[open].styles} openChild={open}>
@@ -44,6 +44,8 @@ export default function VerticalTabs(props) {
 }
 
 VerticalTabs.proptypes = {
+    open: PropTypes.number,
+    setOpen: PropTypes.func,
 
     className: PropTypes.string,
     styles: PropTypes.object,

@@ -11,7 +11,12 @@ export default function Tabs(props) {
     const children = React.Children.toArray(props.children).filter(e => e.type === Tab)
     return (
         <div className={props.className} style={props.styles} data-open-tab={open}>
-            <div className={styles.header} style={{marginLeft: props.align === 'end' ? 'auto' : 'unset', marginRight: props.align === 'start' ? 'auto' : 'unset'}}>
+            <div className={styles.header}
+                 style={{
+                     justifyContent: props.align === 'end' ? 'flex-end' : props.align === 'start' ? 'flex-start' : undefined,
+                     width: props.indicator === 'fit' ? 'fit-content' : undefined,
+                     margin: props.indicator === 'fit' ? 'auto' : undefined
+                 }}>
                 <div className={styles.tabs}>
                     {children.map((e, i) => (
                         <React.Fragment key={i + '-button-header-tab'}>
@@ -31,7 +36,8 @@ export default function Tabs(props) {
                 </div>
             </div>
 
-            <Switcher className={children[open].props.className} styles={children[open].styles} openChild={open}>
+            <Switcher className={children[open]?.props.className} styles={children[open]?.props.styles}
+                      openChild={open}>
                 {children.map((el, index) => (
                     <React.Fragment key={index + '-tab'}>
                         {el}
@@ -42,10 +48,15 @@ export default function Tabs(props) {
     )
 }
 
-Tabs.proptypes = {
+Tabs.propTypes = {
+    open: PropTypes.number,
+    setOpen: PropTypes.func,
+
+
     align: PropTypes.oneOf(['start', 'end', 'center']),
     className: PropTypes.string,
     styles: PropTypes.object,
     children: PropTypes.node.isRequired,
+    indicator: PropTypes.oneOf(['stretch', 'fit'])
 
 }
