@@ -8,6 +8,7 @@ export default function Tab(props) {
 }
 
 Tab.propTypes = {
+    disabled: PropTypes.bool,
     className: PropTypes.string,
     styles: PropTypes.object,
     group: PropTypes.string,

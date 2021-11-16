@@ -5,28 +5,30 @@ import ToolTip from "../../feedback/tooltip/ToolTip";
 
 export default function RailActionButton(props) {
     return (
-        <button
-            onClick={props.onClick}
-            disabled={props.disabled}
-            className={styles.buttonWrapper}
-            data-extended={JSON.stringify(props.extended)}
-            data-highlight={JSON.stringify(props.highlight)}
-        >
-            <div className={styles.iconWrapper}>
+        <span>
+            <button
+                onClick={props.onClick}
+                disabled={props.disabled}
+                className={styles.buttonWrapper}
+                data-extended={JSON.stringify(props.extended)}
+                data-highlight={JSON.stringify(props.highlight)}
+            >
+                <div className={styles.iconWrapper}>
                 <span className={styles.icon}>
                     {props.icon}
                 </span>
 
-            </div>
-            <div className={styles.label}>
-                {props.label}
-            </div>
+                </div>
+                <div className={styles.label}>
+                    {props.label}
+                </div>
 
-            <Ripple disabled={props.disabled} opacity={.15}/>
+                <Ripple disabled={props.disabled} opacity={.15}/>
 
+            </button>
 
-            <ToolTip content={props.label} align={'middle'} justify={"end"}/>
-        </button>
+            <ToolTip content={props.label + (props.disabled ? ' (Disabled)' : '')} align={'middle'} justify={"end"}/>
+        </span>
     )
 }
 RailActionButton.propTypes = {

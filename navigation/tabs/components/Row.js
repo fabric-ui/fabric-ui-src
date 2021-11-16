@@ -1,7 +1,6 @@
 import styles from "../styles/Vertical.module.css";
 import React, {useState} from "react";
 import PropTypes from "prop-types";
-import Switcher from "../../switcher/Switcher";
 import Button from "../../../inputs/button/Button";
 import ToolTip from "../../../feedback/tooltip/ToolTip";
 
@@ -39,6 +38,7 @@ export default function Row(props) {
                         className={[styles.button, styles.color].join(' ')}
                         styles={{fontWeight: 'normal', width: '100%'}}
                         highlight={props.open === bI}
+                        disabled={b.disabled}
                         onClick={() => {
                             props.setOpen(bI)
                         }}>

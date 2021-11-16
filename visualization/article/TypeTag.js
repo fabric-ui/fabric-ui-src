@@ -1,7 +1,6 @@
 import styles from "./styles/Article.module.css";
 import PropTypes from "prop-types";
 import React, {useMemo, useRef} from "react";
-import Wrapper from "../code_block/Wrapper";
 
 
 export default function TypeTag(props) {

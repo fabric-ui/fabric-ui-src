@@ -1,8 +1,9 @@
 
 .buttonWrapper {
     width: clamp(57px, calc(3vw - 8px), 92px);
-    /*max-width: clamp(49px, calc(3vw - 16px), 84px);*/
     height: clamp(57px, calc(3vw - 8px), 92px);
+    /*max-width: clamp(49px, calc(3vw - 16px), 84px);*/
+
     overflow: hidden;
 
     display: flex;
@@ -27,6 +28,15 @@
 
 .buttonWrapper[data-highlight = 'true'] {
     color: var(--mfc-color-primary);
+    gap: 6px;
+}
+.buttonWrapper[data-highlight = 'false'] {
+    gap: 0;
+    height: clamp(50px, calc(3vw - 15px),85px);
+}
+.buttonWrapper:disabled{
+    cursor: unset;
+    color: var(--mfc-color-quinary) !important;
 }
 
 .buttonWrapper:active{

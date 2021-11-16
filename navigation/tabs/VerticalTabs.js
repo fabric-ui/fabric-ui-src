@@ -23,7 +23,8 @@ export default function VerticalTabs(props) {
                                 buttons={children.map(item => {
                                     return {
                                         label: item.props.label,
-                                        group: item.props.group
+                                        group: item.props.group,
+                                        disabled: item.props.disabled
                                     }
                                 })}
                                 groupName={e}/>
@@ -32,7 +33,7 @@ export default function VerticalTabs(props) {
 
             </div>
 
-            <Switcher className={children[open].props.className} styles={children[open].styles} openChild={open}>
+            <Switcher className={children[open].props.className} styles={children[open].props.styles} openChild={open}>
                 {children.map((el, index) => (
                     <React.Fragment key={index + '-tab-vertical'}>
                         {el}
