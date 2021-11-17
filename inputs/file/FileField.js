@@ -1,15 +1,15 @@
 import React, {useContext, useMemo, useState} from 'react'
 import PropTypes from 'prop-types'
 import styles from './styles/FileField.module.css'
-import shared from '../../misc/theme/Shared.module.css'
-import LocalePT from '../shared/LocalePT'
+import shared from '../shared/styles/Shared.module.css'
 import FileModal from "./templates/FileModal";
-import ThemeContext from "../../misc/theme/ThemeContext";
+import ThemeContext from "../../misc/context/ThemeContext";
 import Button from "../button/Button";
 import ToolTip from "../../feedback/tooltip/ToolTip";
+import useLocale from "../../misc/hooks/useLocale";
 
 export default function FileField(props) {
-    const lang = LocalePT
+    const translate = useLocale()
 
     const [openModal, setOpenModal] = useState(false)
 
@@ -85,16 +85,17 @@ export default function FileField(props) {
                             height: '100%',
                             gap: '16px',
                             display: 'flex',
-                            color: themes ? themes.themes.color1 : '#555555'
+                            color: themes ? 'var(--mfc-color-primary)' : '#555555'
                         }}
                     >
-                        Anexar arquivos
+                      {translate('upload_files')}
+
                         {files.length > 0 ?
                             <div style={{
                                 fontSize: '.7rem',
-                                color: themes ? themes.themes.color2 : '#777777'
+                                color: themes ?'var(--mfc-color-secondary)' : '#777777'
                             }}>
-                                ({files.length} Anexados)
+                                ({files.length}  {translate('uploaded_files')})
                             </div>
                             :
                             null}
@@ -109,7 +110,7 @@ export default function FileField(props) {
                  style={{
                      color: (files.length === 0) ? '#ff5555' : undefined,
                      visibility: props.required ? 'visible' : 'hidden'
-                 }}>{lang.required}</div>
+                 }}>{translate('required')}</div>
 
             <FileModal open={openModal} setOpen={setOpenModal} files={files} multiple={props.multiple}
                        setFiles={props.handleChange}

@@ -1,17 +1,17 @@
-import styles from '../shared/Dropdown.module.css'
+import styles from '../shared/styles/Select.module.css'
 
 import PropTypes from 'prop-types'
 import React, {useEffect, useMemo, useRef, useState} from 'react'
-import LocalePT from '../shared/LocalePT'
 import FloatingBox from "../floating_box/FloatingBox";
 import ToolTip from "../../feedback/tooltip/ToolTip";
 import Checkbox from "../checkbox/Checkbox";
-import shared from '../../misc/theme/Shared.module.css'
+import shared from '../shared/styles/Shared.module.css'
 import Button from "../button/Button";
+import useLocale from "../../misc/hooks/useLocale";
 
 export default function MultiSelectField(props) {
     const [open, setOpen] = useState(false)
-    const lang = LocalePT
+    const translate = useLocale()
     const ref = useRef()
     const [selected, setSelected] = useState([])
 
@@ -87,7 +87,7 @@ export default function MultiSelectField(props) {
 
                     {props.value ?
                         <div className={styles.valueContainer}>
-                            {props.asArray ? props.value.length : (props.value.split('-*/').length - 1)} - {lang.values}
+                            {props.asArray ? props.value.length : (props.value.split('-*/').length - 1)} - {translate('values')}
                         </div>
                         : props.label}
                 </Button>
@@ -145,7 +145,7 @@ export default function MultiSelectField(props) {
                      visibility: props.required ? 'visible' : 'hidden',
                  }}
             >
-                {lang.required}
+                {translate('required')}
             </div>
 
         </div>

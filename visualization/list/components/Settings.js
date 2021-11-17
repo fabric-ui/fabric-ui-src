@@ -7,7 +7,7 @@ import React, {useMemo} from 'react'
 import Button from "../../../inputs/button/Button";
 import Tabs from "../../../navigation/tabs/Tabs";
 import Empty from "../../../feedback/empty/Empty";
-import shared from '../../../misc/theme/Shared.module.css'
+import shared from '../../../inputs/shared/styles/Shared.module.css'
 import Tab from "../../../navigation/tabs/Tab";
 
 export default function Settings(props) {

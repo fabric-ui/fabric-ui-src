@@ -4,6 +4,7 @@ import React, {useEffect, useMemo, useRef, useState} from "react";
 import Button from "../button/Button";
 import shared from './styles/Form.module.css'
 import ToolTip from "../../feedback/tooltip/ToolTip";
+import useLocale from "../../misc/hooks/useLocale";
 
 export default function FormRow(props) {
     useEffect(() => {
@@ -24,11 +25,11 @@ export default function FormRow(props) {
     const [open, setOpen] = useState(true)
     const [index, setIndex] = useState()
     const ref = useRef()
-
+    const translate = useLocale()
     return (
         <div className={styles.wrapper} ref={ref} data-completed={completed}>
             <div className={styles.legendContent}>
-                <ToolTip content={!completed ? 'Não completo' : 'Completo'} justify={"start"} align={'middle'}/>
+                <ToolTip content={!completed ? translate('not_completed')  :translate('complete')} justify={"start"} align={'middle'}/>
                 <div className={[styles.indicator, !completed ? styles.notCompleted : undefined].join(' ')}/>
                 <Button
                     onClick={() => setOpen(!open)}
@@ -40,7 +41,7 @@ export default function FormRow(props) {
                         className="material-icons-round">arrow_drop_down</span>
 
                 </Button>
-                <h1 className={styles.legend}>{props.title ? props.title : ('Procedimento ' + index)}</h1>
+                <h1 className={styles.legend}>{props.title ? props.title : (translate('step') + ' ' + index)}</h1>
             </div>
             {open ? props.children : null}
         </div>

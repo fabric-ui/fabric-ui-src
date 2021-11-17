@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useMemo, useRef, useState} from "react";
 import PropTypes from "prop-types";
-import ThemeContext from "../../../misc/theme/ThemeContext";
+import ThemeContext from "../../../misc/context/ThemeContext";
 
 export default function useChart(props) {
     const theme = useContext(ThemeContext)

@@ -2,10 +2,10 @@ import styles from "../styles/Form.module.css";
 import React from "react";
 import PropTypes from "prop-types";
 import Button from "../../button/Button";
-import EntityLayoutPT from "../locales/EntityLayoutPT";
+import useLocale from "../../../misc/hooks/useLocale";
 
 export default function Header(props) {
-    const lang = EntityLayoutPT
+    const translate = useLocale()
 
     return (
         <div className={styles.header} style={{boxShadow: props.scrolled ? undefined : 'none'}}>
@@ -30,7 +30,7 @@ export default function Header(props) {
                             props.hook.setChanged(false)
                             props.handleSubmit(props.hook.data, props.hook.clearState)
                         }}>
-                        {props.submitLabel ? props.submitLabel : (props.create ? lang.create : lang.save)}
+                        {props.submitLabel ? props.submitLabel : (props.create ? translate('create') : translate('save'))}
                     </Button>
                 </div>
             </div>

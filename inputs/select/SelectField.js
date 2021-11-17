@@ -1,18 +1,16 @@
-import styles from '../shared/Dropdown.module.css'
+import styles from '../shared/styles/Select.module.css'
 import PropTypes from 'prop-types'
-import React, {useContext, useMemo, useRef, useState} from 'react'
-import LocalePT from '../shared/LocalePT'
+import React, {useMemo, useRef, useState} from 'react'
 import FloatingBox from "../floating_box/FloatingBox";
 import ToolTip from "../../feedback/tooltip/ToolTip";
 
-import shared from '../../misc/theme/Shared.module.css'
+import shared from '../shared/styles/Shared.module.css'
 import Button from "../button/Button";
-import ThemeContext from "../../misc/theme/ThemeContext";
+import useLocale from "../../misc/hooks/useLocale";
 
 export default function SelectField(props) {
     const [open, setOpen] = useState(false)
-    const themes = useContext(ThemeContext)
-    const lang = LocalePT
+    const translate = useLocale()
     const ref = useRef()
     const selected = useMemo(() => {
         return props.choices.find(e => e.key === props.value)
@@ -102,7 +100,7 @@ export default function SelectField(props) {
                             <Button
                                 styles={{
                                     borderRadius: '0',
-                                    borderTop: index > 0 ? themes.theme?.border0 + ' 1px solid' : 'none'
+                                    borderTop: index > 0 ?  'var(--mfc-border-primary) 1px solid' : 'none'
                                 }}
                                 highlight={choice.key === props.value}
                                 onClick={() => {
@@ -127,7 +125,7 @@ export default function SelectField(props) {
                      visibility: props.required ? 'visible' : 'hidden',
                  }}
             >
-                {lang.required}
+              {translate('required')}
             </div>
 
         </div>

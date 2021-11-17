@@ -52,6 +52,7 @@ export default function DateField(props) {
     useEffect(() => {
         setMask(pattern.replaceAll('y', '9').replaceAll('d', '9').replaceAll('m', '9'))
     }, [pattern])
+
     return (
         <div ref={ref} style={{position: 'relative', width: props.width, height: 'fit-content'}}>
             <TextField

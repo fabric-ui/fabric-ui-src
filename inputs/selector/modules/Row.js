@@ -4,9 +4,10 @@ import ToolTip from "../../../feedback/tooltip/ToolTip";
 import React from "react";
 import RowCell from "../../../visualization/shared/RowCell";
 import Button from "../../button/Button";
+import useLocale from "../../../misc/hooks/useLocale";
 
 export default function Row(props) {
-
+    const translate = useLocale()
     return (
         <Button
             onClick={() => props.onClick()}
@@ -24,7 +25,8 @@ export default function Row(props) {
         >
 
             <div style={{display: props.main && !props.data ? undefined : 'none'}}>
-                Nada selecionado.
+              {translate('nothing_selected')}
+
             </div>
             {props.main && !props.data ?
                 null :

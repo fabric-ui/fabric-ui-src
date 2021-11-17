@@ -3,7 +3,7 @@ import Button from "../../inputs/button/Button";
 import PropTypes from "prop-types";
 import React, {useState} from "react";
 import ToolTip from "../../feedback/tooltip/ToolTip";
-import useCopyToClipboard from "../../misc/useCopyToClipboard";
+import useCopyToClipboard from "../../misc/hooks/useCopyToClipboard";
 import Alert from "../../feedback/alert/Alert";
 
 

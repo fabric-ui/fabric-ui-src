@@ -9,6 +9,7 @@ import ToolTip from "../../../feedback/tooltip/ToolTip";
 import useHeader from "../../../visualization/list/hook/useHeader";
 import Filter from "../../../visualization/filter/Filter";
 import Button from "../../button/Button";
+import useLocale from "../../../misc/hooks/useLocale";
 
 export default function SelectorModal(props) {
     const lastElementRef = useInfiniteScroll(props.hook.setCurrentPage, props.hook.currentPage, props.hook.loading, props.hook.hasMore)
@@ -23,6 +24,9 @@ export default function SelectorModal(props) {
         if (props.open)
             props.hook.clean()
     }, [props.open])
+
+    const translate = useLocale()
+
     return (
         <Modal
             open={props.open}
@@ -47,25 +51,25 @@ export default function SelectorModal(props) {
                         styles={{display: props.createOption === true ? undefined : 'none'}}
                         className={styles.headerButton}
                     >
-                        <span className="material-icons-outlined">add</span>
-                        <ToolTip content={'Criar novo'}/>
+                        <span className="material-icons-round">add</span>
+                        <ToolTip content={translate('create_new')}/>
                     </Button>
                     <Button
                         variant={'outlined'}
                         onClick={() => props.hook.clean()}
                         className={styles.headerButton}
                     >
-                        <span className="material-icons-outlined">refresh</span>
+                        <span className="material-icons-round">refresh</span>
 
-                        <ToolTip content={'Recarregar dados'}/>
+                        <ToolTip content={translate('reload_data')}/>
                     </Button>
                     <Button
                         variant={'outlined'}
                         onClick={() => setOpen(true)}
                         className={styles.headerButton}
                     >
-                        <span className="material-icons-outlined">filter_list</span>
-                        <ToolTip content={'Filtros'}/>
+                        <span className="material-icons-round">filter_list</span>
+                        <ToolTip content={translate('filters')}/>
                     </Button>
 
                 </div>
@@ -78,9 +82,9 @@ export default function SelectorModal(props) {
                     className={styles.headerButton}
                     disabled={!props.value}>
 
-                    <span className="material-icons-outlined">clear_all</span>
-                    Limpar selecionado
-                    <ToolTip content={'Limpar'}/>
+                    <span className="material-icons-round">clear_all</span>
+                    {translate('clear_selected')}
+                    <ToolTip content={translate('clear_selected')}/>
                 </Button>
 
             </div>

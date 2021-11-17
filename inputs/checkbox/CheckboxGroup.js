@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
 import styles from './styles/Checkbox.module.css'
-import shared from '../../misc/theme/Shared.module.css'
+import shared from '../shared/styles/Shared.module.css'
 import React from "react";
-import LocalePT from "../shared/LocalePT";
 import ToolTip from "../../feedback/tooltip/ToolTip";
+import useLocale from "../../misc/hooks/useLocale";
 
 export default function CheckboxGroup(props){
-    const lang = LocalePT
+    const translate = useLocale()
     return(
         <div style={{width: props.width, display: 'grid', gap: '4px'}}>
             <fieldset className={styles.wrapper} style={{width: '100%'}}>
@@ -34,7 +34,7 @@ export default function CheckboxGroup(props){
                  style={{
                      color: props.value === null || props.value === undefined ? '#ff5555' : '#262626',
                      visibility: props.required ? 'visible' : 'hidden',
-                 }}>{lang.required}</div>
+                 }}>{translate('required')}</div>
         </div>
     )
 }

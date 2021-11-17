@@ -4,8 +4,9 @@ import File from "./File";
 import PropTypes from "prop-types";
 import Empty from "../../../feedback/empty/Empty";
 import Modal from "../../../navigation/modal/Modal";
-import ThemeContext from "../../../misc/theme/ThemeContext";
+import ThemeContext from "../../../misc/context/ThemeContext";
 import Button from "../../button/Button";
+import useLocale from "../../../misc/hooks/useLocale";
 
 export default function FileModal(props) {
     const ref = useRef()
@@ -21,7 +22,7 @@ export default function FileModal(props) {
             ))
     }, [props.files])
     const themes = useContext(ThemeContext)
-
+    const translate = useLocale()
     return (
         <Modal
             open={props.open}
@@ -31,11 +32,10 @@ export default function FileModal(props) {
             className={styles.modalContent}>
             <div className={styles.header}>
                 <div style={{width: '100%'}}>
-                    Anexar arquivos
+                  {translate('upload_files')}
                 </div>
                 <div className={[styles.headerAccepted, styles.overflow].join(' ')} style={{width: '100%'}}>
-                    Tipos
-                    aceitos: {props.accept.length > 0 ? props.accept.map((e, i) => e.split('.')[e.split('.').length - 1] + ((i < props.accept.length - 1) ? ', ' : '')) : 'todos'}
+                  {translate('accepted_types')}: {props.accept.length > 0 ? props.accept.map((e, i) => e.split('.')[e.split('.').length - 1] + ((i < props.accept.length - 1) ? ', ' : '')) : translate('all')}
                 </div>
             </div>
             <Button
@@ -44,7 +44,7 @@ export default function FileModal(props) {
                     event.preventDefault()
                     ref.current.click()
                 }}>
-                Anexar arquivos
+              {translate('upload_files')}
             </Button>
 
             <div
@@ -53,28 +53,28 @@ export default function FileModal(props) {
                 style={{background: !props.multiple && props.files.length > 0 ?themes.theme.background1 : undefined}}
                 onDragLeave={(e) => {
                     if (!(!props.multiple && props.files.length > 0)) {
-                        areaRef.current.style.borderColor = themes.theme.border1
-                        areaRef.current.style.background = themes.theme.backgroundBase
+                        areaRef.current.style.borderColor = 'var(--mfc-border-primary)'
+                        areaRef.current.style.background = 'var(--mfc-background-primary)'
                     }
                 }}
                 onDragOver={(e) => {
                     e.preventDefault()
                     if (!(!props.multiple && props.files.length > 0)) {
                         areaRef.current.style.borderColor = '#0095ff'
-                        areaRef.current.style.background = themes.theme.background3
+                        areaRef.current.style.background ='var(--mfc-background-tertiary)'
                     }
                 }}
                 onDrop={e => {
                     e.preventDefault()
                     if (!(!props.multiple && props.files.length > 0)) {
                         areaRef.current.style.borderColor = '#0095ff'
-                        areaRef.current.style.background = themes.theme.background3
+                        areaRef.current.style.background = 'var(--mfc-background-tertiary)'
                         props.setFiles([...props.files, ...Array.from(e.dataTransfer.files)])
                     }
 
                 }}>
                 {props.files.length === 0 ?
-                    <Empty customLabel={'Arraste seus arquivos aqui'}/>
+                    <Empty customLabel={translate('drag_files')}/>
                     :
                     files}
             </div>

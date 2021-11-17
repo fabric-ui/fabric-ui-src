@@ -1,24 +1,24 @@
 import styles from './styles/Input.module.css'
 import React, {useEffect, useMemo, useRef} from 'react'
 import InputMask from 'react-input-mask'
-import LocalePT from '../shared/LocalePT'
 import PropTypes from "prop-types";
 import ParseCurrency from "./methods/ParseCurrency";
-import shared from '../../misc/theme/Shared.module.css'
+import shared from '../shared/styles/Shared.module.css'
 import Ripple from "../../misc/ripple/Ripple";
 import ToolTip from "../../feedback/tooltip/ToolTip";
+import useLocale from "../../misc/hooks/useLocale";
 
 
 export default function TextField(props) {
-    const lang = LocalePT
+    const translate = useLocale()
     const maskEndRef = useRef()
     const maskStartRef = useRef()
     const ref = useRef()
     useEffect(() => {
         if (props.maskStart)
-            ref.current.style.paddingLeft = (maskStartRef.current.offsetWidth + 12) + 'px'
+            ref.current.style.paddingLeft = (maskStartRef.current.offsetWidth + 10) + 'px'
         if (props.maskEnd)
-            ref.current.style.paddingRight = (maskEndRef.current.offsetWidth + 12) + 'px'
+            ref.current.style.paddingRight = (maskEndRef.current.offsetWidth + 10) + 'px'
     }, [props.maskStart, props.maskEnd])
 
 
@@ -161,7 +161,7 @@ export default function TextField(props) {
                      color: !valid ? '#ff5555' : undefined,
                      visibility: props.required ? 'visible' : 'hidden',
                      display: props.noMargin && !props.required ? 'none' : undefined
-                 }}>{lang.required}
+                 }}>{translate('required')}
             </div>
 
         </div>
