@@ -11,16 +11,18 @@ export default function Dropdown(props) {
     const ref = useRef()
     const resizeObs = useRef()
     const callback = () => {
-        setWidth(ref.current.offsetWidth)
-        setHeight(ref.current.offsetHeight)
+        setWidth(ref.current?.offsetWidth)
+        setHeight(ref.current?.offsetHeight)
     }
     useEffect(() => {
-        setWidth(ref.current.offsetWidth)
-        setHeight(ref.current.offsetHeight)
+        setWidth(ref.current?.offsetWidth)
+        setHeight(ref.current?.offsetHeight)
         resizeObs.current = new ResizeObserver(callback)
 
-        resizeObs.current.observe(ref.current)
-
+        resizeObs.current?.observe(ref.current)
+        return () => {
+            resizeObs.current?.disconnect();
+        }
     }, [])
     return (
         <div className={styles.wrapper}>
@@ -34,7 +36,7 @@ export default function Dropdown(props) {
             </Button>
             <Modal
                 variant={"fit"}
-                styles={{transform: `translate(${props.justify === 'end' ? '-50%' : `calc(50% - ${width/2}px)`}, ${props.align === 'top' ? `calc(-50% - ${height/2}px)` : `calc(50% + ${height/2}px)`})`}}
+                styles={{transform: `translate(${props.justify === 'end' ? '-50%' : `calc(50% - ${width / 2}px)`}, ${props.align === 'top' ? `calc(-50% - ${height / 2}px)` : `calc(50% + ${height / 2}px)`})`}}
                 blurIntensity={0} className={styles.buttons}
                 animationStyle={'fade'}
                 open={open}

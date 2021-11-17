@@ -22,6 +22,18 @@ export default function ListHeader(props) {
             <div className={styles.header} style={{marginBottom: props.hook.filters.length === 0 ? '8px' : undefined}}>
                 {props.title}
                 <div style={{display: 'flex', alignItems: 'center', gap: '8px'}}>
+                    {props.options?.map((op, ind) => (
+                       <React.Fragment key={ind + '-list-op'}>
+                           <Button
+                               variant={'outlined'}
+                               className={styles.button}
+                               styles={{gap: '16px'}}
+                               onClick={() => op.onClick()}
+                           >
+                               {op.label}
+                           </Button>
+                       </React.Fragment>
+                    ))}
                     <Button
                         variant={'outlined'}
                         className={styles.button}
@@ -97,6 +109,11 @@ export default function ListHeader(props) {
 }
 
 ListHeader.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string,
+        onClick: PropTypes.func
+    })),
+
     scrolled: PropTypes.bool,
 
     hook: PropTypes.object,

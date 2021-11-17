@@ -29,7 +29,7 @@ export default function List(props) {
                       keys={keys} actions={actions} setOpen={setOpenSettings}
                       dispatchKeys={keysDispatcher}/>
             <ListHeader
-
+                options={props.options}
                 scrolled={scrolled}
 
                 title={props.title}
@@ -75,6 +75,11 @@ export default function List(props) {
 }
 
 List.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.shape({
+        label: PropTypes.string,
+        onClick: PropTypes.func
+    })),
+
     noFilters: PropTypes.bool,
     hook: PropTypes.object.isRequired,
     onRowClick: PropTypes.func.isRequired,

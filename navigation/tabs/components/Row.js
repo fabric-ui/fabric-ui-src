@@ -8,7 +8,7 @@ export default function Row(props) {
     const [hidden, setHidden] = useState(false)
 
     return (
-        <div style={{width: '100%'}}>
+        <div style={{width: '100%', maxWidth: '100%', overflowX: 'hidden'}}>
             <Button
                 className={styles.button} variant={'minimal-horizontal'}
                 color={hidden ? 'primary' : "secondary"}
@@ -36,7 +36,7 @@ export default function Row(props) {
                     <Button
                         variant={'minimal-horizontal'}
                         className={[styles.button, styles.color].join(' ')}
-                        styles={{fontWeight: 'normal', width: '100%'}}
+                        styles={{fontWeight: 'normal', maxWidth: '100%', width: '100%'}}
                         highlight={props.open === bI}
                         disabled={b.disabled}
                         onClick={() => {

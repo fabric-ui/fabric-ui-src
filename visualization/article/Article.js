@@ -42,6 +42,8 @@ export default function Article(props) {
                 if (element !== null)
                     intersectionObs.current?.unobserve(element)
             })
+
+            intersectionObs.current?.disconnect()
         }
     }, [])
 
