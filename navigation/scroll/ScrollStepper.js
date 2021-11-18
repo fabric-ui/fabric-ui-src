@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import PropTypes from "prop-types";
 import styles from './styles/Stepper.module.css'
 import StepperWrapper from "./StepperWrapper";

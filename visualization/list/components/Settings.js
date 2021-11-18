@@ -2,12 +2,9 @@ import Modal from "../../../navigation/modal/Modal";
 import PropTypes from 'prop-types'
 import keyTemplate from "../templates/keyTemplate";
 import styles from '../styles/Settings.module.css'
-import ToolTip from "../../../feedback/tooltip/ToolTip";
-import React, {useCallback, useEffect, useMemo, useState} from 'react'
-import Button from "../../../inputs/button/Button";
+import React, {useEffect, useState} from 'react'
 import Tabs from "../../../navigation/tabs/Tabs";
 import Empty from "../../../feedback/empty/Empty";
-import shared from '../../../inputs/shared/styles/Shared.module.css'
 import Tab from "../../../navigation/tabs/Tab";
 import SettingsField from "./SettingsField";
 

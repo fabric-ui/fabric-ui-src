@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useReducer, useState} from "react";
+import React, {useEffect, useReducer, useState} from "react";
 import ACTIONS from "./deps/dataActions";
 import dataReducer from "./deps/dataReducer";
 import PropTypes from 'prop-types'
