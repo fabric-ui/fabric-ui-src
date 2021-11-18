@@ -28,8 +28,8 @@ export default function Dropdown(props) {
         <div className={styles.wrapper}>
             <Button
                 highlight={open}
-                reference={ref}
-                variant={props.variant} onClick={() => setOpen(true)}
+                reference={ref} styles={props.styles}
+                variant={props.variant} color={props.color} onClick={() => setOpen(true)}
                 disabled={props.disabled}
                 className={props.className}>
                 {props.children}
@@ -67,7 +67,7 @@ Dropdown.propTypes = {
     className: PropTypes.string,
     styles: PropTypes.object,
     disabled: PropTypes.bool,
-
+    color: PropTypes.oneOf(['primary', 'secondary']),
 
     children: PropTypes.node,
     options: PropTypes.arrayOf(PropTypes.shape({

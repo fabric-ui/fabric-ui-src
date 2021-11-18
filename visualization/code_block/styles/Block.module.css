@@ -3,17 +3,19 @@
     word-wrap: break-word;
     tab-size: 16;
     /*padding-bottom: 16px;*/
-
+    overflow: hidden;
     max-width: 100%;
     padding: 8px;
     background: var(--mfc-background-secondary);
 }
-.buttons{
+
+.buttons {
     display: flex;
     gap: 8px;
     justify-content: flex-end;
     padding: 8px;
 }
+
 .button {
     padding: 8px;
     width: 30px;
@@ -44,7 +46,7 @@
     gap: 0;
 }
 
-.enumeration{
+.enumeration {
     padding: 0;
     margin: 0;
     background: transparent;
@@ -60,15 +62,17 @@
 
     width: 100%;
 }
-.enumeration:hover{
+
+.enumeration:hover {
     background: var(--mfc-background-quaternary);
 }
-.enumContent{
-    width: fit-content;
-    height: 1rem;
+
+.enumContent {
+    display: inline-block;
+    height: fit-content;
     line-break: strict;
     position: relative;
-    white-space: nowrap;
+    width: 100%;
     /*line-break: strict;*/
     z-index: 1;
 

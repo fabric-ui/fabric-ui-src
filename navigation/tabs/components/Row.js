@@ -8,7 +8,7 @@ export default function Row(props) {
     const [hidden, setHidden] = useState(false)
 
     return (
-        <div style={{width: '100%', maxWidth: '100%', overflowX: 'hidden'}}>
+        <div className={styles.rowWrapper}>
             <Button
                 className={styles.button} variant={'minimal-horizontal'}
                 color={hidden ? 'primary' : "secondary"}

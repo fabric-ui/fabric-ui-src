@@ -12,7 +12,7 @@ export default function JavascriptCode(props) {
         return props.jsxContent.map((c, i) => enumerateLines(c, '\n'))
     }, [])
     const full = useMemo(() => {
-        return enumerateLines(props.fullCode, '\n')
+        return enumerateLines(props.fullCode, '\n', true)
     }, [])
     useEffect(() => {
         props.setCopy(props.originalCode)

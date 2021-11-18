@@ -38,9 +38,7 @@ export default function ScrollStepper(props) {
                         variant={'filled'}
                         className={styles.button}
                         onClick={() => {
-
                             const el = document.getElementById(id + '-stepper-child-' + index)
-
                             if (el !== null) {
                                 setScrolled(index)
                                 ref.current.scroll(0, el.offsetTop)

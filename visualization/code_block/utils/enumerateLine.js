@@ -12,7 +12,7 @@ const getPadding = (length) => {
             return '16px'
     }
 }
-export default function enumerateLines(data, divider) {
+export default function enumerateLines(data, divider, keepEmptyLines) {
     let smallestWhiteSpace, removedLines = 0, padding, d = data
 
     try {
@@ -37,7 +37,7 @@ export default function enumerateLines(data, divider) {
         })
 
         d = d.map((line, i) => {
-            if (!/^\s+$/gm.test(line)) {
+            if (!/^\s+$/gm.test(line) || keepEmptyLines) {
                 const c = line.split('')
                 let newLine = []
                 let reachedLetter = false
@@ -51,7 +51,11 @@ export default function enumerateLines(data, divider) {
                 })
                 newLine = newLine.join('')
                 const content = newLine.replace(' '.repeat(smallestWhiteSpace), '')
-                return `<span><button class=${styles.enumeration}>${i - removedLines}</button><span class=${styles.enumContent} style="padding-left: ${padding}">${content}</span></span>`
+                if (content.includes('///JSX'))
+                    return null
+                else
+
+                    return `<span><button class=${styles.enumeration}>${i - removedLines}</button><span class=${styles.enumContent} style="padding-left: ${padding}">${content}</span></span>`
             } else {
                 removedLines += 1
                 return null

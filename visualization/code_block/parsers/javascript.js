@@ -39,14 +39,14 @@ export default function javascriptParser(data) {
             let before = [], after = ''
             if (index > 0 ) {
                 [...js].forEach((h, i)=>{
-                    if(i >= indexes[index -1].endsOn && i <= e.startsOn)
+                    if(i >= indexes[index ].endsOn && i <= e.startsOn)
                         before.push(h)
                 })
 
                 before = before.join('\n')
             }
             else if(index === 0)
-                before = [...js].splice(0, e.startsOn + 2).join('\n')
+                before = [...js].splice(0, e.startsOn + 1).join('\n')
 
             if (index === indexes.length -1)
                 after = [...js].splice( e.endsOn, js.length).join('\n')
@@ -62,7 +62,6 @@ export default function javascriptParser(data) {
                     .replace(/ from /igm, '<b style="color: orange">$&</b>')
                     .replace(/function /igm, '<b style="color: #FF6A00">$&</b>')
                     .replace(/return /igm, '<b style="color: #FF6A00">$&</b>')
-
             fullCode.push(reactDomHighlight(before) + jsx + '\n' + reactDomHighlight(after))
             res.push(
                 jsx

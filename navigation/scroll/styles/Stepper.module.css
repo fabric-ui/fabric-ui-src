@@ -6,10 +6,10 @@
 }
 
 .button {
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    padding: 0 !important;
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50% !important;
     position: relative;
 }
 
