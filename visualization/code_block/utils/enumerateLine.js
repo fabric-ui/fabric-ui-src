@@ -18,7 +18,7 @@ export default function enumerateLines(data, divider) {
     try {
         d = d.split(divider)
         padding = getPadding(d.length)
-        console.log(padding)
+
         d.forEach((e, index) => {
             if (e !== '\r') {
                 const c = e.split('')

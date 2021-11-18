@@ -3,75 +3,34 @@ import PropTypes from 'prop-types'
 import keyTemplate from "../templates/keyTemplate";
 import styles from '../styles/Settings.module.css'
 import ToolTip from "../../../feedback/tooltip/ToolTip";
-import React, {useMemo} from 'react'
+import React, {useCallback, useEffect, useMemo, useState} from 'react'
 import Button from "../../../inputs/button/Button";
 import Tabs from "../../../navigation/tabs/Tabs";
 import Empty from "../../../feedback/empty/Empty";
 import shared from '../../../inputs/shared/styles/Shared.module.css'
 import Tab from "../../../navigation/tabs/Tab";
+import SettingsField from "./SettingsField";
 
 export default function Settings(props) {
 
-    const getField = (field, index) => {
-        return (
-            <div className={shared.wrapper}>
-                <div className={styles.fieldRow}>
-                    <div className={styles.fieldLabel}>
-                        {field.label}
-                    </div>
-                    <input
-                        disabled={!field.visible}
-                        type={'range'}
-                        max={100}
-                        min={0}
-                        onChange={(event) => {
-                            console.log( {key: field.key, size: event.target.value + '%'})
-                            props.dispatchKeys({
-                                type: props.actions.UPDATE_SIZE,
-                                payload: {key: field.key, size: event.target.value + '%', subfieldKey: field.subfieldKey}
-                            })
-                        }}
-                        className={styles.range}
-                        value={field.additionalWidth ? parseInt(field.additionalWidth.replace('%', '')) : '0'}/>
 
-                    <Button
-                        className={styles.visibilityButton}
-                        color={field.visible ? 'secondary' : undefined}
-                        onClick={() => {
-                            console.log({
-                                type: props.actions.UPDATE_VISIBILITY,
-                                payload: {key: field.key}
-                            })
-                            props.dispatchKeys({
-                                type: props.actions.UPDATE_VISIBILITY,
-                                payload: field
-                            })
-                        }}>
-                        {field.visible ?
-                            <span className="material-icons-round">visibility</span>
-                            :
-                            <span className="material-icons-round">visibility_off</span>
-                        }
-                        <ToolTip>
-                            {field.visible ? 'Esconder' : 'Mostrar'}
-                        </ToolTip>
-                    </Button>
-                </div>
-            </div>
-        )
-    }
+    const [fields, setFields] = useState({
+        hidden: props.keys.filter(f => !f.visible),
+        visible: props.keys.filter(f => f.visible),
+    })
 
-    const fields = useMemo(() => {
-        return {
+    useEffect(() => {
+        setFields({
             hidden: props.keys.filter(f => !f.visible),
             visible: props.keys.filter(f => f.visible),
-        }
-    }, [props.keys])
+        })
+    }, [props])
     return (
         <Modal
             open={props.open}
             handleClose={() => props.setOpen(false)}
-            animationStyle={"slide-right"} blurIntensity={0}
+            animationStyle={"slide-right"}
+            blurIntensity={0}
             className={styles.modal}
         >
             <div className={styles.header}>
@@ -83,7 +42,7 @@ export default function Settings(props) {
                 <Tab label={'Todos'} className={styles.content}>
                     {props.keys.map((e, i) => (
                         <React.Fragment key={i + '-row-' + JSON.stringify(e.label)}>
-                            {getField(e, i)}
+                            <SettingsField field={e} dispatchKeys={props.dispatchKeys} actions={props.actions}/>
                         </React.Fragment>
                     ))}
                 </Tab>
@@ -91,7 +50,7 @@ export default function Settings(props) {
                     {fields.visible.length > 0 ?
                         fields.visible.map((e, i) => (
                             <React.Fragment key={i + '-row-' + JSON.stringify(e.label)}>
-                                {getField(e, i)}
+                                <SettingsField field={e} dispatchKeys={props.dispatchKeys} actions={props.actions}/>
                             </React.Fragment>
                         ))
                         :
@@ -99,15 +58,14 @@ export default function Settings(props) {
                     }
                 </Tab>
                 <Tab label={'Escondidos'} className={styles.content}>
-                    {
-                        fields.hidden.length > 0 ?
-                            fields.hidden.map((e, i) => (
-                                <React.Fragment key={i + '-row-' + JSON.stringify(e.label)}>
-                                    {getField(e, i)}
-                                </React.Fragment>
-                            ))
-                            :
-                            <Empty customLabel={'Todos os campos estão visíveis'}/>}
+                    {fields.hidden.length > 0 ?
+                        fields.hidden.map((e, i) => (
+                            <React.Fragment key={i + '-row-' + JSON.stringify(e.label)}>
+                                <SettingsField field={e} dispatchKeys={props.dispatchKeys} actions={props.actions}/>
+                            </React.Fragment>
+                        ))
+                        :
+                        <Empty customLabel={'Todos os campos estão visíveis'}/>}
                 </Tab>
             </Tabs>
         </Modal>

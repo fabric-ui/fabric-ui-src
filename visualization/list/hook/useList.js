@@ -13,7 +13,8 @@ const reducer = (state, action) => {
         case actions.UPDATE_SIZE: {
 
             let newValue = [...state]
-            const i = newValue.findIndex(e => e.key === action.payload.key && e.subfieldKey === action.payload.subfieldKey)
+
+            const i = newValue.findIndex(e => (action.payload.type === 'object' && e.key === action.payload.key && e.subfieldKey === action.payload.subfieldKey) || (action.payload.type !== 'object' && e.key === action.payload.key))
             newValue[i].additionalWidth = action.payload.size
 
             return newValue
@@ -21,7 +22,9 @@ const reducer = (state, action) => {
         case actions.UPDATE_VISIBILITY: {
 
             let newValue = [...state]
-            const i = newValue.findIndex(e => e.key === action.payload.key && e.subfieldKey === action.payload.subfieldKey)
+
+            const i = newValue.findIndex(e => (action.payload.type === 'object' && e.key === action.payload.key && e.subfieldKey === action.payload.subfieldKey) || (action.payload.type !== 'object' && e.key === action.payload.key))
+
             newValue[i].visible = !newValue[i].visible
             return newValue
         }
@@ -33,7 +36,7 @@ const reducer = (state, action) => {
 export default function useList(initialKeys) {
 
 
-    const [keys, keysDispatcher] = useReducer(reducer, initialKeys, (val) => val)
+    const [keys, keysDispatcher] = useReducer(reducer, initialKeys)
     const [openSettings, setOpenSettings] = useState(false)
 
 

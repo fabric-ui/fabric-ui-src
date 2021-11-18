@@ -39,8 +39,11 @@
 }
 
 .buttonLabel {
-    display: flex;
+    text-align: left;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     padding: 0 10px;
-    justify-content: flex-end;
     width: 100%;
 }

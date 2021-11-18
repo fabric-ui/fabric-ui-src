@@ -15,7 +15,7 @@ export default function useQuery(props) {
     const [sorts, setSorts] = useState([])
     const [hasMore, setHasMore] = useState(false)
 
-    const fetchParams = useCallback((page = undefined) => {
+    const fetchParams = (page = undefined) => {
         let pack = {
             page: page !== undefined ? page : currentPage,
             quantity: props.fetchSize,
@@ -33,8 +33,8 @@ export default function useQuery(props) {
             headers: {...props.headers, 'content-type': 'application/json'}, url: props.url,
             params: pack,
         }
-    }, [filters, sorts, props])
-    const fetchData = useCallback(
+    }
+    const fetchData =
         (page = undefined) => {
             setLoading(true)
             const params = fetchParams(page)
@@ -46,22 +46,26 @@ export default function useQuery(props) {
                 dispatchData({type: ACTIONS.PUSH, payload: res.data})
                 setHasMore(res.data.length > 0)
                 setLoading(false)
+
             }).catch(() => null)
-        }, [props, loading, hasMore, data])
+        }
     useEffect(() => {
-        if (currentPage > 0)
+        if (currentPage > 0) {
+            // console.log('CURRENT PAGE FETCH', filters)
             fetchData(currentPage)
+        }
     }, [currentPage])
 
     useEffect(() => {
         clean()
-    }, [filters, sorts])
+    }, [filters])
 
     const clean = () => {
 
-        dispatchData({type: ACTIONS.EMPTY})
         setHasMore(false)
         setCurrentPage(0)
+        dispatchData({type: ACTIONS.EMPTY})
+
 
         fetchData(0)
     }

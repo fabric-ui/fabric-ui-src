@@ -50,17 +50,7 @@ export default function FileField(props) {
                 <div className={shared.overflow}>
                     {props.label}
                 </div>
-                {props.helperText ?
-                    <div className={shared.helperText}>
-                       <span
-                           style={{fontSize: '1rem'}}
-                           className="material-icons-round">info</span>
 
-                        <ToolTip content={props.helperText} align={'start'}/>
-                    </div>
-                    :
-                    null
-                }
             </div>
             <div
                 className={[shared.wrapper, color.className].join(' ')}
@@ -88,14 +78,14 @@ export default function FileField(props) {
                             color: themes ? 'var(--mfc-color-primary)' : '#555555'
                         }}
                     >
-                      {translate('upload_files')}
+                        {translate('upload_files')}
 
                         {files.length > 0 ?
                             <div style={{
                                 fontSize: '.7rem',
-                                color: themes ?'var(--mfc-color-secondary)' : '#777777'
+                                color: themes ? 'var(--mfc-color-secondary)' : '#777777'
                             }}>
-                                ({files.length}  {translate('uploaded_files')})
+                                ({files.length} {translate('uploaded_files')})
                             </div>
                             :
                             null}
@@ -108,9 +98,21 @@ export default function FileField(props) {
             </div>
             <div className={shared.alertLabel}
                  style={{
-                     color: (files.length === 0) ? '#ff5555' : undefined,
-                     visibility: props.required ? 'visible' : 'hidden'
-                 }}>{translate('required')}</div>
+                     color: (files.length === 0) ? '#ff5555' : undefined
+                 }}>
+                {props.required ?translate('required') : undefined}
+                {props.helperText ?
+                    <div className={shared.helperText}>
+                       <span
+                           style={{fontSize: '1rem'}}
+                           className="material-icons-round">info</span>
+
+                        <ToolTip content={props.helperText} align={'start'}/>
+                    </div>
+                    :
+                    null
+                }
+            </div>
 
             <FileModal open={openModal} setOpen={setOpenModal} files={files} multiple={props.multiple}
                        setFiles={props.handleChange}

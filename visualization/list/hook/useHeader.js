@@ -5,7 +5,6 @@ export default function useHeader(dispatch, actions) {
 
     const getType = (object) => {
         let label = 'é'
-        console.log(object)
         if (object.greater_than === true)
             label = 'maior que'
         if (object.less_than === true)

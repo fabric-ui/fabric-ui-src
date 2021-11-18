@@ -6,7 +6,7 @@ import LanguageContext from "../context/LanguageContext";
 
 export default function MfcWrapper(props) {
   return (
-    <LanguageContext.Provider value={props.language ? props.language : 'pt'}>
+    <LanguageContext.Provider value={props.language  !== undefined ? props.language : 'pt'}>
       <ThemeContext.Provider value={{
         dark: props.onDark,
         styles: styles,

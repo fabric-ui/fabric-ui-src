@@ -137,16 +137,7 @@ export default function TextField(props) {
                 <div className={shared.overflow}>
                     {props.label}
                 </div>
-                {props.helperText ?
-                    <div className={shared.helperText}>
-                         <span
-                             style={{fontSize: '1rem'}}
-                             className="material-icons-round">info</span>
-                        <ToolTip content={props.helperText} align={'start'}/>
-                    </div>
-                    :
-                    null
-                }
+
             </div>
             <div
                 className={[color.className, shared.wrapper, styles.focus].join(' ')}
@@ -159,9 +150,19 @@ export default function TextField(props) {
             <div className={shared.alertLabel}
                  style={{
                      color: !valid ? '#ff5555' : undefined,
-                     visibility: props.required ? 'visible' : 'hidden',
-                     display: props.noMargin && !props.required ? 'none' : undefined
-                 }}>{translate('required')}
+                     display: props.noMargin && !props.required && !props.helperText? 'none' : undefined
+                 }}>
+                {props.required ?translate('required') : undefined}
+                {props.helperText ?
+                    <div className={shared.helperText}>
+                         <span
+                             style={{fontSize: '1rem'}}
+                             className="material-icons-round">info</span>
+                        <ToolTip content={props.helperText} align={'start'}/>
+                    </div>
+                    :
+                    null
+                }
             </div>
 
         </div>

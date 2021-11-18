@@ -26,7 +26,7 @@ export default async function Request(props) {
 
     return axios(params)
         .then((r) => {
-            console.log(r)
+
             ReactDOM.unmountComponentAtNode(loader)
             if (props.showSuccessAlert) {
                 const newElement = document.createElement('div')

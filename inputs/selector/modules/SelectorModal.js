@@ -31,7 +31,7 @@ export default function SelectorModal(props) {
         <Modal
             open={props.open}
             handleClose={() => {
-                console.log(open)
+
                 if (!open)
                     props.setOpen(false)
             }}

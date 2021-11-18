@@ -70,7 +70,7 @@ export default function javascriptParser(data) {
         })
 
     } catch (e) {
-        console.log(e)
+
     }
     return {jsxContent: res, fullCode: fullCode.join('\n'), originalCode: data}
 }

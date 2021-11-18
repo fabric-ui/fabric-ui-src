@@ -14,16 +14,7 @@ export default function CheckboxGroup(props){
                     <div className={shared.overflow}>
                         {props.label}
                     </div>
-                    {props.helperText ?
-                        <div className={shared.helperText}>
-                            <span style={{
-                             fontSize: '1rem'
-                            }} className="material-icons-round">info</span>
-                            <ToolTip content={props.helperText} align={'start'}/>
-                        </div>
-                        :
-                        null
-                    }
+
                 </legend>
                 <div className={styles.wrapperChildren}>
                     {props.children}
@@ -32,9 +23,20 @@ export default function CheckboxGroup(props){
             </fieldset>
             <div className={shared.alertLabel}
                  style={{
-                     color: props.value === null || props.value === undefined ? '#ff5555' : '#262626',
-                     visibility: props.required ? 'visible' : 'hidden',
-                 }}>{translate('required')}</div>
+                     color: props.value === null || props.value === undefined ? '#ff5555' : '#262626'
+                 }}>
+                {props.required ?translate('required') : undefined}
+                {props.helperText ?
+                    <div className={shared.helperText}>
+                         <span
+                             style={{fontSize: '1rem'}}
+                             className="material-icons-round">info</span>
+                        <ToolTip content={props.helperText} align={'start'}/>
+                    </div>
+                    :
+                    null
+                }
+            </div>
         </div>
     )
 }

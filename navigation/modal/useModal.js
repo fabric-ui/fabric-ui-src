@@ -48,7 +48,6 @@ export default function useModal({animationStyle, variant}) {
         try {
             ReactDOM.unmountComponentAtNode(mountingPoint.current)
         } catch (e) {
-            console.log(e)
         }
     }
 
@@ -57,7 +56,6 @@ export default function useModal({animationStyle, variant}) {
     }
 
     const animate = (enter) => {
-        console.log('ANIMATING', enter ? animation.enter : animation.exit, target.current)
         if (enter)
             target.current?.classList.add(animation.enter)
         else {

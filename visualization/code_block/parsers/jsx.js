@@ -48,8 +48,6 @@ export default function jsxParser(component){
                 }
             }
 
-
-            console.log(childrenNode)
             if (type)
                 return props.children ?
                     `&lt;<b style="color:#86128f;">${type}</b>${propsString}&gt;` + '<br>   ' + childrenNode + '<br>' + `&lt;/<b style="color:#86128f;">${type}</b>&gt;`

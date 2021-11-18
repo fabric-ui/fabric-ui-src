@@ -36,7 +36,7 @@ export default function Dropdown(props) {
             </Button>
             <Modal
                 variant={"fit"}
-                styles={{transform: `translate(${props.justify === 'end' ? '-50%' : `calc(50% - ${width / 2}px)`}, ${props.align === 'top' ? `calc(-50% - ${height / 2}px)` : `calc(50% + ${height / 2}px)`})`}}
+                styles={{transform: `translate(${props.justify === 'end' ? `calc(-50% + ${width/2}px)` : `calc(50% - ${width / 2}px)`}, ${props.align === 'top' ? `calc(-50% - ${height / 2}px)` : `calc(50% + ${height / 2}px)`})`}}
                 blurIntensity={0} className={styles.buttons}
                 animationStyle={'fade'}
                 open={open}

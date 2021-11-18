@@ -46,7 +46,7 @@ export default function RequestAlert(props) {
                 onClick={() => setOpen(true)}
                 open={!open} variant={props.httpStatusCode < 300 ? 'success' : 'error'}
                 handleClose={(forced) => {
-                    console.log('ON CLOSE ', forced)
+
                     if (forced)
                         ReactDOM.unmountComponentAtNode(ref.current?.parentNode);
                 }}

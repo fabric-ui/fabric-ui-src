@@ -10,7 +10,6 @@ export default function useFilter(filter, setFilter, setSelectorOpen, selectorOp
     const [onInput, setOnInput] = useState(undefined)
     const [changed, setChanged] = useState(false)
     const query = useMemo(() => {
-        console.log(filter, 'here on memo')
         return filter?.query ? filter.query : {}
     }, [filter])
     let hook = useQuery(query)

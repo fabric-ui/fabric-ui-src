@@ -24,6 +24,6 @@ export default {
   all: 'Todos',
   drag_files: 'Arraste seus arquivos aqui',
   not_completed: 'Não completo',
-  completed: 'Completo',
+  complete: 'Completo',
   step: 'Procedimento'
 }

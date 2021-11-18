@@ -39,7 +39,8 @@
 }
 
 .fieldRow {
-
+    max-width: 100%;
+    overflow: hidden;
     height: 60px;
     position: relative;
     z-index: 999;
@@ -63,7 +64,7 @@
 }
 
 .fieldLabel {
-
+    max-width: 50%;
 
     text-transform: capitalize;
     width: 100%;

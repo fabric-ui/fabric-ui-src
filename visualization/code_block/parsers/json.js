@@ -79,14 +79,14 @@ export default function jsonParser(data) {
             newArr.push(highlightObject(newObj, 0, true))
         })
 
-        console.log(newArr)
+
         response = highlightArray(newArr, 0, true)
     } else {
         let newObject = {}
         Object.keys(data).forEach(e => {
             newObject[e] = parseData(data[e], 0)
         })
-        console.log(newObject)
+
         response = highlightObject(newObject, 0, true)
     }
     return response

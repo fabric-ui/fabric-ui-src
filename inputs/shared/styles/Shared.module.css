@@ -48,9 +48,10 @@
     overflow: hidden;
 }
 .alertLabel {
+    display: flex;
+    justify-content: space-between;
     color: var(--mfc-color-quaternary);
     font-family: "Roboto";
-    margin-left: auto;
     font-size: .75rem;
     user-select: none;
 

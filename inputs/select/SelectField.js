@@ -46,16 +46,6 @@ export default function SelectField(props) {
                 <div className={shared.overflow}>
                     {props.label}
                 </div>
-                {props.helperText ?
-                    <div className={shared.helperText}>
-                        <span style={{
-                            fontSize: '1rem'
-                        }} className="material-icons-round">info</span>
-                        <ToolTip content={props.helperText} align={'start'}/>
-                    </div>
-                    :
-                    null
-                }
             </div>
             <div
                 className={[shared.wrapper, color.className].join(' ')}
@@ -100,7 +90,7 @@ export default function SelectField(props) {
                             <Button
                                 styles={{
                                     borderRadius: '0',
-                                    borderTop: index > 0 ?  'var(--mfc-border-primary) 1px solid' : 'none'
+                                    borderTop: index > 0 ? 'var(--mfc-border-primary) 1px solid' : 'none'
                                 }}
                                 highlight={choice.key === props.value}
                                 onClick={() => {
@@ -122,10 +112,20 @@ export default function SelectField(props) {
             <div className={shared.alertLabel}
                  style={{
                      color: props.value === null || props.value === undefined ? '#ff5555' : '#262626',
-                     visibility: props.required ? 'visible' : 'hidden',
                  }}
             >
-              {translate('required')}
+
+                {props.required ?translate('required') : undefined}
+                {props.helperText ?
+                    <div className={shared.helperText}>
+                        <span style={{
+                            fontSize: '1rem'
+                        }} className="material-icons-round">info</span>
+                        <ToolTip content={props.helperText} align={'start'}/>
+                    </div>
+                    :
+                    null
+                }
             </div>
 
         </div>
