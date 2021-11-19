@@ -3,39 +3,61 @@ import React, {useState} from "react";
 import styles from "./styles/Rail.module.css";
 import RailActionButton from "./RailActionButton";
 import RailContext from "./RailContext";
+import Button from "../../inputs/button/Button";
+import Modal from "../modal/Modal";
 
 export default function NavigationRail(props) {
     const [extended, setExtended] = useState(false)
+    const groups = [...new Set(React.Children.toArray(props.children).map(item => item.props.group))]
+
+    const content = (
+        <>
+            <div className={styles.alignStart} data-variant={props.orientation ? props.orientation : 'vertical'}>
+                {React.Children.toArray(props.children).filter(e => e.props.place !== 'end').map((e, i) => {
+                    if (e.type === RailActionButton)
+                        return e
+                    else
+                        return (
+                            <div key={i + '-rail-node-start'} className={e.props.className} style={e.props.styles}>
+                                {e}
+                            </div>
+                        )
+                })}
+            </div>
+            <div className={styles.alignEnd} data-variant={props.orientation ? props.orientation : 'vertical'}>
+                {React.Children.toArray(props.children).filter(e => e.props.place === 'end').map((e, i) => {
+                    if (e.type === RailActionButton)
+                        return e
+                    else
+                        return (
+                            <div key={i + '-rail-node-end'} className={e.props.className} style={e.props.styles}>
+                                {e}
+                            </div>
+                        )
+                })}
+            </div>
+        </>
+    )
     return (
         <div
-            className={styles.wrapperVertical}
+            className={styles.wrapper}
+            data-extended={JSON.stringify(extended)}
         >
-            <RailContext.Provider value={extended}>
-                <div className={styles.alignStart} data-variant={props.orientation ? props.orientation : 'vertical'}>
-                    {React.Children.toArray(props.children).filter(e => e.props.place !== 'end').map((e, i) => {
-                        if (e.type === RailActionButton)
-                            return e
-                        else
-                            return (
-                                <div key={i + '-rail-node-start'} className={e.props.className} style={e.props.styles}>
-                                    {e}
-                                </div>
-                            )
-                    })}
-                </div>
-                <div className={styles.alignEnd} data-variant={props.orientation ? props.orientation : 'vertical'}>
-                    {React.Children.toArray(props.children).filter(e => e.props.place === 'end').map((e, i) => {
-                        if (e.type === RailActionButton)
-                            return e
-                        else
-                            return (
-                                <div key={i + '-rail-node-end'} className={e.props.className} style={e.props.styles}>
-                                    {e}
-                                </div>
-                            )
-                    })}
-                </div>
-            </RailContext.Provider>
+            <Button onClick={() => setExtended(!extended)} className={styles.button}>
+                <span className={'material-icons-round'}>
+                    menu
+                </span>
+            </Button>
+            <Modal
+                className={styles.modal}
+                open={extended} blurIntensity={0}
+                handleClose={() => setExtended(false)}
+                animationStyle={"slide-left"}>
+                <RailContext.Provider value={true}>
+                    {content}
+                </RailContext.Provider>
+            </Modal>
+            {content}
         </div>
     )
 

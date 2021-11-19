@@ -26,8 +26,8 @@ export default function List(props) {
         >
             <Settings
                 open={openSettings}
-                      keys={keys} actions={actions} setOpen={setOpenSettings}
-                      dispatchKeys={keysDispatcher}/>
+                keys={keys} actions={actions} setOpen={setOpenSettings}
+                dispatchKeys={keysDispatcher}/>
             <ListHeader
                 options={props.options}
                 scrolled={scrolled}

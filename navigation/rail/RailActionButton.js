@@ -1,18 +1,20 @@
-import React from 'react'
+import React, {useContext} from 'react'
 
 import styles from "./styles/Action.module.css";
 import PropTypes from "prop-types";
 import Ripple from "../../misc/ripple/Ripple";
 import ToolTip from "../../feedback/tooltip/ToolTip";
+import RailContext from "./RailContext";
 
 export default function RailActionButton(props) {
+    const context = useContext(RailContext)
     return (
         <span>
             <button
                 onClick={props.onClick}
                 disabled={props.disabled}
                 className={styles.buttonWrapper}
-                data-extended={JSON.stringify(props.extended)}
+                data-extended={JSON.stringify(context)}
                 data-highlight={JSON.stringify(props.highlight)}
             >
                 <div className={styles.iconWrapper}>
@@ -34,10 +36,11 @@ export default function RailActionButton(props) {
     )
 }
 RailActionButton.propTypes = {
-    extended: PropTypes.bool,
+    // extended: PropTypes.bool,
     highlight: PropTypes.bool,
     disabled: PropTypes.bool,
     label: PropTypes.any,
     icon: PropTypes.any,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    group: PropTypes.string
 }

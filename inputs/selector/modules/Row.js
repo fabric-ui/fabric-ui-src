@@ -30,7 +30,7 @@ export default function Row(props) {
             </div>
             {props.main && !props.data ?
                 null :
-                props.keys.map((k, i) => !k.visible ? null : (
+                props.keys.filter(e => !e.deeperFieldKey && e.visible).map((k, i) => (
                     <div
                         key={'selector-row-' + i}
                         className={styles.rowColumn}

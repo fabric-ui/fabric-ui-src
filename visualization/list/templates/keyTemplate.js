@@ -12,6 +12,8 @@ export default PropTypes.shape({
     maskEnd: PropTypes.any,
     additionalWidth: PropTypes.string,
     subType:  PropTypes.oneOf(['string', 'number', 'object', 'date', 'bool']),
+    deeperFieldKey: PropTypes.string,
+    deeperFieldType:  PropTypes.oneOf(['string', 'number', 'date', 'bool']),
     query:  PropTypes.object,
 
 })

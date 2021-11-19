@@ -27,7 +27,7 @@ export default function Dropdown(props) {
     return (
         <div className={styles.wrapper}>
             <Button
-                highlight={open}
+                highlight={open || props.highlight}
                 reference={ref} styles={props.styles}
                 variant={props.variant} color={props.color} onClick={() => setOpen(true)}
                 disabled={props.disabled}
@@ -63,6 +63,7 @@ export default function Dropdown(props) {
 }
 
 Dropdown.propTypes = {
+    highlight: PropTypes.bool,
     variant: PropTypes.oneOf(['minimal', 'filled', 'outlined', 'minimal-horizontal']),
     className: PropTypes.string,
     styles: PropTypes.object,

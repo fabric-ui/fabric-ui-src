@@ -100,7 +100,7 @@ export default function ListHeader(props) {
                 :
                 <div style={{padding: '8px'}}>
                     <Filter
-                        keys={props.keys} filters={props.hook.filters}
+                        keys={props.keys.filter(e => !e.deeperFieldKey)} filters={props.hook.filters}
                         setFilters={props.hook.setFilters}
                         getType={getType} open={open} setOpen={setOpen}
                         parseDate={parseDate}

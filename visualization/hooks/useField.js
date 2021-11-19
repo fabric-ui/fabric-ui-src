@@ -18,10 +18,17 @@ export default function useField(field, entity) {
                 case 'date':
                     return (field.maskStart ? field.maskStart : '') + (new Date(entity[field.key]).toLocaleDateString()) + (field.maskEnd ? field.maskEnd : '')
                 case 'object': {
-                    if (entity[field.key] !== null || (entity[field.key] !== null && entity[field.key][field.subfieldKey] === undefined))
-                        return (field.maskStart ? field.maskStart : '') + (entity[field.key][field.subfieldKey]) + (field.maskEnd ? field.maskEnd : '')
-                    else
-                        return field.fallback
+                    if (!field.deeperFieldKey) {
+                        if (entity[field.key] || (entity[field.key] && entity[field.key][field.subfieldKey]))
+                            return (field.maskStart ? field.maskStart : '') + (entity[field.key][field.subfieldKey]) + (field.maskEnd ? field.maskEnd : '')
+                        else
+                            return field.fallback
+                    } else {
+                        if (entity[field.key] || (entity[field.key] && entity[field.key][field.subfieldKey] && entity[field.key][field.subfieldKey][field.deeperFieldKey]))
+                            return (field.maskStart ? field.maskStart : '') + (entity[field.key][field.subfieldKey][field.deeperFieldKey]) + (field.maskEnd ? field.maskEnd : '')
+                        else
+                            return field.fallback
+                    }
                 }
                 case 'array': {
                     let value = ''

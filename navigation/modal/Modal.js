@@ -16,7 +16,6 @@ export default function Modal(props) {
         if (!document.elementsFromPoint(event.clientX, event.clientY).includes(target.current) && alreadyRendered)
             props.handleClose()
     }
-
     const [alreadyRendered, setAlreadyRendered] = useState(false)
 
     useEffect(() => {

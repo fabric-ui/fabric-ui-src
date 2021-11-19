@@ -1,40 +1,11 @@
-.bottomOptions {
-    position: absolute;
-    bottom: 4px;
-    width: calc(100% - 8px);
-    transform: translateX(4px);
 
-    display: grid;
-    align-content: flex-start;
-    gap: 8px;
-}
 
-.buttons {
-    width: 100%;
-    padding: 4px;
-    position: relative;
-    height: 100%;
-    display: grid;
-    align-content: flex-start;
-
-    gap: 8px;
-}
-
-.button {
-    width: 100%;
-
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.wrapperVertical {
+.wrapper {
     padding: 4px;
     display: flex;
     flex-direction: column;
 
-    overflow: hidden;
+    overflow: visible;
     width: clamp(65px, 3vw, 100px);
     transition: 250ms ease-in-out;
     background: var(--mfc-background-primary);
@@ -42,78 +13,16 @@
     left: 0;
     top: 0;
     height: 100%;
-
 }
 
-
-
-.buttonContainer {
-    align-items: center;
-
-    cursor: pointer;
+.button{
     width: 100%;
-    max-width: 100%;
-    height: 50px;
-    overflow: hidden;
+    height: clamp(57px, calc(3vw - 8px), 92px);
 
-    transition: 250ms ease-in-out;
-    border-radius: 5px;
-    padding: 8px 4px;
-
-    position: relative;
-
-
-}
-
-
-.buttonLabel {
-
-    outline: none;
-    background: none;
-    border: none;
-    padding: 0;
-
-    font-size: .7rem;
-    overflow: hidden;
-    color: var(--mfc-color-quaternary);
-
-    font-family: "Roboto";
-    /*font-weight: 575;*/
-}
-
-.activeButton {
-    animation: slideDown 150ms linear forwards;
-
-    position: absolute;
-    left: 4px;
-    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-@keyframes slideDown {
-    0% {
-        top: 0;
-        /*transform: translateY(-50%);*/
-    }
-    100% {
-        top: 50%;
-        transform: translateY(-50%);
-    }
-}
-
-.buttonLabel:disabled {
-    color: var(--mfc-color-quinary);
-}
-
-.overflowEllipsis {
-    max-width: 100%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
 
 .alignEnd {
     display: grid;
@@ -132,4 +41,13 @@
     gap: 8px;
     width: 100%;
     height: 100%;
+}
+
+.modal{
+    padding: 4px 8px;
+    box-shadow: var(--mfc-box-shadow-primary) 0 0 2px 1px;
+    height: 100%;
+    width: clamp(250px, 15vw, 350px);
+
+    background: var(--mfc-background-primary);
 }
