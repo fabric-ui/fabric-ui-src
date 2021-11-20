@@ -6,8 +6,8 @@
     border: var(--mfc-border-primary) 1px solid;
     border-radius: 5px;
     padding: 4px;
-    width: fit-content;
-    height: fit-content;
+    width: 100%;
+    height: 500px;
     display: grid;
     gap: 8px;
 }

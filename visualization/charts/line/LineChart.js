@@ -1,82 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 import PropTypes from 'prop-types'
 import useChart from "../shared/useChart";
 import shared from "../shared/Charts.module.css";
+import useLineChart from "../shared/useLineChart";
+
 
 export default function LineChart(props) {
-
-    let xBefore, yBefore
-    const drawBar = ({axis, value, position, context}) => {
-        const labelSpacing = ref.current.height * 0.1
-        const pVariation = (value * 100) / biggest
-        const height = (pVariation * (ref.current.height - labelSpacing)) / 100
-
-
-        let x, y
-        x = ((ref.current.width / (props.data.length - 1)) - 7.5) * position + 15
-
-        y = (ref.current.height - labelSpacing) - height + 10
-
-
-        setPoints(prevState => {
-            return [...prevState, {x: x, y: y}]
-        })
-
-        context.strokeStyle = props.color ? props.color : '#0095ff'
-        context.fillStyle = props.color ? props.color : '#0095ff'
-
-        context.beginPath();
-        context.arc(x, y, 4, 0, 2 * Math.PI);
-        context.fill();
-        context.stroke();
-
-        if (position > 0) {
-            context.beginPath();
-            context.moveTo(xBefore, yBefore);
-            context.lineTo(x, y);
-            context.stroke();
-        }
-
-        xBefore = x
-        yBefore = y
-
-        context.fillStyle = theme.themes.mfc_color_primary
-        context.fillText(axis, x - 8, ref.current.height - 16);
-    }
-
-    const render = (context) => {
-        if (context) {
-            context.clearRect(0, 0, ref.current.width, ref.current.height);
-            props.data.forEach((el, index) => {
-
-                drawBar({
-                    axis: el[props.axis.field],
-                    value: el[props.value.field],
-                    context: context,
-                    position: index
-                })
-            })
-        }
-    }
-
-    const {
-        biggest,
-        ref,
-        setPoints,
-        theme
-    } = useChart({
-        data: props.data,
-        valueKey: props.value.field,
-        render: render
-    })
-
+    const {ref, width, height} = useLineChart(props)
 
     return (
         <div className={shared.wrapper}>
             <h1 className={shared.title}>
                 {props.title}
             </h1>
-            <canvas ref={ref} width={props.width} height={props.height}/>
+            <canvas ref={ref} width={width - 30} height={height - 30}/>
         </div>
     )
 }

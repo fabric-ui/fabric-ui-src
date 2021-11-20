@@ -7,10 +7,9 @@ import Tab from "./Tab";
 import ToolTip from "../../feedback/tooltip/ToolTip";
 
 export default function Tabs(props) {
-    const [open, setOpen] = useState(0)
     const children = React.Children.toArray(props.children).filter(e => e.type === Tab)
     return (
-        <div className={props.className} style={props.styles} data-open-tab={open}>
+        <div className={props.className} style={props.styles}>
             <div className={styles.header}
                  style={{
                      justifyContent: props.align === 'end' ? 'flex-end' : props.align === 'start' ? 'flex-start' : undefined,
@@ -22,11 +21,11 @@ export default function Tabs(props) {
                         <React.Fragment key={i + '-button-header-tab'}>
                             <Button
                                 variant={'minimal'}
-                                highlight={open === i}
+                                highlight={props.open === i}
 
                                 className={styles.button}
                                 onClick={() => {
-                                    setOpen(i)
+                                    props.setOpen(i)
                                 }}>
                                 {e.props.label}
                                 <ToolTip content={e.props.label}/>
@@ -36,8 +35,8 @@ export default function Tabs(props) {
                 </div>
             </div>
 
-            <Switcher className={children[open]?.props.className} styles={children[open]?.props.styles}
-                      openChild={open}>
+            <Switcher className={children[props.open]?.props.className} styles={children[props.open]?.props.styles}
+                      openChild={props.open}>
                 {children.map((el, index) => (
                     <React.Fragment key={index + '-tab'}>
                         {el}
@@ -49,8 +48,8 @@ export default function Tabs(props) {
 }
 
 Tabs.propTypes = {
-    open: PropTypes.number,
-    setOpen: PropTypes.func,
+    open: PropTypes.number.isRequired,
+    setOpen: PropTypes.func.isRequired,
 
 
     align: PropTypes.oneOf(['start', 'end', 'center']),
