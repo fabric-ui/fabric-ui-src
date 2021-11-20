@@ -7,7 +7,8 @@ const drawGrid = ({ctx, iterations, labelPadding, data, axisKey, element, color}
 
     data.forEach((d, index) => {
         ctx.beginPath();
-        const x = (index * (element.width * 1 / (data.length))) + labelPadding
+        let x
+        x = (index * ((element.width - labelPadding * 2) / (data.length - 1))) + labelPadding
         ctx.moveTo(x, labelPadding);
         ctx.lineTo(x, element.height - labelPadding);
         ctx.stroke();
@@ -20,7 +21,7 @@ const drawGrid = ({ctx, iterations, labelPadding, data, axisKey, element, color}
         ctx.beginPath();
         const y = (index * (element.height * 1 / (iterations.length))) + labelPadding
         ctx.moveTo(labelPadding, y);
-        ctx.lineTo(element.width + labelPadding, y);
+        ctx.lineTo(element.width - labelPadding / 2, y);
         ctx.stroke();
 
         ctx.fillStyle = color
@@ -77,7 +78,7 @@ export default function useChart(props) {
     }, [props.data])
 
     const handleMouseMove = (event) => {
-        const bBox = ref.current.getBoundingClientRect()
+        const bBox = ref.current?.getBoundingClientRect()
         props.onMouseMove({
             x: event.clientX - bBox.left,
             y: event.clientY - bBox.top,
@@ -108,9 +109,9 @@ export default function useChart(props) {
 
     useEffect(() => {
 
-        ref.current.addEventListener('mousemove', handleMouseMove)
+        ref.current?.addEventListener('mousemove', handleMouseMove)
         return () => {
-            ref.current.removeEventListener('mousemove', handleMouseMove)
+            ref.current?.removeEventListener('mousemove', handleMouseMove)
         }
     }, [props.data, context, points])
 

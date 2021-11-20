@@ -1,7 +1,6 @@
 import useChart from "./useChart";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import PropTypes from "prop-types";
-import LineChart from "../line/LineChart";
 import useDimensions from "./useDimensions";
 
 const onMouseMove = ({event, points, context, draw}) => {
@@ -35,8 +34,8 @@ export default function useLineChart(props) {
     const drawLine = ({axis, value, position, context}) => {
         const pVariation = (value * 100) / biggest
         const height = ((pVariation * (ref.current.height - labelSpacing * 2 - 4)) / 100)
-        let x = ((ref.current.width / (props.data.length - 1)) - (labelSpacing / 9 - .25)) * position + labelSpacing - 4,
-            y = (ref.current.height - labelSpacing) - height - 12
+        let x = (position * ((ref.current.width - labelSpacing * 2 + 8) / (props.data.length - 1))) + labelSpacing - 4,
+            y = (ref.current.height - labelSpacing) - height - 8
 
         if (points.length === 0)
             setPoints(prevState => {
@@ -54,7 +53,7 @@ export default function useLineChart(props) {
         if (position > 0) {
             context.beginPath();
             context.moveTo(xBefore, yBefore);
-            context.setLineDash([3, 3])
+
 
             context.lineTo(x, y);
             context.stroke();
@@ -100,6 +99,7 @@ export default function useLineChart(props) {
     useEffect(() => {
 
         if (context) {
+            context.setLineDash([3, 3])
             context.fillStyle = theme.themes.mfc_color_primary
             context.font = "600 14px Roboto";
             drawChart(context, true)
@@ -107,7 +107,7 @@ export default function useLineChart(props) {
     }, [props.data, context, width, height, theme])
 
     useEffect(() => {
-        if(points.length > 0)
+        if (points.length > 0)
             setPoints([])
 
     }, [width, height, props.data])

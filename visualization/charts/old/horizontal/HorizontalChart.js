@@ -1,17 +1,19 @@
-import React from "react";
 import PropTypes from 'prop-types'
-import useChart from "../shared/useChart";
-import Bar from "../shared/Bar";
-import shared from "../shared/Charts.module.css";
+import useChart from "../../hooks/useChart";
+import shared from '../../styles/Charts.module.css'
+import Bar from "../../utils/Bar";
 
-export default function VerticalChart(props) {
+export default function HorizontalChart(props) {
 
     const drawBar = ({axis, value, position, context}) => {
-        const length = props.data.length - 1
-        const width = ref.current.width / length
-        const x = position * width
-        const y = ref.current.height - 20
-        const height = (((value * 100) / biggest) * (ref.current.height - ref.current.height * 0.1)) / 100
+        const length = props.data.length
+
+
+        const width = (((value * 100) / biggest) * (ref.current.width - ref.current.width * 0.1)) / 100
+        const height = (ref.current.height / length)
+
+        const x = ref.current.width * 0.1
+        const y = position * height
 
         const bar = new Bar({
             x: x,
@@ -20,7 +22,7 @@ export default function VerticalChart(props) {
             label: axis,
             color: randomColor(),
             width: width,
-            height: -height
+            height: height
         })
 
         bar.draw(context)
@@ -30,12 +32,13 @@ export default function VerticalChart(props) {
         })
 
         context.fillStyle = theme.themes.mfc_color_primary
-        context.fillText(axis, x, ref.current.height);
+        context.fillText(axis, 0, y + 7 + height / 2);
     }
 
     const render = (context) => {
         if (context) {
             context.clearRect(0, 0, ref.current.width, ref.current.height);
+
 
             props.data.forEach((el, index) => {
                 drawBar({
@@ -51,14 +54,15 @@ export default function VerticalChart(props) {
     const {
         biggest,
         randomColor,
-        ref,
         setPoints,
+        ref,
         theme
     } = useChart({
-        render: render,
         data: props.data,
-        valueKey: props.value.field
+        valueKey: props.value.field,
+        render: render
     })
+
 
     return (
         <div className={shared.wrapper}>
@@ -69,7 +73,7 @@ export default function VerticalChart(props) {
         </div>
     )
 }
-VerticalChart.propTypes = {
+HorizontalChart.propTypes = {
     value: PropTypes.shape({
         label: PropTypes.string,
         field: PropTypes.string

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types'
-import useChart from "../shared/useChart";
-import shared from "../shared/Charts.module.css";
+import useChart from "../../hooks/useChart";
+import shared from "../../styles/Charts.module.css";
 
 export default function PieChart(props) {
 

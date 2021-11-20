@@ -17,7 +17,5 @@ export default class Bar {
         context.fillRect(self.x, self.y, self.width, self.height)
     }
 
-    onHover() {
 
-    }
 }
