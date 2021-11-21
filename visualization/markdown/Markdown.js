@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import styles from '../code_block/styles/Markdown.module.css'
+import styles from './styles/Markdown.module.css'
 import {useMemo} from "react";
 import markdownParser from "./utils/markdown";
 

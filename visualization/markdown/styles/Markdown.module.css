@@ -20,6 +20,10 @@
 
 .wrapper > * {
     font-family: "Roboto";
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
+
 }
 
 .divider {
@@ -46,6 +50,27 @@
 }
 .paragraph{
     font-family: "Roboto";
-    margin: 0;
-    padding: 0;
-    font-size: .9rem;}
+    width: 100%;
+    max-width: 100%;
+
+    white-space: pre-wrap;
+    word-wrap:break-word;
+
+    font-size: .9rem;
+}
+
+.tableWrapper{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    max-width: 100%;
+    overflow-x: hidden;
+    width: 100%;
+}
+.tableRow:nth-child(even) {
+    background-color: #dddddd;
+}
+.tableContent{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}

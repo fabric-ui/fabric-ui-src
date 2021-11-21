@@ -5,7 +5,7 @@ export const LIST_REGEX = {
     plus: /^\+ | {3}\+ /gi,
     nested: /^\s{3}(.+)/gi
 }
-export const TABLE_REGEX = {}
+
 export const INLINE_HEADER = {
     1: /^#\s/gi,
     2: /^##\s/gi,
@@ -38,4 +38,14 @@ export const RULE_REGEX = {
     underline: /^_+$|^_$/gi,
     base: /^-+$|^-$|^\*+$|^\*$|^_+$|^_$/gi,
     emptyLine: /\S/g
+}
+
+export const TABLE_REGEX = {
+    allRows: /^\| (.*) \|| \| (.*) \|/gi,
+    contentRow: /\| ((?!-).*) \|| \| ((?!-).*) \|/gi,
+    divider: /\| -+ \| -+ \|/gi
+}
+export const EXTERNAL_SOURCE_REGEX = {
+    image: /!\[(.*)]\((.*)\)/i,
+    link: /((?!!).*)\[(.*)]\((.*)\)/i
 }
