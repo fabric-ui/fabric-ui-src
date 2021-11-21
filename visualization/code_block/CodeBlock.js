@@ -5,7 +5,7 @@ import useCode from "./utils/useCode";
 import Wrapper from "./Wrapper";
 import JavascriptCode from "./wrappers/JavascriptCode";
 import JsonCode from "./wrappers/JsonCode";
-import Markdown from "./wrappers/Markdown";
+import Markdown from "../markdown/Markdown";
 
 export default function CodeBlock(props) {
     const parsedString = useCode(props.data, props.language)
@@ -18,8 +18,7 @@ export default function CodeBlock(props) {
                 return JavascriptCode(prop)
             case "json":
                 return JsonCode(prop)
-            case "markdown":
-                return Markdown(prop)
+
             default:
                 return
         }
@@ -44,5 +43,5 @@ export default function CodeBlock(props) {
 CodeBlock.propTypes = {
     width: PropTypes.string,
     data: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-    language: PropTypes.oneOf(['json', 'markdown', 'javascript']).isRequired
+    language: PropTypes.oneOf(['json', 'javascript']).isRequired
 }
