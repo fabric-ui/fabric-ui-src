@@ -62,10 +62,14 @@ const highlightObject = (obj, layer, isWrapper) => {
     str = str.split('')
     if (str[str.length - 1] === '}')
         str[str.length - 1] = lineTerminator + SPACE.repeat(!isWrapper ? (layer ? layer : 1) : 0) + '}'
+
+
     return str.join('')
 }
 
 export default function jsonParser(data) {
+
+
     let response
     if (Array.isArray(data)) {
         let newArr = []
@@ -89,6 +93,10 @@ export default function jsonParser(data) {
 
         response = highlightObject(newObject, 0, true)
     }
-    return response
+
+    return {
+        data: data,
+        parsedData: response
+    }
 }
 

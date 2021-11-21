@@ -1,15 +1,29 @@
-import React, {useState} from 'react'
+import React, {useCallback, useMemo, useState} from 'react'
 
 import PropTypes from "prop-types";
 import useCode from "./utils/useCode";
 import Wrapper from "./Wrapper";
 import JavascriptCode from "./wrappers/JavascriptCode";
 import JsonCode from "./wrappers/JsonCode";
+import Markdown from "./wrappers/Markdown";
 
 export default function CodeBlock(props) {
     const parsedString = useCode(props.data, props.language)
 
     const [extended, setExtended] = useState(false)
+
+    const getLanguage = (prop) => {
+        switch (props.language){
+            case "javascript":
+                return JavascriptCode(prop)
+            case "json":
+                return JsonCode(prop)
+            case "markdown":
+                return Markdown(prop)
+            default:
+                return
+        }
+    }
     return (
         <Wrapper
             width={props.width}
@@ -23,17 +37,12 @@ export default function CodeBlock(props) {
                 }]
                 :
                 []}>
-            {(copyContent) => (
-                props.language === 'javascript' ?
-                    JavascriptCode({...parsedString, setCopy: copyContent, extended: extended})
-                    :
-                    JsonCode({ setCopy: copyContent, data: props.data,parsedData: parsedString})
-            )}
+            {(copyContent) => getLanguage({...parsedString, setCopy: copyContent, extended: extended})}
         </Wrapper>
     )
 }
 CodeBlock.propTypes = {
     width: PropTypes.string,
     data: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-    language: PropTypes.oneOf(['json', 'jsx', 'javascript']).isRequired
+    language: PropTypes.oneOf(['json', 'markdown', 'javascript']).isRequired
 }

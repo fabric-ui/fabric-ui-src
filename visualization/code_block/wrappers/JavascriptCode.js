@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useRef} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import Tabs from "../../../navigation/tabs/Tabs";
 import Tab from "../../../navigation/tabs/Tab";
@@ -10,14 +10,15 @@ export default function JavascriptCode(props) {
     const ref = useRef()
     const tabs = useMemo(() => {
         return props.jsxContent.map((c, i) => enumerateLines(c, '\n'))
-    }, [])
+    }, [props])
     const full = useMemo(() => {
         return enumerateLines(props.fullCode, '\n', true)
-    }, [])
+    }, [props])
     useEffect(() => {
         props.setCopy(props.originalCode)
-    }, [])
-
+    }, [props])
+    const [open, setOpen] = useState(0)
+    console.log(props)
     return useMemo(() => {
         if (props.extended) {
             return (
@@ -29,7 +30,7 @@ export default function JavascriptCode(props) {
             )
         } else if(tabs.length > 1){
             return (
-                <Tabs styles={{position: 'relative'}}>
+                <Tabs styles={{position: 'relative'}} setOpen={setOpen} open={open}>
                     {tabs.map((c, i) => (
                         <Tab label={'Jsx code ' + i}>
                             <code

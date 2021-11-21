@@ -14,27 +14,27 @@ const getPadding = (length) => {
 }
 export default function enumerateLines(data, divider, keepEmptyLines) {
     let smallestWhiteSpace, removedLines = 0, padding, d = data
-
+        // console.log(enumerateLines())
     try {
         d = d.split(divider)
         padding = getPadding(d.length)
 
-        d.forEach((e, index) => {
-            if (e !== '\r') {
-                const c = e.split('')
-                let whitespaces = 0
-                c.every((s) => {
-
-                    if (/\s/.test(s)) {
-                        whitespaces = whitespaces + 1
-                        return true
-                    } else
-                        return false
-                })
-                if (whitespaces < smallestWhiteSpace || smallestWhiteSpace === undefined)
-                    smallestWhiteSpace = whitespaces
-            }
-        })
+        // d.forEach((e, index) => {
+        //     if (e !== '\r') {
+        //         const c = e.split('')
+        //         let whitespaces = 0
+        //         c.every((s) => {
+        //
+        //             if (/\s/.test(s)) {
+        //                 whitespaces = whitespaces + 1
+        //                 return true
+        //             } else
+        //                 return false
+        //         })
+        //         if (whitespaces < smallestWhiteSpace || smallestWhiteSpace === undefined)
+        //             smallestWhiteSpace = whitespaces
+        //     }
+        // })
 
         d = d.map((line, i) => {
             if (!/^\s+$/gm.test(line) || keepEmptyLines) {
@@ -50,7 +50,8 @@ export default function enumerateLines(data, divider, keepEmptyLines) {
                     }
                 })
                 newLine = newLine.join('')
-                const content = newLine.replace(' '.repeat(smallestWhiteSpace), '')
+                const content = newLine
+                    // .replace(' '.repeat(smallestWhiteSpace), '')
                 if (content.includes('///JSX'))
                     return null
                 else
