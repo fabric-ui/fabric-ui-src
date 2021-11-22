@@ -11,7 +11,7 @@ export default function RailActionWrapper(props) {
 RailActionWrapper.propTypes = {
     children: PropTypes.oneOfType([PropTypes.node, PropTypes.func]),
     className: PropTypes.string,
-    styles: PropTypes.string,
+    styles: PropTypes.object,
     place: PropTypes.oneOf(['start', 'end']),
     group: PropTypes.string
 }
