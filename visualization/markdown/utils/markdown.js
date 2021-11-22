@@ -8,6 +8,7 @@ import {findInlineHeader} from "./finders/findHeader";
 import {findRule} from "./findRule";
 import findTables from "./finders/findTable";
 import {findImage, findLink} from "./finders/findExternalSource";
+import findCode from "./finders/findCode";
 
 
 
@@ -18,7 +19,7 @@ const startParagraph = (line) => {
 export default function markdownParser(data) {
     let parsedData = []
     try {
-        const split = data.split('\n')
+        const split = findCode(data).split('\n')
         split.forEach((line, index) => {
             let newLine = findBold(line)
             newLine = findItalic(newLine)
@@ -36,8 +37,6 @@ export default function markdownParser(data) {
                 newLine = startParagraph(newLine)
 
             }
-
-
 
             parsedData.push(newLine)
 

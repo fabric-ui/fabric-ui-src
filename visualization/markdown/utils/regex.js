@@ -16,7 +16,7 @@ export const INLINE_HEADER = {
 }
 export const ITALIC_REGEX = [
     {
-        baseRegex: /_[^_]*_/gi,
+        baseRegex: /((\s+)|^)_[^_]*_/gi,
         divider: /_/gi
     },
     {
@@ -43,9 +43,13 @@ export const RULE_REGEX = {
 export const TABLE_REGEX = {
     allRows: /^\| (.*) \|| \| (.*) \|/gi,
     contentRow: /\| ((?!-).*) \|| \| ((?!-).*) \|/gi,
-    divider: /\| -+ \| -+ \|/gi
+    divider: /\|(\s*)-+(\s*)\|(\s*)-+(\s*)\|/gi
 }
 export const EXTERNAL_SOURCE_REGEX = {
     image: /!\[(.*)]\((.*)\)/i,
     link: /((?!!).*)\[(.*)]\((.*)\)/i
+}
+export const CODE_BLOCK = {
+    BASIC: /^```(?:jsx|javascript|$)\n([\s\S]*?)```$/mgi,
+    NOT_GLOBAL: /^```(?:jsx|javascript|$)\n([\s\S]*?)```$/mi
 }
