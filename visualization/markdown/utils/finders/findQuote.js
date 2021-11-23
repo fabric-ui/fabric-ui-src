@@ -1,7 +1,7 @@
 import styles from "../../styles/Markdown.module.css";
 
 export default function findQuote  (line, callbackIndex) {
-    const innerRegex = callbackIndex !== undefined && callbackIndex > 0 ? /\s>\s(.+)/gi : /^>\s/gi
+    const innerRegex = callbackIndex !== undefined && callbackIndex > 0 ? /\s&gt;\s(.+)/gi : /^&gt;\s/gi
     let parsed = line
 
     try {

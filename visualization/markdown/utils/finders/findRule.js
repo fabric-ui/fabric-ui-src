@@ -1,5 +1,5 @@
-import {RULE_REGEX} from "./regex";
-import styles from "../styles/Markdown.module.css";
+import {RULE_REGEX} from "../regex";
+import styles from "../../styles/Markdown.module.css";
 
 
 export function findRule (lineBefore, line, lineAfter) {

@@ -1,3 +1,5 @@
+import styles from "../styles/Markdown.module.css";
+
 export const LIST_REGEX = {
     number: /^[0-9]+\. | {3}[0-9]+\. /gi,
     asterisk: /^\* | {3}\* /gi,
@@ -50,6 +52,24 @@ export const EXTERNAL_SOURCE_REGEX = {
     link: /((?!!).*)\[(.*)]\((.*)\)/i
 }
 export const CODE_BLOCK = {
-    BASIC: /^```(?:jsx|javascript|$)\n([\s\S]*?)```$/mgi,
-    NOT_GLOBAL: /^```(?:jsx|javascript|$)\n([\s\S]*?)```$/mi
+    BASIC: /^```(?:jsx|javascript|console|html|json|$)\n([\s\S]*?)```$/mg,
+    NOT_GLOBAL: /^```(?:jsx|javascript|console|html|json|$)\n([\s\S]*?)```$/m,
+    TYPES: {
+        jsx: /^```jsx$\n([\s\S]*?)```$/m,
+        javascript: /^```javascript\n([\s\S]*?)```$/m,
+        json: /^```json\n([\s\S]*?)```$/m,
+        html: /^```html\n([\s\S]*?)```$/m,
+        console: /^```console\n([\s\S]*?)```$/m
+    },
+    REPLACED:/^<section class="(.+)">\n<pre>([\s\S]*?)<\/pre>\n<\/section>/gmi,
+    WHITE_SPACE: /^(\s+)/gmi
+}
+export const JSX_REGEX = {
+    TAG:/&lt;(.+)&gt;/gim ,
+    SELF_CLOSING_TAG: /&lt;\/(.+)&gt;/gim,
+    CLOSING_TAG: /&lt;(.+)\/&gt;/gim,
+    STRING_ATTRIBUTE: /(\s*)([a-zA-Z]+)=("|')([\s\S]*?)("|')((\s)|&gt;)/igm,
+
+    ATTRIBUTE: /(\s*)([a-zA-Z]+)={([\s\S]*?)}((\s+)|&gt;)/igm
+
 }

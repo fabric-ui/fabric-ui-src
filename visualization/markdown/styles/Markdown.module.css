@@ -24,6 +24,7 @@
     overflow-x: hidden;
 
     margin: 0;
+
 }
 
 .divider {
@@ -74,4 +75,31 @@
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+}
+
+
+/*CODE*/
+
+.tag{
+    font-weight: bold;
+    color: #FFA900;
+}
+.attr{
+    font-weight: normal;
+    color: var(--mfc-color-tertiary) !important;
+}
+.attrValue{
+    color: var(--mfc-color-secondary) !important;
+    font-weight: normal;
+}
+.code{
+    font-family: "Roboto";
+    font-size: .85rem;
+
+    border-radius: 5px;
+    padding: 5px;
+
+    background: var(--mfc-background-secondary);
+    border: var(--mfc-border-secondary) 1px solid;
+
 }
