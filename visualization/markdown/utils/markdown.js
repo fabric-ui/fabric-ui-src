@@ -40,8 +40,6 @@ export default function markdownParser(data) {
                 newLine = findQuote(newLine)
             newLine = findRule(index > 0 ? split[index - 1] : null, newLine, index < split.length - 1 ? split[index + 1] : null)
 
-
-
             parsedData.push(newLine)
         })
 

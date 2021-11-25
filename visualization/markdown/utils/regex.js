@@ -62,13 +62,30 @@ export const CODE_BLOCK = {
         console: /^```console\n([\s\S]*?)```$/m
     },
     REPLACED:/^<section class="(.+)">\n<pre>([\s\S]*?)<\/pre>\n<\/section>/gmi,
-    WHITE_SPACE: /^(\s+)/gmi
+    WHITE_SPACE: /^(\s+)/gmi,
+    KEYWORDS: [
+        /^&nbsp;(\s*)import(\s*)/g,
+        /(\s*)from(\s+)/g,
+        /^&nbsp;(\s*)function(\s+)/g,
+        /^&nbsp;(\s*)const(\s+)/g,
+        /^&nbsp;(\s*)let(\s+)/g,
+        /^&nbsp;(\s*)return(\s+)/g,
+        /^&nbsp;(\s*)class(\s+)/g,
+
+    ],
+    DOM_KEYWORDS: [
+        /(\s*)([a-zA-Z]+)\./g,
+        /(\s+)React(\s+)/g,
+        /(\s+)ReactDOM(\s+)/g
+    ],
+    STRING: /&quot;([\s\S]*?)&quot;/g,
+    OBJECT: /{([\s\S]*?)}/
 }
 export const JSX_REGEX = {
     TAG:/&lt;(.+)&gt;/gim ,
     SELF_CLOSING_TAG: /&lt;\/(.+)&gt;/gim,
     CLOSING_TAG: /&lt;(.+)\/&gt;/gim,
-    STRING_ATTRIBUTE: /(\s*)([a-zA-Z]+)=("|')([\s\S]*?)("|')((\s)|&gt;)/igm,
+    STRING_ATTRIBUTE: /(\s*)([a-zA-Z]+)=&quot;([\s\S]*?)&quot;((\s)|&gt;)/igm,
 
     ATTRIBUTE: /(\s*)([a-zA-Z]+)={([\s\S]*?)}((\s+)|&gt;)/igm
 

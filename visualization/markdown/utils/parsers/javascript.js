@@ -1,11 +1,40 @@
 import React from 'react'
 import styles from '../../styles/Markdown.module.css'
-import {JSX_REGEX} from "../regex";
+import {CODE_BLOCK, JSX_REGEX} from "../regex";
 
-const reactDomHighlight = (str) => {
-    return str
-        .replace(/(.*?)ReactDOM.render/igm, '<b style="color: #EA00FF">$&</b>')
-        .replace(/(.*?)ReactDOM.unmountComponentAtNode/igm, '<b style="color: #EA00FF">$&</b>')
+function parseObject(attr) {
+    let parsed = attr, match = attr.match(CODE_BLOCK.OBJECT)
+    if (match) {
+        let parsedChild = match[1]
+        const hasObjectAsChild = parsedChild.match(CODE_BLOCK.OBJECT) !== null
+
+        if (hasObjectAsChild) {
+            parsedChild = parseObject(parsedChild)
+        }
+        parsedChild = parsedChild.split(/(?!\\),/g)
+        parsedChild = parsedChild.map(c => {
+            if (c.match(CODE_BLOCK.STRING) === null) {
+                switch (c){
+                    case 'true':
+                        return `<span class="${styles.keyword}">${c}</span>`
+                    case 'false':
+                        return `<span class="${styles.keyword}">${c}</span>`
+                    case 'null':
+                        return `<span class="${styles.keyword}">${c}</span>`
+                    case 'undefined':
+                        return `<span class="${styles.keyword}">${c}</span>`
+                    default:
+                        return `<span class="${styles.tag}">${c}</span>`
+                }
+            }
+            else
+                return c
+            })
+
+        parsed = parsed.replace(match[1], `<span>${parsedChild.join(',')}</span>`)
+    }
+
+    return parsed
 }
 
 function parseTag(tag) {
@@ -15,15 +44,16 @@ function parseTag(tag) {
     let parsedAttr = []
 
     objectAttributes?.forEach(a => {
-        const attr= a.split('=')
+        const attr = a.split('=')
+        const p = parseObject(attr[1])
 
         parsedAttr.push({
             original: a,
-            new: `<span class="${styles.attr}">${attr[0]}</span><span class="${styles.attrValue}">=${attr[1]}</span>`
+            new: `<span class="${styles.attr}">${attr[0]}</span><span class="${styles.attrValue}">=${p}</span>`
         })
     })
     stringAttributes?.forEach(a => {
-        const attr= a.split('=')
+        const attr = a.split('=')
         parsedAttr.push({
             original: a,
             new: `<span class="${styles.attr}">${attr[0]}</span><span class="${styles.attrValue}">=${attr[1]}</span>`
@@ -39,14 +69,21 @@ function parseTag(tag) {
 
 export default function javascriptParser(data) {
     let parsedString = data
-    let newJsx = data
+
     const tags = {
         tag: parsedString.match(JSX_REGEX.TAG),
         closing: parsedString.match(JSX_REGEX.CLOSING_TAG),
-        selfClosing: parsedString.match(JSX_REGEX.SELF_CLOSING_TAG)
+        selfClosing: parsedString.match(JSX_REGEX.SELF_CLOSING_TAG),
+        objects: parsedString.match(CODE_BLOCK.OBJECT)
     }
 
     let tagsToReplace = []
+    tags.objects?.forEach(t => {
+        tagsToReplace.push({
+            original: t,
+            new: parseObject(t)
+        })
+    })
     tags.tag?.forEach(t => {
         tagsToReplace.push({
             original: t,
@@ -70,12 +107,23 @@ export default function javascriptParser(data) {
         parsedString = parsedString.replace(t.original, t.new)
     })
 
+    parsedString = parsedString.split('\n')
 
-    // parsedString = parsedString.replaceAll(/&lt;(.+)&gt;/gim, `<span class="${styles.tag}">$&</span>`)
-    // parsedString = parsedString.replaceAll(/&lt;\/(.+)&gt;/gim, `<span class="${styles.tag}">$&</span>`)
-    // parsedString = parsedString.replaceAll(/&lt;(.+)\/&gt;/gim, `<span class="${styles.tag}">$&</span>`)
+    parsedString = parsedString.map(line => {
+        let parsedLine = line
 
-    // tags.map()
-    // split.forEach()
-    return parsedString
+
+        parsedLine = parsedLine.replaceAll(CODE_BLOCK.STRING, `<span class="${styles.strings}">$&</span>`)
+
+        CODE_BLOCK.DOM_KEYWORDS.forEach(k => {
+            parsedLine = parsedLine.replace(k, `<span class="${styles.domKeyword}">$&</span>`)
+        })
+        CODE_BLOCK.KEYWORDS.forEach(k => {
+            parsedLine = parsedLine.replace(k, `<span class="${styles.keyword}">$&</span>`)
+        })
+
+
+        return parsedLine
+    })
+    return parsedString.join('\n')
 }

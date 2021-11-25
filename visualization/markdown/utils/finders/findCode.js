@@ -13,7 +13,10 @@ function identifyType(str, clean) {
 
     parsedClean = parsedClean.join('\n')
 
-    console.log(parsedClean)
+    parsedClean = parsedClean.replaceAll(/'/g, '&quot;')
+    parsedClean = parsedClean.replaceAll(/"/g, '&quot;')
+    parsedClean = parsedClean.replaceAll(/´/g, '&quot;')
+
     switch (true) {
         case str.match(CODE_BLOCK.TYPES.jsx) !== null:
             return javascriptParser(parsedClean)
@@ -37,7 +40,13 @@ export default function findCode(str) {
 
     if (match !== null)
         match.forEach(e => {
-            parsed = parsed.replace(CODE_BLOCK.NOT_GLOBAL, `<section class="${styles.code}"><pre>${identifyType(e, e.match(CODE_BLOCK.NOT_GLOBAL)[1])}</pre></section>`)
+            let parsedBlock = identifyType(e, e.match(CODE_BLOCK.NOT_GLOBAL)[1])
+            parsedBlock = parsedBlock.split('\n')
+
+            parsedBlock = parsedBlock.map((p, i) => {
+                return `<span class="${styles.lineEnumeration}">${i}</span>${'&nbsp'.repeat(Math.ceil(parsedBlock.length * .1))}|${p}`
+            })
+            parsed = parsed.replace(CODE_BLOCK.NOT_GLOBAL, `<section><pre class="${styles.code}">${parsedBlock.join('\n')}</pre></section>`)
         })
     return parsed
 }

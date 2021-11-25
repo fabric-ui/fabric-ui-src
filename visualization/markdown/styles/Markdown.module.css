@@ -36,42 +36,47 @@
 
 }
 
-.list{
+.list {
     font-family: "Roboto";
     line-height: .7rem;
 
 }
-.listRow{
+
+.listRow {
     font-size: .9rem;
     color: var(--mfc-color-primary);
 }
-.nestedList .listRow{
+
+.nestedList .listRow {
     font-size: .8rem;
     color: var(--mfc-color-secondary);
 }
-.paragraph{
+
+.paragraph {
     font-family: "Roboto";
     width: 100%;
     max-width: 100%;
 
     white-space: pre-wrap;
-    word-wrap:break-word;
+    word-wrap: break-word;
 
     margin: 0;
     font-size: .9rem;
 }
 
-.tableWrapper{
+.tableWrapper {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     max-width: 100%;
     overflow-x: hidden;
     width: 100%;
 }
+
 .tableRow:nth-child(even) {
     background-color: #dddddd;
 }
-.tableContent{
+
+.tableContent {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
@@ -80,26 +85,52 @@
 
 /*CODE*/
 
-.tag{
+.tag {
     font-weight: bold;
     color: #FFA900;
 }
-.attr{
-    font-weight: normal;
-    color: var(--mfc-color-tertiary) !important;
-}
-.attrValue{
-    color: var(--mfc-color-secondary) !important;
-    font-weight: normal;
-}
-.code{
-    font-family: "Roboto";
-    font-size: .85rem;
 
+.attr {
+    font-weight: normal;
+    color: var(--mfc-color-tertiary) ;
+}
+
+.attrValue {
+    color: var(--mfc-color-secondary);
+    font-weight: normal !important;
+}
+
+.code {
+    position: relative;
+
+    font-size: .85rem;
+    color: var(--mfc-color-secondary);
     border-radius: 5px;
     padding: 5px;
 
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    tab-size: 8;
+    overflow: auto;
+    max-height: 35vh;
     background: var(--mfc-background-secondary);
     border: var(--mfc-border-secondary) 1px solid;
+}
+
+.keyword {
+    font-weight: bolder;
+    color: #FF5500;
+}
+.domKeyword{
+    font-weight: bolder;
+    color: #7209b7;
+}
+.strings{
+    font-weight: bold;
+    color: #6a994e !important;
+}
+
+.lineEnumeration{
+    position: absolute;
 
 }
