@@ -80,7 +80,7 @@ export default function TextField(props) {
                 )
 
             case !props.mask && props.variant !== 'area':
-                return content(props.value ? props.value : '')
+                return content(valid ? props.value : '')
 
             case
             props.mask && props.mask !== 'currency' && props.variant !== 'area'
@@ -112,7 +112,7 @@ export default function TextField(props) {
     }, [props.colorVariant])
 
     const valid = useMemo(() => {
-        return (props.value && props.value.toString().length > 0)
+        return ((props.value && props.value.toString().length > 0) || props.value === 0 || props.value === '0')
     }, [props.value])
 
     return (
@@ -150,9 +150,9 @@ export default function TextField(props) {
             <div className={shared.alertLabel}
                  style={{
                      color: !valid ? '#ff5555' : undefined,
-                     display: props.noMargin && !props.required && !props.helperText? 'none' : undefined
+                     display: props.noMargin && !props.required && !props.helperText ? 'none' : undefined
                  }}>
-                {props.required ?translate('required') : undefined}
+                {props.required ? translate('required') : undefined}
                 {props.helperText ?
                     <div className={shared.helperText}>
                          <span

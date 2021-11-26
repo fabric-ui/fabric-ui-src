@@ -15,7 +15,7 @@ const NAMES = [
     'Dezembro'
 ]
 
-export default function useDate(value, pattern, handleChange) {
+export default function useDate(value, pattern) {
     const [parsedDate, setDate] = useState({year: (new Date()).getFullYear()})
     const calendar = useMemo(() => {
         let months = []
@@ -68,13 +68,13 @@ export default function useDate(value, pattern, handleChange) {
     useEffect(() => {
         const timestamp = Date.parse(value);
         let parsed = new Date(value)
-        parsed = !isNaN(timestamp) ? `${parsed.getFullYear()}/${parsed.getMonth() + 1}/${parsed.getDate()}` : parsed.toLocaleDateString()
+        parsed = !isNaN(timestamp) ? `${parsed.getFullYear()}/${parsed.getMonth() + 1}/${parsed.getDate()}` : new Date(parsed.getTime() - parsed.getTimezoneOffset() * 60000).toLocaleDateString()
 
         const date = `${parsedDate.year}/${parsedDate.month}/${parsedDate.day}`
         if (!isNaN(timestamp) && parsed !== date && !initialized) {
             setInitialized(true)
             const d = new Date(value)
-            setDate(splitDate(parseDate(d.getDate() + 1, d.getMonth() + 1, d.getFullYear())))
+            setDate(splitDate(parseDate(d.getDate(), d.getMonth() + 1, d.getFullYear())))
         }
     }, [value])
 
