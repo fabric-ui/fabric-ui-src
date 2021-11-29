@@ -118,7 +118,7 @@ export default function Selector(props) {
             </div>
             <Modal
                 open={openCreate}
-                handleClose={() => setOpenCreate(false)}
+             handleClose={() => null}
                 animationStyle={'fade'}
                 blurIntensity={.1}
                 className={styles.createModal}
