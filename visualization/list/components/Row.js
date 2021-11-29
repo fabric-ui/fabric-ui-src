@@ -43,6 +43,8 @@ export default function Row(props) {
                     }}>
                     <Dropdown
                         className={styles.mainButton}
+                        justify={"middle"}
+                        align={'bottom'}
                         variant={'minimal-horizontal'}
                         options={props.controlButtons.map(e => {
                             return {...e, onClickEvent: props.entry}

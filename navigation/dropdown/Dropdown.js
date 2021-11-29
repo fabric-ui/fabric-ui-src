@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import PropTypes from "prop-types";
 import styles from './styles/Dropdown.module.css'
 import Button from "../../inputs/button/Button";
@@ -24,6 +24,40 @@ export default function Dropdown(props) {
             resizeObs.current?.disconnect();
         }
     }, [])
+
+    const justifyTranslation = useMemo(() => {
+        if (width !== undefined)
+            switch (props.justify) {
+                case 'end':
+                    return `calc(-50% + ${width / 2}px)`
+                case 'start':
+                    return  `calc(50% - ${width / 2}px)`
+                case 'middle':
+                    return  '0%'
+                default:
+                    return '0%'
+            }
+        else
+            return '0%'
+    }, [width, props.justify])
+
+    const alignTranslation = useMemo(() => {
+
+        if (height !== undefined)
+            switch (props.align) {
+                case 'top':
+                    return `calc(-50% - ${height / 2}px)`
+                case 'bottom':
+                    return  `calc(50% + ${height / 2}px)`
+                case 'middle':
+                    return  '0%'
+                default:
+                    return '0%'
+            }
+        else
+            return '0%'
+    }, [height, props.align])
+    console.log(alignTranslation)
     return (
         <div className={styles.wrapper}>
             <Button
@@ -36,7 +70,7 @@ export default function Dropdown(props) {
             </Button>
             <Modal
                 variant={"fit"}
-                styles={{transform: `translate(${props.justify === 'end' ? `calc(-50% + ${width/2}px)` : `calc(50% - ${width / 2}px)`}, ${props.align === 'top' ? `calc(-50% - ${height / 2}px)` : `calc(50% + ${height / 2}px)`})`}}
+                styles={{transform: `translate(${justifyTranslation}, ${alignTranslation})`}}
                 blurIntensity={0} className={styles.buttons}
                 animationStyle={'fade'}
                 open={open}
@@ -79,6 +113,6 @@ Dropdown.propTypes = {
         onClickEvent: PropTypes.any
     })),
 
-    align: PropTypes.oneOf(['top', 'bottom']),
-    justify: PropTypes.oneOf(['start', 'end'])
+    align: PropTypes.oneOf(['top','middle', 'bottom']),
+    justify: PropTypes.oneOf(['start','middle', 'end'])
 }
