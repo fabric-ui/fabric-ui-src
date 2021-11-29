@@ -144,7 +144,7 @@ export default function useFilter(filter, setFilter, setSelectorOpen, selectorOp
                         handleClose={() => setSelectorOpen(false)}
                         handleChange={entity => handleChange(entity)}
                         value={filter.value}
-                        title={filter.label}
+                        label={filter.label}
                         required={false}
                         placeholder={filter.label}
                         width={'100%'}/>

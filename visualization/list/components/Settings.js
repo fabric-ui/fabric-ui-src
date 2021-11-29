@@ -22,6 +22,8 @@ export default function Settings(props) {
             visible: props.keys.filter(f => f.visible),
         })
     }, [props])
+
+    const [open, setOpen] = useState(0)
     return (
         <Modal
             open={props.open}
@@ -34,6 +36,7 @@ export default function Settings(props) {
                 Configurações
             </div>
             <Tabs
+                open={open} setOpen={setOpen}
                 className={styles.contentWrapper}
             >
                 <Tab label={'Todos'} className={styles.content}>
@@ -65,6 +68,7 @@ export default function Settings(props) {
                         <Empty customLabel={'Todos os campos estão visíveis'}/>}
                 </Tab>
             </Tabs>
+
         </Modal>
     )
 }
