@@ -50,6 +50,7 @@
 .alertLabel {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: var(--mfc-color-quaternary);
     font-family: "Roboto";
     font-size: .75rem;
@@ -58,7 +59,7 @@
 }
 .helperText{
     transition: 150ms linear;
-    color: #FFAC3E;
+    color: var(--mfc-color-quinary);
     cursor: help;
 }
 .helperText:hover{

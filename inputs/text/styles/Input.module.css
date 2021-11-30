@@ -100,7 +100,10 @@
         opacity: .15;
     }
 }
+.icon{
+    font-size: 10px;
+    font-weight: bold;
 
-/*.textArea:hover, .textArea:focus{*/
-/*    border-color: transparent;*/
-/*}*/
+    padding: 2px;
+    border-right: var(--mfc-border-primary) 1px solid;
+}

@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react'
+import {addHours} from "../../inputs/date/misc/useDate";
 
 export default function useField(field, entity) {
 
@@ -15,8 +16,12 @@ export default function useField(field, entity) {
                 }
                 case 'bool':
                     return (field.maskStart ? field.maskStart : '') + (entity[field.key] ? 'Sim' : 'Não') + (field.maskEnd ? field.maskEnd : '')
-                case 'date':
-                    return (field.maskStart ? field.maskStart : '') + (new Date(entity[field.key]).toLocaleDateString()) + (field.maskEnd ? field.maskEnd : '')
+                case 'date': {
+                    let dateObj = new Date(entity[field.key])
+                    if(field.hoursOffset !== undefined)
+                        dateObj = addHours(field.hoursOffset, dateObj)
+                    return (field.maskStart ? field.maskStart : '') + dateObj.toLocaleDateString() +(field.maskEnd ? field.maskEnd : '')
+                }
                 case 'object': {
                     if (!field.deeperFieldKey) {
                         if (entity[field.key] || (entity[field.key] && entity[field.key][field.subfieldKey]))

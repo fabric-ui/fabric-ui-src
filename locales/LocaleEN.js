@@ -25,5 +25,6 @@ export default {
   drag_files: 'Drag your files here',
   not_completed: 'Not completed',
   complete: 'Completed',
-  step: 'Procedure'
+  step: 'Procedure',
+  numeric: 'Numeric'
 }

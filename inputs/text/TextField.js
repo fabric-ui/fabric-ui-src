@@ -163,6 +163,14 @@ export default function TextField(props) {
                     :
                     null
                 }
+                {props.type === 'number' && !props.noNumberIndicator ?
+                    <div className={shared.helperText}>
+                         <div className={styles.icon}>123</div>
+                        <ToolTip content={translate('numeric')} align={'start'}/>
+                    </div>
+                    :
+                    null
+                }
             </div>
 
         </div>
@@ -170,6 +178,7 @@ export default function TextField(props) {
 }
 
 TextField.propTypes = {
+    noNumberIndicator: PropTypes.bool,
     helperText: PropTypes.string,
 
     width: PropTypes.string,

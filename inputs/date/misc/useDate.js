@@ -14,8 +14,11 @@ const NAMES = [
     'Novembro',
     'Dezembro'
 ]
-
-export default function useDate(value, pattern) {
+export function addHours(h, dateObject) {
+    dateObject.setTime(dateObject.getTime() + (h*60*60*1000));
+    return dateObject;
+}
+export default function useDate(value, pattern, hoursOffset) {
     const [parsedDate, setDate] = useState({year: (new Date()).getFullYear()})
     const calendar = useMemo(() => {
         let months = []
@@ -73,7 +76,10 @@ export default function useDate(value, pattern) {
         const date = `${parsedDate.year}/${parsedDate.month}/${parsedDate.day}`
         if (!isNaN(timestamp) && parsed !== date && !initialized) {
             setInitialized(true)
-            const d = new Date(value)
+            let d = new Date(value)
+            if(hoursOffset !== undefined)
+                d = addHours(hoursOffset, d)
+
             setDate(splitDate(parseDate(d.getDate(), d.getMonth() + 1, d.getFullYear())))
         }
     }, [value])

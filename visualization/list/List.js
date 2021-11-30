@@ -75,6 +75,7 @@ export default function List(props) {
 }
 
 List.propTypes = {
+
     options: PropTypes.arrayOf(PropTypes.shape({
         label: PropTypes.string,
         onClick: PropTypes.func,

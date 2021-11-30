@@ -15,5 +15,5 @@ export default PropTypes.shape({
     deeperFieldKey: PropTypes.string,
     deeperFieldType:  PropTypes.oneOf(['string', 'number', 'date', 'bool']),
     query:  PropTypes.object,
-
+    hoursOffset: PropTypes.number
 })

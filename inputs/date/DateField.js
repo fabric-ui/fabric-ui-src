@@ -15,7 +15,7 @@ export default function DateField(props) {
             return props.pattern
         else return 'dd/mm/yyyy'
     }, [props.pattern])
-    const {date, calendar, initialized, setChanged, changed, parseDate} = useDate(props.value, pattern)
+    const {date, calendar, initialized, setChanged, changed, parseDate} = useDate(props.value, pattern, props.hoursOffset)
 
     const ref = useRef()
 
@@ -127,6 +127,7 @@ export default function DateField(props) {
 }
 
 DateField.propTypes = {
+    hoursOffset: PropTypes.number,
     helperText: PropTypes.string,
 
     width: PropTypes.string,
