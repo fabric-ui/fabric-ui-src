@@ -32,7 +32,7 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);

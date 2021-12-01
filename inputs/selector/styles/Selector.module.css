@@ -2,9 +2,9 @@
 
 .createModal {
     position: absolute;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     border-radius: 8px;
-    border: var(--mfc-border-primary) 1px solid;
+    border: var(--fabric-border-primary) 1px solid;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -15,7 +15,7 @@
 .labelContainer {
     /*animation: slideUp linear 250ms both;*/
     transition: visibility 150ms linear;
-    color: var(--mfc-color-primary);
+    color: var(--fabric-color-primary);
     font-size: .9rem;
     margin-top: auto;
     overflow: hidden;
@@ -35,7 +35,7 @@
 
 
     transition: inherit;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     width: 100%;
 
     padding: 5px;
@@ -49,7 +49,7 @@
 }
 
 .button:disabled {
-    border-color: var(--mfc-border-primary);
+    border-color: var(--fabric-border-primary);
 }
 
 .alertLabel {
@@ -82,8 +82,8 @@
     height: 50px;
     border-radius: 8px;
     transition: 150ms linear;
-    color: var(--mfc-color-secondary);
-    background: var(--mfc-background-primary);
+    color: var(--fabric-color-secondary);
+    background: var(--fabric-background-primary);
     gap: 0;
     padding: 0 0 0 16px;
     border: #e0e0e0 1px solid;
@@ -97,7 +97,7 @@
 .fieldsContainer:focus, .fieldsContainer:focus-within {
     color: black;
     box-shadow: #0095ff 0px 0px 1px 1.5px;
-    background: var(--mfc-background-tertiary);
+    background: var(--fabric-background-tertiary);
 }
 
 .searchButtonContainer {
@@ -106,7 +106,7 @@
     height: 44px;
     width: fit-content;
     border: none;
-    color: var(--mfc-color-secondary);
+    color: var(--fabric-color-secondary);
     border-radius: 8px;
 
     cursor: pointer;
@@ -127,11 +127,11 @@
 .selectedEntityContainer {
     width: 100%;
     border: none;
-    border-bottom: var(--mfc-border-primary) 1px solid;
-    border-top: var(--mfc-border-primary) 1px solid;
+    border-bottom: var(--fabric-border-primary) 1px solid;
+    border-top: var(--fabric-border-primary) 1px solid;
 
     height: 56px;
-    color: var(--mfc-color-primary);
+    color: var(--fabric-color-primary);
     font-size: .9rem;
 
     display: flex;
@@ -160,7 +160,7 @@
 .divider {
     height: 30px;
     width: 1px;
-    background: var(--mfc-border-primary);
+    background: var(--fabric-border-primary);
 
 }
 

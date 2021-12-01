@@ -28,7 +28,7 @@ export default function Header(props) {
                 disabled={true}
                 style={{display: props.hasOptions ? 'flex' : 'none', justifyContent: 'center', width: '30px'}}>
 
-                <span className="material-icons-round" style={{fontSize: '1.1rem', color: 'var(--mfc-color-quinary)'}}>
+                <span className="material-icons-round" style={{fontSize: '1.1rem', color: 'var(--fabric-color-quinary)'}}>
                     settings
                 </span>
             </div>

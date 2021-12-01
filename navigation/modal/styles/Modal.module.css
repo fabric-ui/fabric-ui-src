@@ -108,7 +108,7 @@
 }
 
 .background {
-    background-color: var(--mfc-background-primary);
+    background-color: var(--fabric-background-primary);
 }
 
 .slideBottomEnter{

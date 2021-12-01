@@ -3,10 +3,10 @@
 
 .wrapper {
 
-    border: var(--mfc-border-primary) 1px solid;
+    border: var(--fabric-border-primary) 1px solid;
     transition: 250ms ease-in;
-    box-shadow: var(--mfc-box-shadow-primary) 0 2px 5px 1px;
-    background: var(--mfc-background-primary);
+    box-shadow: var(--fabric-box-shadow-primary) 0 2px 5px 1px;
+    background: var(--fabric-background-primary);
     border-radius: 5px;
     position: sticky;
     top: 0;
@@ -42,7 +42,7 @@
     font-size: 1.2rem;
 
     font-weight: 600;
-    color: var(--mfc-color-secondary);
+    color: var(--fabric-color-secondary);
 
 }
 

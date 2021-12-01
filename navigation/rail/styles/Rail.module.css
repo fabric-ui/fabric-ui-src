@@ -8,7 +8,7 @@
     overflow: visible;
     width: clamp(65px, 3vw, 100px);
     transition: 250ms ease-in-out;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     position: sticky;
     left: 0;
     top: 0;
@@ -45,9 +45,9 @@
 
 .modal{
     padding: 4px 8px;
-    box-shadow: var(--mfc-box-shadow-primary) 0 0 2px 1px;
+    box-shadow: var(--fabric-box-shadow-primary) 0 0 2px 1px;
     height: 100%;
     width: clamp(250px, 15vw, 350px);
 
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
 }

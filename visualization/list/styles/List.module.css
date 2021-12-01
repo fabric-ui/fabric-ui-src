@@ -31,5 +31,5 @@
 .divider {
     height: 50%;
     width: 1px;
-    background: var(--mfc-border-secondary);
+    background: var(--fabric-border-secondary);
 }

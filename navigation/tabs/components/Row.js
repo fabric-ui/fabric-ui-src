@@ -28,8 +28,6 @@ export default function Row(props) {
                     transition: '150ms linear'
                 }}>arrow_drop_down</span>
             </Button>
-            {/*<Switcher openChild={hidden ? 0 : 1}>*/}
-            {/*    <div/>*/}
 
             {hidden ? null : props.buttons.map((b, bI) => b.group === props.groupName ? (
                 <React.Fragment key={props.index + '-button-header-tab-' + bI}>

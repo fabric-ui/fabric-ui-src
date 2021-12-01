@@ -8,7 +8,7 @@
 
 
     transition: inherit;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     width: 100%;
 
     padding: 5px;
@@ -22,5 +22,5 @@
 }
 
 .button:disabled {
-    border-color: var(--mfc-border-primary);
+    border-color: var(--fabric-border-primary);
 }

@@ -12,7 +12,7 @@
 }
 
 .buttonContainer {
-    color: var(--mfc-color-tertiary);
+    color: var(--fabric-color-tertiary);
     height: 100%;
 
     border-radius: 5px;
@@ -40,32 +40,32 @@
 .divider{
     width: 1px;
     height: 75%;
-    background: var(--mfc-border-primary);
+    background: var(--fabric-border-primary);
 }
 
 
 .header {
     transition: 250ms ease-in;
-    box-shadow: var(--mfc-box-shadow-primary) 0 2px 5px 1px;
+    box-shadow: var(--fabric-box-shadow-primary) 0 2px 5px 1px;
 
 
     position: sticky;
     font-family: "Roboto";
     top: 0;
     z-index: 50;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     height: fit-content;
 
     display: grid;
     gap: 4px;
 
-    border: var(--mfc-border-primary) 1px solid;
+    border: var(--fabric-border-primary) 1px solid;
     padding: 8px;
     border-radius: 5px;
     font-size: 1.05rem;
     font-weight: 600;
 
-    color: var(--mfc-color-secondary);
+    color: var(--fabric-color-secondary);
     margin-bottom: 16px;
 }
 
@@ -84,7 +84,7 @@
 
 .buttons {
     padding: 8px 0 0 0;
-    border-top: var(--mfc-border-primary) 1px solid;
+    border-top: var(--fabric-border-primary) 1px solid;
     display: flex;
     justify-content: flex-start;
     gap: 8px;

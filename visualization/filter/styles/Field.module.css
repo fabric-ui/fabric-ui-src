@@ -22,7 +22,7 @@
 
     padding: 16px;
     width: 100%;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     border-radius: 8px 8px 0 0;
 
     display: flex;
@@ -40,9 +40,9 @@
 .filter {
 
 
-    background-color: var(--mfc-background-primary);
-    border: var(--mfc-border-primary) 1px solid;
-    color: var(--mfc-color-secondary);
+    background-color: var(--fabric-background-primary);
+    border: var(--fabric-border-primary) 1px solid;
+    color: var(--fabric-color-secondary);
     font-size: .85rem;
 
     user-select: none;
@@ -65,7 +65,7 @@
     position: relative;
     width: 40%;
     border-radius: 5px;
-    border: var(--mfc-border-primary) 1px solid;
+    border: var(--fabric-border-primary) 1px solid;
     padding: 8px;
     display: grid;
 
@@ -77,7 +77,7 @@
     align-items: center;
     justify-content: space-between;
     font-size: 1.2rem;
-    color: var(--mfc-color-secondary);
+    color: var(--fabric-color-secondary);
     height: 32px;
     font-weight: bold;
     font-family: "Roboto";
@@ -103,8 +103,8 @@
     width: 100%;
     display: flex;
     flex-flow: row wrap;
-    background: var(--mfc-background-secondary);
-    border: var(--mfc-border-primary) 1px solid;
+    background: var(--fabric-background-secondary);
+    border: var(--fabric-border-primary) 1px solid;
     padding: 8px;
 
     overflow-y: auto;
@@ -120,7 +120,7 @@
     justify-content: flex-start;
     padding: 24px 16px;
     gap: 16px;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     width: calc(33.333% - 6px);
 }
 /*.filterButton[data-highlight]:active {*/

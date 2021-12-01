@@ -16,7 +16,7 @@ export default function HeaderCell(props) {
             styles={{
                 width: `calc(${(1 / props.length) * 100}% + ${props.additionalWidth})`,
 
-                color: props.value.type === 'object' ? 'var(--mfc-color-quinary)' : 'var(--mfc-color-secondary)',
+                color: props.value.type === 'object' ? 'var(--fabric-color-quinary)' : 'var(--fabric-color-secondary)',
                 justifyContent: props.value.type !== 'object' ? 'space-between' : 'flex-start'
             }}
             disabled={props.value.type === 'object'}
@@ -66,7 +66,7 @@ export default function HeaderCell(props) {
                       transform: currentSort === 'desc' ? 'rotate(180deg)' : undefined,
                       fontSize: '1.1rem',
                       transition: '150ms linear',
-                      color: currentSort === undefined ? 'var(--mfc-color-quinary)' : 'inherit'
+                      color: currentSort === undefined ? 'var(--fabric-color-quinary)' : 'inherit'
                   }}
             >
               arrow_downward

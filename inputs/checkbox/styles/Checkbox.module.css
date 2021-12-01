@@ -4,7 +4,7 @@
 .container{
     outline: none;
 
-    border: var(--mfc-color-tertiary) 1px solid;
+    border: var(--fabric-color-tertiary) 1px solid;
     width: 17px;
     height: 17px;
 
@@ -22,12 +22,12 @@
     border: #0095ff 1px solid;
 }
 .container:active{
-    background: var(--mfc-background-quaternary);
+    background: var(--fabric-background-quaternary);
     border: #0095ff 1px solid;
 }
 .container:disabled{
     background: transparent;
-    border-color: var(--mfc-color-quinary);
+    border-color: var(--fabric-color-quinary);
     cursor: unset;
 }
 
@@ -35,7 +35,7 @@
 
 
 
-    border: var(--mfc-border-primary) 1px solid;
+    border: var(--fabric-border-primary) 1px solid;
     border-radius: 5px;
     padding: 8px;
     width: fit-content;

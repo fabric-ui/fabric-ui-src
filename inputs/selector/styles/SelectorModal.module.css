@@ -3,10 +3,10 @@
 .wrapper {
     height: 100%;
     width: clamp(250px, 25%, 500px);
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     margin-left: auto;
     border-radius: 8px 0 0 8px;
-    box-shadow: var(--mfc-box-shadow-primary) -1px 0 3px 1px;
+    box-shadow: var(--fabric-box-shadow-primary) -1px 0 3px 1px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -24,7 +24,7 @@
     font-size: 1.2rem;
     border-radius: 5px;
     font-weight: bold;
-    color: var(--mfc-color-primary);
+    color: var(--fabric-color-primary);
 }
 
 .row {
@@ -62,7 +62,7 @@
 
 .columnLabel {
     font-size: .75rem;
-    color: var(--mfc-color-quaternary);
+    color: var(--fabric-color-quaternary);
 }
 
 .rows {
@@ -80,7 +80,7 @@
 }
 
 .hoveredRow {
-    background: var(--mfc-background-quaternary);
+    background: var(--fabric-background-quaternary);
     border-color: #0095ff;
     border-style: solid;
 }
@@ -88,13 +88,13 @@
 
 
 .emptyRow {
-    color: var(--mfc-color-quinary);
+    color: var(--fabric-color-quinary);
 }
 
 .divider {
     height: 1px;
     width: 100%;
-    background: var(--mfc-border-secondary);
+    background: var(--fabric-border-secondary);
 }
 
 .headerButton {
@@ -103,7 +103,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
 }
 
 
@@ -114,5 +114,5 @@
 }
 
 .mainRow{
-    background: var(--mfc-background-tertiary);
+    background: var(--fabric-background-tertiary);
 }

@@ -8,9 +8,9 @@
 .buttons {
     width: 200px;
     border-radius: 5px;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     height: auto;
-    box-shadow: var(--mfc-box-shadow-primary) 0 0 2px 1px;
+    box-shadow: var(--fabric-box-shadow-primary) 0 0 2px 1px;
 
     overflow-y: auto;
     max-height: clamp(250px, 10vh, 300px);

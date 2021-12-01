@@ -11,13 +11,13 @@
 
 }
 .button{
-    color: var(--mfc-color-tertiary);
+    color: var(--fabric-color-tertiary);
     position: absolute;
     right: 0;
     bottom: 65px;
     transform: translateY(25%);
 
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     border-radius: 5px;
     width: 20px;
     height: 45px;
@@ -30,13 +30,13 @@
 
     transition: 150ms linear;
 
-    border: var(--mfc-border-primary) 1px solid;
+    border: var(--fabric-border-primary) 1px solid;
     outline: none;
     cursor: pointer;
 }
 .button:hover{
 
-    background: var(--mfc-background-quaternary);
+    background: var(--fabric-background-quaternary);
     color: #0095ff;
 }
 .button:active{

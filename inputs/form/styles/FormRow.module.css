@@ -1,9 +1,9 @@
 
 .wrapper {
 
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     border-radius: 5px;
-    border: var(--mfc-border-primary) 1px solid;
+    border: var(--fabric-border-primary) 1px solid;
 
     display: flex;
     flex-flow: row wrap;
@@ -29,7 +29,7 @@
     padding-right: 16px;
     font-size: .9rem;
     font-weight: 600;
-    color: var(--mfc-color-tertiary);
+    color: var(--fabric-color-tertiary);
     padding-left: 0;
 }
 

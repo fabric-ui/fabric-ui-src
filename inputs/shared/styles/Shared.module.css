@@ -26,7 +26,7 @@
 .labelContainer {
     transition: 200ms ease-in-out;
 
-    color: var(--mfc-color-secondary);
+    color: var(--fabric-color-secondary);
     /*font-weight: 600;*/
     font-size: .8rem;
     margin-top: auto;
@@ -51,7 +51,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--mfc-color-quaternary);
+    color: var(--fabric-color-quaternary);
     font-family: "Roboto";
     font-size: .75rem;
     user-select: none;
@@ -59,7 +59,7 @@
 }
 .helperText{
     transition: 150ms linear;
-    color: var(--mfc-color-quinary);
+    color: var(--fabric-color-quinary);
     cursor: help;
 }
 .helperText:hover{

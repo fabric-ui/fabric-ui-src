@@ -53,22 +53,22 @@ export default function FileModal(props) {
                 style={{background: !props.multiple && props.files.length > 0 ?themes.theme.background1 : undefined}}
                 onDragLeave={(e) => {
                     if (!(!props.multiple && props.files.length > 0)) {
-                        areaRef.current.style.borderColor = 'var(--mfc-border-primary)'
-                        areaRef.current.style.background = 'var(--mfc-background-primary)'
+                        areaRef.current.style.borderColor = 'var(--fabric-border-primary)'
+                        areaRef.current.style.background = 'var(--fabric-background-primary)'
                     }
                 }}
                 onDragOver={(e) => {
                     e.preventDefault()
                     if (!(!props.multiple && props.files.length > 0)) {
                         areaRef.current.style.borderColor = '#0095ff'
-                        areaRef.current.style.background ='var(--mfc-background-tertiary)'
+                        areaRef.current.style.background ='var(--fabric-background-tertiary)'
                     }
                 }}
                 onDrop={e => {
                     e.preventDefault()
                     if (!(!props.multiple && props.files.length > 0)) {
                         areaRef.current.style.borderColor = '#0095ff'
-                        areaRef.current.style.background = 'var(--mfc-background-tertiary)'
+                        areaRef.current.style.background = 'var(--fabric-background-tertiary)'
                         props.setFiles([...props.files, ...Array.from(e.dataTransfer.files)])
                     }
 

@@ -8,7 +8,6 @@ import Modal from "../modal/Modal";
 
 export default function NavigationRail(props) {
     const [extended, setExtended] = useState(false)
-    const groups = [...new Set(React.Children.toArray(props.children).map(item => item.props.group))]
 
     const content = (
         <>
@@ -64,5 +63,6 @@ export default function NavigationRail(props) {
 }
 
 NavigationRail.propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
+
 }

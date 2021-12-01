@@ -4,15 +4,15 @@
     height: 60px;
     width: 100%;
     padding: 0;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     border-radius: 5px 0 0 5px;
 
-    border: var(--mfc-border-primary) 1px solid;
+    border: var(--fabric-border-primary) 1px solid;
 }
 
 
 .cell {
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     padding: 0 8px;
     color: inherit;
     display: flex;
@@ -30,7 +30,7 @@
 }
 
 .headerRow {
-    /*border: var(--mfc-border-primary) 1px solid;*/
+    /*border: var(--fabric-border-primary) 1px solid;*/
     position: sticky;
     top: 0;
     z-index: 50;
@@ -45,14 +45,14 @@
 }
 
 .scrolledHeader {
-    box-shadow: var(--mfc-box-shadow-primary) 0 0 1px 1px;
+    box-shadow: var(--fabric-box-shadow-primary) 0 0 1px 1px;
 }
 
 
 .mainButton {
-    border: var(--mfc-border-primary) 1px solid;
+    border: var(--fabric-border-primary) 1px solid;
     border-left: none;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     border-radius: 0 5px 5px 0;
     padding: 4px;
     width: 30px;
@@ -65,5 +65,5 @@
 .divider {
     height: 50%;
     width: 1px;
-    background: var(--mfc-border-secondary);
+    background: var(--fabric-border-secondary);
 }

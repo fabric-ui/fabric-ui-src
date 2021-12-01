@@ -17,7 +17,7 @@
     outline: none;
     border: none;
 
-    color: var(--mfc-color-tertiary);
+    color: var(--fabric-color-tertiary);
 
     cursor: pointer;
     position: relative;
@@ -58,7 +58,7 @@
 }
 
 .buttonWrapper[data-highlight = 'true'] {
-    color: var(--mfc-color-primary);
+    color: var(--fabric-color-primary);
     gap: 6px;
 }
 
@@ -69,7 +69,7 @@
 
 .buttonWrapper:disabled {
     cursor: unset;
-    color: var(--mfc-color-quinary) !important;
+    color: var(--fabric-color-quinary) !important;
 }
 
 .buttonWrapper:active {

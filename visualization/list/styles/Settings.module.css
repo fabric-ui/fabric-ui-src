@@ -2,7 +2,7 @@
 
 .modal {
     overflow: hidden;
-    background-color: var(--mfc-background-primary);
+    background-color: var(--fabric-background-primary);
 
     border-radius: 5px 0 5px 0;
     position: absolute;
@@ -11,7 +11,7 @@
     width: 25%;
     height: 100%;
     padding: 16px;
-    box-shadow: var(--mfc-box-shadow-primary) -1px 0 3px 1px;
+    box-shadow: var(--fabric-box-shadow-primary) -1px 0 3px 1px;
 }
 
 .contentWrapper {
@@ -30,12 +30,12 @@
     display: grid;
     gap: 8px;
     height: 100%;
-    background: var(--mfc-background-secondary);
+    background: var(--fabric-background-secondary);
     border-radius: 5px;
     padding: 8px;
     overflow-y: auto;
 
-    border: var(--mfc-border-primary) 1px solid;
+    border: var(--fabric-border-primary) 1px solid;
 }
 
 .fieldRow {
@@ -44,9 +44,9 @@
     height: 60px;
     position: relative;
     z-index: 999;
-    background: var(--mfc-background-primary);
+    background: var(--fabric-background-primary);
     border-radius: 5px;
-    border: var(--mfc-border-primary) 1px solid;
+    border: var(--fabric-border-primary) 1px solid;
     padding: 8px;
 
     display: flex;
@@ -72,7 +72,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     font-weight: 600;
-    color: var(--mfc-color-tertiary);
+    color: var(--fabric-color-tertiary);
     font-size: .9rem;
 
 }
@@ -88,7 +88,7 @@
 
 .header {
     font-weight: 600;
-    color: var(--mfc-color-secondary);
+    color: var(--fabric-color-secondary);
 }
 
 .range{

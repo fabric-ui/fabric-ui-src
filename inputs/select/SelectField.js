@@ -90,7 +90,7 @@ export default function SelectField(props) {
                             <Button
                                 styles={{
                                     borderRadius: '0',
-                                    borderTop: index > 0 ? 'var(--mfc-border-primary) 1px solid' : 'none'
+                                    borderTop: index > 0 ? 'var(--fabric-border-primary) 1px solid' : 'none'
                                 }}
                                 highlight={choice.key === props.value}
                                 onClick={() => {

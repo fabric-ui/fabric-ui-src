@@ -75,7 +75,7 @@ export default function FileField(props) {
                             height: '100%',
                             gap: '16px',
                             display: 'flex',
-                            color: themes ? 'var(--mfc-color-primary)' : '#555555'
+                            color: themes ? 'var(--fabric-color-primary)' : '#555555'
                         }}
                     >
                         {translate('upload_files')}
@@ -83,7 +83,7 @@ export default function FileField(props) {
                         {files.length > 0 ?
                             <div style={{
                                 fontSize: '.7rem',
-                                color: themes ? 'var(--mfc-color-secondary)' : '#777777'
+                                color: themes ? 'var(--fabric-color-secondary)' : '#777777'
                             }}>
                                 ({files.length} {translate('uploaded_files')})
                             </div>
