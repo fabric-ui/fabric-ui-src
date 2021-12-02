@@ -45,7 +45,8 @@ export default function Fabric(props) {
 Fabric.propTypes = {
   className: PropTypes.string,
   styles: PropTypes.object,
-  onDark: PropTypes.bool,
+
+  theme: PropTypes.oneOf(['dark', 'light']),
   language: PropTypes.oneOf(['pt', 'en']),
   children: PropTypes.node
 }

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 
 import PropTypes from "prop-types";
-import RailContext from "./RailContext";
+import RailContext from "./hooks/RailContext";
 
 export default function RailActionWrapper(props) {
     const context = useContext(RailContext)

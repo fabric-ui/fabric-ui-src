@@ -1,6 +1,6 @@
 import React, {useEffect, useMemo, useRef} from "react";
 import ReactDOM from "react-dom";
-import styles from "./styles/Modal.module.css";
+import styles from "../styles/Modal.module.css";
 
 export default function useModal({animationStyle, variant}) {
     const mountingPoint = useRef()

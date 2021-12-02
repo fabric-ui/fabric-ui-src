@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, {useState} from "react";
 import styles from "./styles/Rail.module.css";
 import RailActionButton from "./RailActionButton";
-import RailContext from "./RailContext";
+import RailContext from "./hooks/RailContext";
 import Button from "../../inputs/button/Button";
 import Modal from "../modal/Modal";
 

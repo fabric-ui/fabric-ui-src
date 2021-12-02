@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, {useContext, useEffect, useState} from "react";
 import styles from "./styles/Modal.module.css";
 import ThemeContext from "../../misc/context/ThemeContext";
-import useModal from "./useModal";
+import useModal from "./hooks/useModal";
 
 export default function Modal(props) {
 

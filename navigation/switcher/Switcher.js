@@ -34,7 +34,6 @@ export default function Switcher(props) {
 }
 
 Switcher.propTypes = {
-    // animationType: PropTypes.oneOf(['sideways', 'vertically', 'fade']),
     className: PropTypes.string,
     children: PropTypes.node,
     openChild: PropTypes.number.isRequired,

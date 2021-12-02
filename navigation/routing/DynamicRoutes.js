@@ -16,11 +16,7 @@ export default function DynamicRoutes(props) {
             return null
     }, [contentIndex])
 
-    return (
-        <React.Fragment>
-            {Content !== null ? <Content {...props.componentProps}/> : null}
-        </React.Fragment>
-    )
+    return (Content !== null ? <Content {...props.componentProps}/> : null)
 
 }
 
