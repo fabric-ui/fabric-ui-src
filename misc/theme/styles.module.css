@@ -1,7 +1,7 @@
 .light {
     --fabric-background-primary: white;
-    --fabric-background-secondary: #f3f6f9;
-    --fabric-background-tertiary: #f4f5fa;
+    --fabric-background-secondary: #f4f5fa;
+    --fabric-background-tertiary: #f3f6f9;
     --fabric-background-quaternary: #E8F0FE;
 
     --fabric-border-primary: #F1F1F5;
@@ -21,8 +21,8 @@
 
 
     --fabric-background-primary: #292c2b;
-    --fabric-background-secondary: #1e2121;
-    --fabric-background-tertiary: #191C1C;
+    --fabric-background-secondary: #191C1C;
+    --fabric-background-tertiary: #1e2121;
     --fabric-background-quaternary: #1f2123;
 
     --fabric-border-primary: #1e2121;

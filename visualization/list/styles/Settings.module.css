@@ -1,0 +1,96 @@
+@import '../../../../core/misc/theme/styles.module.css';
+
+.modal {
+    overflow: hidden;
+    background-color: var(--fabric-background-primary);
+
+    border-radius: 5px 0 5px 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25%;
+    height: 100%;
+    padding: 16px;
+    box-shadow: var(--fabric-box-shadow-primary) -1px 0 3px 1px;
+}
+
+.contentWrapper {
+    display: grid;
+    gap: 8px;
+
+    margin-top: 16px;
+
+    align-content: flex-start;
+    height: 100%;
+
+    width: 100%;
+}
+
+.content {
+    display: grid;
+    gap: 8px;
+    height: 100%;
+    background: var(--fabric-background-secondary);
+    border-radius: 5px;
+    padding: 8px;
+    overflow-y: auto;
+
+    border: var(--fabric-border-primary) 1px solid;
+}
+
+.fieldRow {
+    max-width: 100%;
+    overflow: hidden;
+    height: 60px;
+    position: relative;
+    z-index: 999;
+    background: var(--fabric-background-primary);
+    border-radius: 5px;
+    border: var(--fabric-border-primary) 1px solid;
+    padding: 8px;
+
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /*height: auto;*/
+
+    user-select: none;
+}
+
+.fieldRow:hover {
+    border-color: #0095ff;
+}
+
+.fieldLabel {
+    max-width: 50%;
+
+    text-transform: capitalize;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+    color: var(--fabric-color-tertiary);
+    font-size: .9rem;
+
+}
+
+.visibilityButton {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.header {
+    font-weight: 600;
+    color: var(--fabric-color-secondary);
+}
+
+.range{
+    /*max-width: */
+}

@@ -34,7 +34,7 @@ export default function Fabric(props) {
           href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
         />
         <div
-          className={[props.onDark ? styles.dark : styles.light, props.className].join(' ')}
+          className={[props.theme === 'dark' ? styles.dark : styles.light, props.className].join(' ')}
           style={props.styles}>
           {props.children}
         </div>

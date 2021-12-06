@@ -26,5 +26,6 @@ export default {
   not_completed: 'Não completo',
   complete: 'Completo',
   step: 'Procedimento',
-  numeric: 'Numérico'
+  numeric: 'Numérico',
+  empty: 'Vazio'
 }

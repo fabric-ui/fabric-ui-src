@@ -1,0 +1,46 @@
+.cardWrapper {
+    width: 250px;
+    height: auto;
+    /*min-height: 250px;*/
+    overflow: hidden;
+    border-radius: 8px;
+
+    background: var(--fabric-background-primary);
+    border: var(--fabric-border-primary) 1px solid;
+    cursor: pointer;
+
+    transition: 150ms linear;
+
+    user-select: none;
+    position: relative;
+
+}
+
+.cardWrapper:active {
+    transform: scale(.98);
+}
+
+.cardImage {
+    max-height:  40vh;
+    overflow: hidden;
+    transition: 150ms linear;
+}
+
+
+.header {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--fabric-color-secondary);
+}
+
+.description {
+    max-width: 100%;
+    word-break: break-all;
+    display: inline-block;
+    padding: 16px;
+    font-weight: normal;
+    color: var(--fabric-color-tertiary);
+
+    white-space: pre-wrap;
+
+}

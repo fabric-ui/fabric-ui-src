@@ -1,0 +1,29 @@
+.wrapper {
+    border-radius: 5px;
+
+    display: flex;
+
+    background: var(--fabric-background-primary);
+    border: var(--fabric-border-primary) 1px solid;
+
+    padding: 4px;
+}
+
+.row {
+    padding: 4px;
+    font-size: .8rem;
+
+    font-weight: bold;
+    color: var(--fabric-color-tertiary);
+
+    font-family: 'Roboto';
+    width: 100%;
+
+    display: grid;
+    gap: 4px;
+}
+
+.footer {
+    font-weight: normal;
+    color: var(--fabric-color-secondary);
+}
