@@ -1,7 +1,7 @@
 import styles from '../shared/styles/Select.module.css'
 import PropTypes from 'prop-types'
 import React, {useMemo, useRef, useState} from 'react'
-import FloatingBox from "../floating_box/FloatingBox";
+import FloatingBox from "../shared/floating_box/FloatingBox";
 import ToolTip from "../../feedback/tooltip/ToolTip";
 
 import shared from '../shared/styles/Shared.module.css'

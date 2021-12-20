@@ -1,11 +1,11 @@
-import Modal from "../../../../core/navigation/modal/Modal";
+import Modal from "../../../navigation/modal/Modal";
 import PropTypes from 'prop-types'
 import keyTemplate from "../templates/keyTemplate";
 import styles from '../styles/Settings.module.css'
 import React, {useEffect, useState} from 'react'
-import Tabs from "../../../../core/navigation/tabs/Tabs";
-import Empty from "../../../../core/feedback/empty/Empty";
-import Tab from "../../../../core/navigation/tabs/Tab";
+import Tabs from "../../../navigation/tabs/Tabs";
+import Empty from "../../../feedback/empty/Empty";
+import Tab from "../../../navigation/tabs/Tab";
 import SettingsField from "./SettingsField";
 
 export default function Settings(props) {

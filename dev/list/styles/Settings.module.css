@@ -1,4 +1,4 @@
-@import '../../../../core/misc/theme/styles.module.css';
+@import '../../../misc/theme/styles.module.css';
 
 .modal {
     overflow: hidden;

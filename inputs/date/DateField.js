@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, {useEffect, useMemo, useRef, useState} from 'react'
 import styles from './styles/DateField.module.css'
-import FloatingBox from "../floating_box/FloatingBox";
+import FloatingBox from "../shared/floating_box/FloatingBox";
 import Button from "../button/Button";
 import TextField from "../text/TextField";
 import useDate from "./misc/useDate";

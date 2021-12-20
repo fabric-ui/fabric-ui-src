@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import styles from './styles/List.module.css'
 import ListHeader from "./components/ListHeader";
 import React, {useState} from "react";
-import Empty from "../../../core/feedback/empty/Empty";
+import Empty from "../../feedback/empty/Empty";
 import keyTemplate from "./templates/keyTemplate";
 import useList from "./hook/useList";
 import Settings from "./components/Settings";

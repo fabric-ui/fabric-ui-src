@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 import styles from './styles/Masonry.module.css'
 import React, {useEffect, useMemo, useRef, useState} from "react";
-import MasonryCard from "./MasonryCard";
+import Card from "./Card";
 
 export default function Masonry(props) {
-    const children = React.Children.toArray(props.children).filter(c => c.type === MasonryCard)
+    const children = React.Children.toArray(props.children).filter(c => c.type === Card)
     const [quantityColumn, setQuantityColumn] = useState(0)
     const resizeObs = useRef()
     const ref = useRef()

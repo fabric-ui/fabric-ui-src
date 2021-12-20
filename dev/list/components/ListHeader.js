@@ -4,9 +4,9 @@ import React from "react";
 import useHeader from "../hook/useHeader";
 import keyTemplate from "../templates/keyTemplate";
 import Filter from "../../filter/Filter";
-import Button from "../../../../core/inputs/button/Button";
+import Button from "../../../inputs/button/Button";
 import Header from "./Header";
-import Dropdown from "../../../../core/navigation/dropdown/Dropdown";
+import Dropdown from "../../../navigation/dropdown/Dropdown";
 
 export default function ListHeader(props) {
     const {
