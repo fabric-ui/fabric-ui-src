@@ -8,7 +8,7 @@ export default function Fabric(props) {
   return (
     <LanguageContext.Provider value={props.language  !== undefined ? props.language : 'pt'}>
       <ThemeContext.Provider value={{
-        dark: props.onDark,
+        dark: props.theme === 'dark',
         styles: styles,
         themes: {
           fabric_background_primary: !props.onDark ? 'white' : '#292c2b',
