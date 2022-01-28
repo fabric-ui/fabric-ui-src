@@ -34,7 +34,7 @@ export default function Masonry(props) {
         })
 
         return newColumns
-    }, [quantityColumn])
+    }, [quantityColumn,children])
 
     return (
         <div ref={ref} className={styles.wrapper}>

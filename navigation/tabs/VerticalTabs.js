@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, {useState} from "react";
+import React from "react";
 import styles from './styles/Vertical.module.css'
 import Switcher from "../switcher/Switcher";
 import Row from "./components/Row";
