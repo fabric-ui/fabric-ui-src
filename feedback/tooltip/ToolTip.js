@@ -1,7 +1,8 @@
+import React, {useEffect, useRef} from "react";
+
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import styles from './styles/ToolTip.module.css'
-import React, {useEffect, useRef} from "react";
 
 
 export default function ToolTip(props) {

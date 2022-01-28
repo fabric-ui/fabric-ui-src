@@ -1,28 +1,22 @@
 import PropTypes from "prop-types";
 import styles from './styles/Card.module.css'
-import React, {useMemo} from "react";
+import React from "react";
+import Button from "../../inputs/button/Button";
+import useAttributes from "../../misc/hooks/useAttributes";
 
 export default function Card(props) {
-  const height = useMemo(() => {
-    const max = props.dimensions?.maxHeight ?props.dimensions?.maxHeight : 250,
-          min = props.dimensions?.minHeight ?props.dimensions?.minHeight : 150
-
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  }, [])
-
+  const ref = useAttributes(props.attributes)
   return (
-    <div className={styles.cardWrapper} style={{...props.styles, ...{height: props.randomHeight ? height + 'px' : undefined}}}>
+    <Button reference={ref} onClick={props.onClick} variant={'outlined'} className={[styles.cardWrapper, props.className].join(' ')} styles={props.styles} >
       {props.children}
-    </div>
+    </Button>
   )
 }
 
 Card.propTypes = {
+  onClick: PropTypes.func.isRequired,
   children: PropTypes.node,
   styles: PropTypes.object,
-  randomHeight: PropTypes.bool,
-  dimensions: PropTypes.shape({
-    maxHeight: PropTypes.number,
-    minHeight: PropTypes.number
-  })
+  className: PropTypes.string,
+  attributes: PropTypes.object
 }

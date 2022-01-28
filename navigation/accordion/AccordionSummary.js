@@ -10,4 +10,6 @@ export default function AccordionSummary(props){
 }
 AccordionSummary.propTypes={
     children: PropTypes.node,
+  className: PropTypes.string,
+  styles: PropTypes.object
 }

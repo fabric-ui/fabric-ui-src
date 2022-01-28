@@ -80,7 +80,7 @@ export default function Dropdown(props) {
       <Modal
         variant={"fit"}
         styles={{transform: `translate(${justifyTranslation}, ${alignTranslation})`}}
-        blurIntensity={0} className={styles.buttons}
+        blurIntensity={0} className={[styles.buttons, props.wrapperClassname].join(' ')}
         animationStyle={'fade'}
         open={open}
         handleClose={() => setOpen(false)}>
@@ -91,6 +91,7 @@ export default function Dropdown(props) {
 }
 
 Dropdown.propTypes = {
+  wrapperClassname: PropTypes.string,
   highlight: PropTypes.bool,
   variant: PropTypes.oneOf(['minimal', 'filled', 'outlined', 'minimal-horizontal']),
   className: PropTypes.string,

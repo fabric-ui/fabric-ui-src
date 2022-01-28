@@ -3,7 +3,8 @@
     width: 100%;
     display: flex;
     gap: 8px;
-    justify-content: center;
+    justify-content: flex-start;
+
     /*background: red;*/
 }
 .column{
