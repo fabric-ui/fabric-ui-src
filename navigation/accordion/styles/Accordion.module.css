@@ -8,6 +8,9 @@
 
   transition: 150ms ease-in-out;
   overflow: hidden;
+
+  height: fit-content;
+  min-height: 38px;
 }
 
 .summary {
