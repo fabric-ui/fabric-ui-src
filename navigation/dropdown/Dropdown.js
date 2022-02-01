@@ -4,6 +4,7 @@ import styles from './styles/Dropdown.module.css'
 import Button from "../../inputs/button/Button";
 import Modal from "../modal/Modal";
 import DropdownOptions from "./DropdownOptions";
+import DropdownProvider from './DropdownProvider'
 
 export default function Dropdown(props) {
   const [open, setOpen] = useState(false)
@@ -68,6 +69,7 @@ export default function Dropdown(props) {
     return React.Children.toArray(props.children).filter(e => !e?.type?.name || e?.type.name !== DropdownOptions.name)
   }, [props.children])
   return (
+
     <div className={styles.wrapper}>
       <Button
         highlight={open || props.highlight}
@@ -84,7 +86,12 @@ export default function Dropdown(props) {
         animationStyle={'fade'}
         open={open}
         handleClose={() => setOpen(false)}>
-        {content}
+        <DropdownProvider.Provider value={{
+          setOpen,
+          open
+        }}>
+          {content}
+        </DropdownProvider.Provider>
       </Modal>
     </div>
   )

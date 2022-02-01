@@ -1,14 +1,18 @@
 import styles from './styles/Dropdown.module.css'
 import PropTypes from "prop-types";
 import Button from "../../inputs/button/Button";
-import React from "react";
+import React, {useContext} from "react";
+import DropdownProvider from "./DropdownProvider";
 
 export default function DropdownOption(props) {
+  const context = useContext(DropdownProvider)
   return (
     <div data-keepalive={`${props.option.keepAlive}`} style={{width: '100%'}}>
       <Button
         disabled={props.option.disabled}
         onClick={() => {
+          if (context?.setOpen && !props.option.keepAlive)
+            context?.setOpen(false)
           props.option.onClick(props.option.onClickEvent)
         }}
         className={styles.button}>
