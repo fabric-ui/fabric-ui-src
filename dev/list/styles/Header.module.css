@@ -49,7 +49,7 @@
 .filter {
     user-select: none;
     outline: none;
-    background-color: #0095ff;
+    background-color: var(--fabric-accent-color);
     color: white;
     border: none;
     padding: 4px;

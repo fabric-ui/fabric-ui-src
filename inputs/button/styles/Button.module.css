@@ -8,7 +8,7 @@
     font-size: .8rem;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     cursor: pointer;
-    --color: #0095ff;
+    --color: var(--fabric-accent-color);
     --darker-color: #0080DB;
     padding: 8px 16px;
     text-align: center;

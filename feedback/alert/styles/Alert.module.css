@@ -59,7 +59,7 @@
 }
 
 .info {
-  --background: #0095ff;
+  --background: var(--fabric-accent-color);
 
 }
 

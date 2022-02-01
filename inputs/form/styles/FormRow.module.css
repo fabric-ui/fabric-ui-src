@@ -35,7 +35,7 @@
 
 
 .indicator {
-    --color: #0095ff;
+    --color: var(--fabric-accent-color);
     width: 2px;
     height: 100%;
     border-radius: 10px;

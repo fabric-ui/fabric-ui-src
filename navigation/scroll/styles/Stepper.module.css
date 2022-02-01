@@ -40,5 +40,5 @@
     transition: 150ms linear;
 }
 .filler[data-filled = 'true']{
-    background: #0095ff;
+    background: var(--fabric-accent-color);
 }

@@ -3,7 +3,7 @@
     --y: 0;
     --x: 0;
 
-    --accent-color: #0095ff;
+    --accent-color: var(--fabric-accent-color);
 
     --opacity: .15;
     --size: 16px;

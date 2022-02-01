@@ -37,11 +37,11 @@
 .button:hover{
 
     background: var(--fabric-background-quaternary);
-    color: #0095ff;
+    color: var(--fabric-accent-color);
 }
 .button:active{
-    background: #0095ff;
+    background: var(--fabric-accent-color);
     color: white;
-    border-color: #0095ff;
+    border-color: var(--fabric-accent-color);
 }
 

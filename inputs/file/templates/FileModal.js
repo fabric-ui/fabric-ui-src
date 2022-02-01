@@ -60,14 +60,14 @@ export default function FileModal(props) {
                 onDragOver={(e) => {
                     e.preventDefault()
                     if (!(!props.multiple && props.files.length > 0)) {
-                        areaRef.current.style.borderColor = '#0095ff'
+                        areaRef.current.style.borderColor = 'var(--fabric-accent-color)'
                         areaRef.current.style.background ='var(--fabric-background-tertiary)'
                     }
                 }}
                 onDrop={e => {
                     e.preventDefault()
                     if (!(!props.multiple && props.files.length > 0)) {
-                        areaRef.current.style.borderColor = '#0095ff'
+                        areaRef.current.style.borderColor = 'var(--fabric-accent-color)'
                         areaRef.current.style.background = 'var(--fabric-background-tertiary)'
                         props.setFiles([...props.files, ...Array.from(e.dataTransfer.files)])
                     }

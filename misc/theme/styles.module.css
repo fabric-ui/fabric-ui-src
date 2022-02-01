@@ -14,7 +14,7 @@
     --fabric-color-quinary: #999999;
     --fabric-color-senary: white;
 
-    --fabric-box-shadow-primary: #e0e0e0;
+
 }
 
 .dark {
@@ -35,6 +35,5 @@
     --fabric-color-quinary: #dedede;
     --fabric-color-senary: #292c2b;
 
-    --fabric-box-shadow-primary: #1e2121;
 }
 

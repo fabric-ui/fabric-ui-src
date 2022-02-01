@@ -35,30 +35,11 @@ export default function Button(props) {
         }
     }, [props.variant, props.highlight]);
 
-    const color = useMemo(() => {
-        if (props.color === 'secondary')
-            return styles.secondaryVariant
-        else
-            return undefined
-    }, [props.color])
 
-
-    const accentColor = useMemo(() => {
-        if (props.variant === 'filled') {
-            if (props.color === 'secondary')
-                return '#FF2626'
-            else
-                return '#0080DB'
-        } else if (props.color === 'secondary')
-            return '#ff5555'
-        else
-            return '#0095ff'
-
-    }, [props.color])
 
     return (
         <button
-            className={[styles.button, variant.normal, props.highlight ? variant.highlight : undefined, color, props.className].join(' ')}
+            className={[styles.button, variant.normal, props.highlight ? variant.highlight : undefined, props.className].join(' ')}
             onClick={props.onClick} ref={props.reference}
             style={props.styles}
             data-highlight={JSON.stringify(props.highlight)}
@@ -67,7 +48,7 @@ export default function Button(props) {
             <Ripple
                 disabled={props.disabled}
                 opacity={props.variant === 'filled' ? .8 : undefined}
-                accentColor={accentColor}
+                accentColor={props.accentColor}
             />
             {props.children}
         </button>
@@ -83,6 +64,6 @@ Button.propTypes = {
     onClick: PropTypes.func,
     disabled: PropTypes.bool,
     highlight: PropTypes.bool,
-    color: PropTypes.oneOf(['primary', 'secondary']),
+    accentColor: PropTypes.string,
     className: PropTypes.string
 }

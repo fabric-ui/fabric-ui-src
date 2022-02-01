@@ -9,8 +9,8 @@ export default function Checkbox(props) {
                 className={styles.container}
                 disabled={props.disabled}
                 style={{
-                    background: props.checked ? '#0095ff' : undefined,
-                    border: props.checked ? '#0095ff 1px solid' : undefined
+                    background: props.checked ? 'var(--fabric-accent-color)' : undefined,
+                    border: props.checked ? 'var(--fabric-accent-color) 1px solid' : undefined
                 }}
                 onClick={() => props.handleCheck(props.checked)}>
                 <span style={{

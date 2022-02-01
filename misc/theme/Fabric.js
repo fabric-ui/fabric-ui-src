@@ -1,41 +1,44 @@
 import styles from './styles.module.css'
-import React from "react";
+import React, {useMemo} from "react";
 import ThemeContext from "../context/ThemeContext";
 import PropTypes from "prop-types";
 import LanguageContext from "../context/LanguageContext";
 
 export default function Fabric(props) {
+  const dark = useMemo(() => {
+    return props.theme === 'dark'
+  }, [props.theme])
   return (
-    <LanguageContext.Provider value={props.language  !== undefined ? props.language : 'pt'}>
+    <LanguageContext.Provider value={props.language !== undefined ? props.language : 'pt'}>
       <ThemeContext.Provider value={{
-        dark: props.theme === 'dark',
+        dark: dark,
         styles: styles,
-        themes: {
-          fabric_background_primary: !props.onDark ? 'white' : '#292c2b',
-          fabric_background_secondary: !props.onDark ? '#f3f6f9' : '#1e2121',
-          fabric_background_tertiary: !props.onDark ? '#f4f5fa' : '#191C1C',
-          fabric_background_quaternary: !props.onDark ? '#E8F0FE' : '#1f2123',
-
-          fabric_border_primary: !props.onDark ? '#F1F1F5' : '#1e2121',
-          fabric_border_secondary: !props.onDark ? '#e0e0e0' : '#707070',
-
-          fabric_color_primary: !props.onDark ? '#333333' : 'white',
-          fabric_color_secondary: !props.onDark ? '#555555' : '#f4f5fa',
-          fabric_color_tertiary: !props.onDark ? '#666666' : '#f0f0f0',
-          fabric_color_quaternary: !props.onDark ? '#777777' : '#e0e0e0',
-          fabric_color_quinary: !props.onDark ? '#999999' : '#dedede',
-          fabric_color_senary: !props.onDark ? 'white' : '#292c2b',
-
-          fabric_box_shadow_primary: !props.onDark ? '#e0e0e0' : '#1e2121'
-        }
+        themes: {}
       }}>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
         />
         <div
-          className={[props.theme === 'dark' ? styles.dark : styles.light, props.className].join(' ')}
-          style={props.styles}>
+          className={[dark ? styles.dark : styles.light, props.className].join(' ')}
+
+          style={{
+            ...props.styles,
+            ...props.backgrounds ?
+              {
+                '--fabric-background-primary': dark ? props.backgrounds?.darkPrimary : props.backgrounds?.primary,
+                '--fabric-background-secondary': dark ? props.backgrounds?.darkSecondary : props.backgrounds?.secondary,
+                '--fabric-background-tertiary': dark ? props.backgrounds?.darkTertiary : props.backgrounds?.tertiary,
+                '--fabric-background-quaternary': dark ? props.backgrounds?.darkQuaternary : props.backgrounds?.quaternary,
+              }
+              :
+              {},
+            ...props.borders ? {
+              '--fabric-border-primary': dark ? props.backgrounds?.darkPrimary : props.backgrounds?.primary,
+              '--fabric-border-secondary': dark ? props.backgrounds?.darkSecondary : props.backgrounds?.secondary,
+            } : {},
+            '--fabric-accent-color': props.accentColor ? props.accentColor : '#0095ff'
+          }}>
           {props.children}
         </div>
       </ThemeContext.Provider>
@@ -43,6 +46,28 @@ export default function Fabric(props) {
   )
 }
 Fabric.propTypes = {
+  backgrounds: PropTypes.shape({
+    primary: PropTypes.string,
+    secondary: PropTypes.string,
+    tertiary: PropTypes.string,
+    quaternary: PropTypes.string,
+
+    darkPrimary: PropTypes.string,
+    darkSecondary: PropTypes.string,
+    darkTertiary: PropTypes.string,
+    darkQuaternary: PropTypes.string
+  }),
+
+  borders: PropTypes.shape({
+    primary: PropTypes.string,
+    secondary: PropTypes.string,
+
+    darkPrimary: PropTypes.string,
+    darkSecondary: PropTypes.string,
+  }),
+
+  accentColor: PropTypes.string,
+
   className: PropTypes.string,
   styles: PropTypes.object,
 

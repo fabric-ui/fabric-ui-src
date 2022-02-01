@@ -128,7 +128,7 @@
 
 .activeContainer {
     background: var(--fabric-background-quaternary);
-    color: #0095ff;
+    color: var(--fabric-accent-color);
 }
 
 .daysContainer {
@@ -163,14 +163,14 @@
 }
 
 .dayContainer:hover {
-    color: #0095ff;
+    color: var(--fabric-accent-color);
     border: rgba(0, 149, 255, .5) 2px solid;
 }
 
 .dayContainer:active {
     background: var(--fabric-background-quaternary);
 
-    color: #0095ff;
+    color: var(--fabric-accent-color);
     border: rgba(0, 149, 255, .5) 2px solid;
 }
 

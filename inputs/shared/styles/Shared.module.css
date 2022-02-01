@@ -1,6 +1,6 @@
 
 .wrapper {
-    --accent_color: #0095ff;
+    --accent_color: var(--fabric-accent-color);
 
     transition: 150ms linear;
     height: fit-content;
@@ -63,5 +63,5 @@
     cursor: help;
 }
 .helperText:hover{
-    color: #0095ff;
+    color: var(--fabric-accent-color);
 }

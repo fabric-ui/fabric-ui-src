@@ -44,7 +44,7 @@
 
 .buttonWrapper[data-extended = 'true'][data-highlight = 'true'] {
     background: rgba(0, 149, 255, .15);
-    color: #0095ff;
+    color: var(--fabric-accent-color);
 }
 
 .buttonWrapper[data-extended = 'true'] .label {
@@ -73,7 +73,7 @@
 }
 
 .buttonWrapper:active {
-    color: #0095ff;
+    color: var(--fabric-accent-color);
 }
 
 .iconWrapper {

@@ -19,7 +19,7 @@
 }
 
 .cardWrapper:hover {
-  border-color: #0095ff;
+  border-color: var(--fabric-accent-color);
 }
 
 .cardWrapper:active {

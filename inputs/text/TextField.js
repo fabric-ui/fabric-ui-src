@@ -106,7 +106,7 @@ export default function TextField(props) {
             }
         else return {
             className: undefined,
-            color: '#0095ff'
+            color: 'var(--fabric-accent-color)'
         }
 
     }, [props.colorVariant])

@@ -17,11 +17,11 @@ export default function FileField(props) {
         if (props.colorVariant === 'secondary')
             return {
                 className: shared.secondaryVariant,
-                color: '#0095ff'
+                color: 'var(--fabric-accent-color)'
             }
         else return {
             className: undefined,
-            color: '#0095ff'
+            color: 'var(--fabric-accent-color)'
         }
 
     }, [])
