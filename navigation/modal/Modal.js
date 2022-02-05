@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useMemo, useState} from "react";
 import styles from "./styles/Modal.module.css";
 import ThemeContext from "../../misc/context/ThemeContext";
 import useModal from "./hooks/useModal";
@@ -19,15 +19,16 @@ export default function Modal(props) {
     const [alreadyRendered, setAlreadyRendered] = useState(false)
 
     useEffect(() => {
+
         if (props.open) {
             const position = getParentPosition()
 
             renderContent((
                 <div
                     style={{
-                        ...{
-                            background: `rgba(0, 0, 0, ${props.blurIntensity !== undefined ? props.blurIntensity : .4})`
-                        }, ...position
+                        ...{backdropFilter: `blur(${props.blurIntensity ? props.blurIntensity : '10px'})`},
+                      ...position,
+                      ...context.themes
                     }}
                     className={[styles.wrapper, props.variant === 'fit' ? styles.fitContent : styles.fitPage, props.wrapperClassName, context.dark ? context.styles.dark : context.styles.light].join(' ')}
                 >
@@ -69,7 +70,7 @@ Modal.propTypes = {
     variant: PropTypes.oneOf(['fill', 'fit']),
     animationStyle: PropTypes.oneOf(['slide-left', 'slide-right', 'fade', 'slide-bottom']),
     className: PropTypes.string,
-    blurIntensity: PropTypes.number,
+    blurIntensity: PropTypes.string,
     styles: PropTypes.object,
     open: PropTypes.bool.isRequired,
     handleClose: PropTypes.func.isRequired,
