@@ -26,7 +26,7 @@ export default function Modal(props) {
             renderContent((
                 <div
                     style={{
-                        ...{backdropFilter: `blur(${props.blurIntensity ? props.blurIntensity : '10px'})`},
+                      ...props.variant === 'fit' ? {} : {backdropFilter: `blur(${props.blurIntensity ? props.blurIntensity : '10px'})`},
                       ...position,
                       ...context.themes
                     }}
