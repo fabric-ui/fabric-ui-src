@@ -19,6 +19,14 @@ export default function ToolTip(props) {
 
     mountingPoint.current.style.left = (event.clientX + 10) + 'px'
     mountingPoint.current.style.top = (event.clientY + 10) + 'px'
+
+    let transform = {x: '0px', y: '0px'}
+    if((event.clientX + 10 + mountingPoint.current?.offsetWidth) > document.body.offsetWidth )
+      transform.x = 'calc(-100% - 10px)'
+    if((event.clientY + 10 + mountingPoint.current?.offsetHeight)  > document.body.offsetHeight )
+      transform.y = 'calc(-100% - 10px)'
+
+    mountingPoint.current.style.transform = `translate(${transform.x}, ${transform.y})`
   }
   const hover = (event) => {
     mountingPoint.current.style.position = 'fixed'
@@ -31,6 +39,8 @@ export default function ToolTip(props) {
       )
       mountingPoint.current.style.left = (event.clientX + 10) + 'px'
       mountingPoint.current.style.top = (event.clientY + 10) + 'px'
+
+
       document.addEventListener('mousemove', handleMouseMove)
 
       ref.current?.parentNode.addEventListener('mouseleave', () => {
@@ -70,7 +80,5 @@ export default function ToolTip(props) {
 ToolTip.propTypes = {
   content: PropTypes.string,
   children: PropTypes.node,
-  color: PropTypes.string,
-  justify: PropTypes.oneOf(['end', 'middle', 'start']),
-  align: PropTypes.oneOf(['end', 'middle', 'start'])
+  color: PropTypes.string
 }
